@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from app.db.database import engine
 from fastapi.middleware.cors import CORSMiddleware
-
+from app.api.auth import router as auth_router
 
 
 
@@ -24,6 +24,7 @@ app = FastAPI(
     lifespan=lifespan
     )
 
+app.include_router(auth_router)
 
 origins = [
     "http://localhost:5173",
