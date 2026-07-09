@@ -5,7 +5,7 @@ from datetime import timedelta,datetime,timezone
 from app.core.config import settings
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/verify")
 
 
 
@@ -36,23 +36,24 @@ def create_refresh_token(data: dict):
     )
 
 
-def verify_refresh_token(token: str) -> str:
+def verify_token(token: str, expected_type: str) -> dict:
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        if payload.get("type") != "refresh":
+        if payload.get("type") != expected_type:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Неправильный token type",
+                detail=f"Неправильный тип токена. Ожидался {expected_type}",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-
-        user_id = payload.get("sub")
-        if user_id is None:
-            raise HTTPException(status_code=401, detail="Ошибка token payload")
-
-        return int(user_id)
-
+        
+        if payload.get("sub") is None or payload.get("role") is None:
+            raise HTTPException(status_code=401, detail="Ошибка payload: нет sub или role")
+        
+        return payload
+    
     except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Refresh token истек")
+        raise HTTPException(status_code=401, detail="Токен истек")
     except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Неверный токен")
+        raise HTTPException(status_code=401, detail="Неверный или поврежденный токен")
+    
+    

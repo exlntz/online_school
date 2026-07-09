@@ -36,3 +36,6 @@ class VerifyCodeRequest(BaseModel):
         if not cleaned.startswith("+") or len(cleaned) < 11:
             raise ValueError("Номер телефона должен начинаться с '+' и содержать код страны (например, +79991234567)")
         return cleaned
+    
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str
