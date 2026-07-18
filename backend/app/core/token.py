@@ -2,7 +2,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import HTTPException, status
 import jwt
 from datetime import timedelta,datetime,timezone
-from app.core.config import settings
+from backend.app.core.config import settings
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/verify")
@@ -21,7 +21,7 @@ def create_token(data: dict, expires_delta: timedelta, token_type: str):
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
 
-def create_access_token(data: dict):
+def     create_access_token(data: dict):
     return create_token(
         data=data,
         expires_delta=timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES),

@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from app.db.database import Model
-from sqlalchemy import String, DateTime, func, ForeignKey, text
+from backend.app.db.database import Model
+from sqlalchemy import String, DateTime, func, ForeignKey, text, Text
 from datetime import datetime
+from enum import Enum
 
 
 class StudentModel(Model):
@@ -63,3 +64,34 @@ class ParentModel(Model):
     last_name: Mapped[str | None] = mapped_column(String(100))
     phone_number: Mapped[str] = mapped_column(String(20), unique=True, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), init=False)
+
+
+class SubjectEnum(str, Enum):
+    math = "math"
+    physics = "physics"
+    russian = "russian"
+    informatics = "informatics"
+
+
+class TaskModel(Model):
+    __tablename__ = 'tasks'
+    
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
+    subject: Mapped[SubjectEnum] = mapped_column(index=True)
+    topic: Mapped[str] = mapped_column(String(200), index=True)
+    task_number: Mapped[int] = mapped_column()
+    difficulty: Mapped[str] = mapped_column(String(50))
+    part: Mapped[int] = mapped_column()
+    content: Mapped[str] = mapped_column(Text)
+    source: Mapped[str | None] = mapped_column(String(200),default=None, index=True) # Пересдача 08.07.2026
+    sub_topic: Mapped[str | None] = mapped_column(String(200), default=None, index=True)
+    image_url: Mapped[str | None] = mapped_column(String(500), default=None)
+    answer: Mapped[str | None] = mapped_column(String(255), default=None)
+    max_score: Mapped[int] = mapped_column(default=1)
+    is_auto_check: Mapped[bool] = mapped_column(default=True, server_default=text('true'))
+    solution_text: Mapped[str | None] = mapped_column(Text, default=None)
+    solution_video_url: Mapped[str | None] = mapped_column(String(500), default=None)
+    is_active: Mapped[bool] = mapped_column(default=True, server_default=text('true'))
+    creator_id: Mapped[int | None] = mapped_column(ForeignKey('curators.id'), default=None)  # Кто создал
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), init=False)
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), onupdate=func.now(), default=None)
