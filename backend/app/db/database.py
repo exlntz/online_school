@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 from sqlalchemy.orm import MappedAsDataclass, DeclarativeBase
 from fastapi import Depends
 from typing import Annotated
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 engine = create_async_engine(url=settings.DATABASE_URL)

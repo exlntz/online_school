@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column
-from backend.app.db.database import Model
+from app.db.database import Model
 from sqlalchemy import String, DateTime, func, ForeignKey, text, Text
 from datetime import datetime
 from enum import Enum

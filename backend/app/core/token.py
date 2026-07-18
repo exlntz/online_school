@@ -2,7 +2,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import HTTPException, status
 import jwt
 from datetime import timedelta,datetime,timezone
-from backend.app.core.config import settings
+from app.core.config import settings
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/verify")

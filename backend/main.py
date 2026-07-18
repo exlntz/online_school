@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from backend.app.db.database import engine
+from app.db.database import engine
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.api.auth import router as auth_router
+from app.api.auth import router as auth_router
 
 
 

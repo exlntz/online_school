@@ -2,10 +2,10 @@ import random
 from fastapi import APIRouter, status, BackgroundTasks, HTTPException
 from sqlalchemy import select
 
-from backend.app.core.token import create_access_token, create_refresh_token, verify_token
-from backend.app.db.models import StudentModel, ParentModel
-from backend.app.schemas.auth_schemas import RegisterRequest, VerifyCodeRequest, RefreshTokenRequest
-from backend.app.db.database import SessionDep
+from app.core.token import create_access_token, create_refresh_token, verify_token
+from app.db.models import StudentModel, ParentModel
+from app.schemas.auth_schemas import RegisterRequest, VerifyCodeRequest, RefreshTokenRequest
+from app.db.database import SessionDep
 
 router = APIRouter(prefix='/auth', tags=['Авторизация'])
 

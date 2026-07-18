@@ -13,8 +13,8 @@ from alembic import context
 sys.path.append(str(Path(__file__).parent.parent))
 
 # 1. Твои импорты настроек и моделей
-from backend.app.core.config import settings
-from backend.app.db.database import Model # Или Base, смотря как у тебя называется
+from app.core.config import settings
+from app.db.database import Model # Или Base, смотря как у тебя называется
 
 config = context.config
 
