@@ -1,0 +1,219 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s, box-shadow 0.4s, background-color 0.4s, backdrop-filter 0.4s;
+}
+
+.scrolled {
+  background-color: color-mix(in srgb, var(--bg-primary) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); 
+  border-bottom-color: var(--border-color);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: padding 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    padding: 24px 40px;
+  }
+}
+
+.logo {
+  font-family: var(--app-font-sans);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.navLink {
+  font-family: var(--app-font-sans);
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.auth {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  .auth {
+    display: flex;
+  }
+}
+
+.loginBtn {
+  font-family: var(--app-font-sans);
+  font-size: 14px;
+  color: var(--text-primary);
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.loginBtn:hover {
+  color: var(--primary);
+  background-color: var(--bg-primary);
+}
+
+.registerBtn {
+  font-family: var(--app-font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background-color: var(--primary);
+  padding: 10px 24px;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.registerBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Mobile */
+.hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  color: var(--text-primary);
+  transition: background-color 0.2s;
+}
+
+.hamburger:hover {
+  background-color: var(--bg-primary);
+}
+
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 24px 24px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+}
+
+@media (min-width: 1024px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+.mobileLink {
+  font-family: var(--app-font-sans);
+  font-size: 16px;
+  color: var(--text-primary);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: color 0.2s;
+}
+
+.mobileLink:hover {
+  color: var(--primary);
+}
+
+.mobileAuth {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* --- Стили для авторизованного пользователя --- */
+
+.loadingText {
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobileUserProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.userName {
+  font-family: var(--app-font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none; 
+  transition: color 0.2s;
+}
+
+.userName:hover {
+  color: var(--primary); 
+}
+
+.logoutBtn {
+  font-family: var(--app-font-sans);
+  font-size: 14px;
+  color: var(--text-secondary);
+  background: transparent;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  color: var(--dark-red);
+  border-color: var(--dark-red);
+  background-color: rgba(239, 44, 44, 0.05); /* Легкий красный фон при наведении */
+}

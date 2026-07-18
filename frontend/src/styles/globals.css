@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+  font-family: 'EvergrowSans';
+  src: url('/fonts/EvergrowSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EvergrowSans';
+  src: url('/fonts/EvergrowSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EvergrowSans';
+  src: url('/fonts/EvergrowSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --white: white;
+    
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F6F8; 
+    --text-primary: #171819; 
+    --text-secondary: #6c7077;
+
+    --green-light: #C8F8E4;
+    --primary: #1219F3;
+    --primary-hover: #0C11CC;
+    --gray: #A4A4A4;
+
+    --red-light: #fea291;
+    --red: #FC836D;
+    --dark-red: #ef2c2c;
+    --green: #007c49;
+    --green-light: #C8F8E4;
+
+    --border-color: #EBEBEB; /* Твой --gray-light */
+    --card-bg: #FFFFFF;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+    
+    --font-family: "Noto Sans", sans-serif;
+    --app-font-mul: 'Mulish', sans-serif;
+    --app-font-sans: 'EvergrowSans', 'Inter', system-ui, sans-serif;
+    --app-font-serif: Georgia, serif;
+    --app-font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #ededed;
+    --text-secondary: #A4A4A4; 
+    
+    --border-color: #333333;
+    --card-bg: #1E1E1E;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1A1A1A;
+        --text-primary: #ededed;
+        --text-secondary: #A4A4A4;
+        --border-color: #333333;
+        --card-bg: #1E1E1E;
+    }
+}
+
+html,
+body {
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary); 
+    background-color: var(--bg-primary);
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+button { 
+    font-family: inherit; 
+    cursor: pointer; 
+    border: none; 
+    outline: none; 
+}
+

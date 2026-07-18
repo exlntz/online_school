@@ -1,0 +1,387 @@
+.section {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 96px 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 128px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 160px 0;
+  }
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    padding: 0 64px;
+  }
+}
+
+/* Header */
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+}
+
+
+.eyebrow {
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 0;
+}
+
+.heading {
+  font-family: var(--app-font-sans);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 24px 0 0;
+}
+
+.headingItalic {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.headerRight {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1023px) {
+  .headerRight {
+    justify-content: flex-start;
+  }
+}
+
+.subtext {
+  font-family: var(--app-font-sans);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.6;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 1023px) {
+  .subtext {
+    text-align: left;
+  }
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-top: 80px;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 112px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.cardWrap {
+  position: relative;
+}
+
+.cardWrapFeatured {
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .cardWrapFeatured {
+    margin-top: -64px;
+  }
+}
+
+/* Card */
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 48px;
+  }
+}
+
+.card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-4px);
+}
+
+.cardFeatured {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.cardLeaf {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  opacity: 0.2;
+  color: var(--text-secondary);
+}
+
+.cardLeafFeatured {
+  color: white;
+}
+
+.cardBadge {
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.cardTier {
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 0;
+}
+
+.cardTierFeatured {
+  color: rgba(255,255,255,0.7);
+}
+
+.cardName {
+  font-family: var(--app-font-sans);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 20px 0 0;
+}
+
+.cardNameFeatured {
+  color: white;
+}
+
+.cardDuration {
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 16px 0 0;
+}
+
+.cardDurationFeatured {
+  color: rgba(255,255,255,0.7);
+}
+
+.cardLabel {
+  font-family: var(--app-font-mono);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  color: var(--text-primary);
+  margin: 24px 0 0;
+}
+
+.cardLabelFeatured {
+  color: white;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-color);
+  margin: 32px 0;
+}
+
+.separatorFeatured {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.featureIcon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--text-secondary);
+  stroke-width: 1.25;
+}
+
+.featureIconFeatured {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.featureText {
+  font-family: var(--app-font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.featureTextFeatured {
+  color: rgba(255,255,255,0.9);
+}
+
+.cardBtn {
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background-color: var(--primary);
+  color: white;
+  padding: 0 28px;
+  height: 40px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.btnFeatured {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.btnFeatured:hover {
+  background-color: var(--border-color);
+}
+
+/* Trust */
+.trust {
+  margin-top: 96px;
+}
+
+@media (min-width: 1024px) {
+  .trust {
+    margin-top: 128px;
+  }
+}
+
+.trustSep {
+  height: 1px;
+  background-color: var(--border-color);
+  margin-bottom: 40px;
+}
+
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px 40px;
+}
+
+@media (min-width: 768px) {
+  .trustRow {
+    gap: 20px 64px;
+  }
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trustLabel {
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay200 { transition-delay: 0.2s; }
+.delay400 { transition-delay: 0.4s; }

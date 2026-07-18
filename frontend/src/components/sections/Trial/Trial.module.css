@@ -1,0 +1,264 @@
+.section {
+  position: relative;
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #1A1A1A 0%, transparent 60%, #0a0a0a 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 24px;
+  padding-bottom: 10vh;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 128px 48px;
+    padding-bottom: 10vh;
+  }
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .eyebrowRow {
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+}
+
+.eyebrowLine {
+  display: none;
+  height: 1px;
+  width: 80px;
+  background-color: var(--primary);
+}
+
+@media (min-width: 640px) {
+  .eyebrowLine {
+    display: block;
+  }
+}
+
+.eyebrow {
+  font-family: var(--app-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 12px;
+  }
+}
+
+.heading {
+  font-family: var(--app-font-sans);
+  font-weight: 600;
+  text-align: center;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-size: clamp(3.5rem, 14vw, 11.25rem);
+  color: #ededed;
+  margin: 0 0 40px;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    margin-bottom: 56px;
+  }
+}
+
+.headingLine {
+  display: block;
+}
+
+.headingDot {
+  display: inline-block;
+  color: var(--primary);
+  transform: scale(1.2);
+  transform-origin: bottom left;
+  margin-left: 0.05em;
+}
+
+.description {
+  font-family: var(--app-font-sans);
+  text-align: center;
+  color: #A4A4A4;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  padding: 0 16px;
+  font-size: clamp(1rem, 2vw, 1.3125rem);
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .description {
+    margin-bottom: 64px;
+  }
+}
+
+.btnWrap {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .btnWrap {
+    margin-bottom: 40px;
+  }
+}
+
+.btnGlow {
+  position: absolute;
+  inset: 0;
+  background: var(--primary);
+  filter: blur(40px);
+  opacity: 0.6;
+  border-radius: 8px;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.btnWrap:hover .btnGlow {
+  opacity: 0.9;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--app-font-sans);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background-color: var(--primary);
+  color: var(--white);
+  width: clamp(220px, 70vw, 280px);
+  height: 72px;
+  border-radius: 1rem;
+  transition: transform 0.3s;
+  box-shadow: 0 20px 60px -10px var(--primary);
+}
+
+.btnWrap:hover .btn {
+  transform: translateY(-2px);
+  background-color: var(--primary-hover);
+}
+
+.phoneRow {
+  font-family: var(--app-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .phoneRow {
+    font-size: 12px;
+  }
+}
+
+.phoneLink {
+  color: var(--primary);
+  transition: opacity 0.2s;
+}
+
+.phoneLink:hover {
+  opacity: 0.8;
+}
+
+.phoneDash {
+  margin: 0 8px;
+  color: var(--border-color);
+}
+
+/* Bottom marquee */
+.marqueeStrip {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0 24px;
+  border-top: 1px solid #262626;
+  background-color: #050505;
+}
+
+.marqueeTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: valve-marquee 35s linear infinite;
+}
+
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marqueeText {
+  font-family: var(--app-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #525252;
+  padding: 0 32px;
+}
+
+@media (min-width: 768px) {
+  .marqueeText {
+    font-size: 14px;
+    padding: 0 48px;
+  }
+}
+
+.marqueeSep {
+  font-size: 24px;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes valve-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
