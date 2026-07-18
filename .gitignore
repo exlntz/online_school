@@ -1,0 +1,22 @@
+# --- Системное и PyCharm ---
+.idea/
+*.iml
+.DS_Store
+
+# --- Окружение и ключи ---
+.venv/
+.env
+
+# --- Бэкенд (Python / FastAPI) ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# --- Фронтенд (Node.js / React / Vite) ---
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
