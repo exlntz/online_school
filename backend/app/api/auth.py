@@ -1,10 +1,10 @@
 import random
-from fastapi import APIRouter, status, BackgroundTasks, HTTPException
+from fastapi import APIRouter, status, BackgroundTasks, HTTPException, Cookie, Response
 from sqlalchemy import select
 
 from app.core.token import create_access_token, create_refresh_token, verify_token
 from app.db.models import StudentModel, ParentModel
-from app.schemas.auth_schemas import RegisterRequest, VerifyCodeRequest, RefreshTokenRequest
+from app.schemas.auth_schemas import RegisterRequest, VerifyCodeRequest
 from app.db.database import SessionDep
 
 router = APIRouter(prefix='/auth', tags=['Авторизация'])
@@ -30,8 +30,12 @@ async def request_registration(data: RegisterRequest, background_tasks: Backgrou
     }
 
 
-@router.post('/verify', summary='Подтверждение кода и создание токенов', status_code=status.HTTP_201_CREATED)
-async def verify_registration(session: SessionDep, data: VerifyCodeRequest):
+@router.post('/verify', summary='Подтверждение кода и создание токенов (1111)', status_code=status.HTTP_201_CREATED)
+async def verify_registration(
+        session: SessionDep,
+        data: VerifyCodeRequest,
+        response: Response
+):
     if data.code != "1111":
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -69,9 +73,17 @@ async def verify_registration(session: SessionDep, data: VerifyCodeRequest):
     access_token = create_access_token(data=token_payload)
     refresh_token = create_refresh_token(data=token_payload)
     
+    response.set_cookie(
+        key='refresh_token',
+        value=refresh_token,
+        httponly=True,
+        secure=False,
+        samesite='lax',
+        max_age=60*24*60*60
+    )
+    
     return {
         "access_token": access_token,
-        "refresh_token": refresh_token,
         "token_type": "bearer",
         "user": {
             "id": user.id,
@@ -84,9 +96,18 @@ async def verify_registration(session: SessionDep, data: VerifyCodeRequest):
 
 
 @router.post('/refresh', summary='Обновление токенов (Refresh)')
-async def refresh_tokens(data: RefreshTokenRequest, session: SessionDep):
+async def refresh_tokens(
+        session: SessionDep,
+        response: Response,
+        refresh_token: str | None = Cookie(None)
+):
+    if not refresh_token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Refresh токен отсутствует"
+        )
     
-    payload = verify_token(data.refresh_token, expected_type="refresh")
+    payload = verify_token(refresh_token, expected_type="refresh")
     
     user_id = payload.get("sub")
     role = payload.get("role")
@@ -111,8 +132,16 @@ async def refresh_tokens(data: RefreshTokenRequest, session: SessionDep):
     new_access_token = create_access_token(data=token_payload)
     new_refresh_token = create_refresh_token(data=token_payload)
     
+    response.set_cookie(
+        key="refresh_token",
+        value=new_refresh_token,
+        httponly=True,
+        secure=False,
+        samesite="lax",
+        max_age=60 * 60 * 24 * 60
+    )
+    
     return {
         "access_token": new_access_token,
-        "refresh_token": new_refresh_token,
         "token_type": "bearer"
     }
