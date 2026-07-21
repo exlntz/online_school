@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.auth import router as auth_router
 
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print('Сервер запущен')
