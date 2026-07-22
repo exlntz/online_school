@@ -28,8 +28,9 @@
 }
 
 .errorMessage {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
+    display: block;
+    margin-top: 6px; 
     color: var(--dark-red);
+    font-size: 13px; 
+    line-height: 1.3;
 }

@@ -1,0 +1,52 @@
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: var(--app-font-sans);
+  font-size: 15px;
+  color: var(--text-primary);
+  user-select: none;
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radioCustom {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--text-secondary);
+  position: relative;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.radioCustom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radioInput:checked + .radioCustom {
+  border-color: var(--primary);
+}
+
+.radioInput:checked + .radioCustom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radioInput:focus-visible + .radioCustom {
+  box-shadow: 0 0 0 3px rgba(18, 25, 243, 0.2);
+}

@@ -82,7 +82,7 @@
   font-size: 14px;
   color: var(--text-primary);
   padding: 10px 24px;
-  border-radius: 6px;
+  border-radius: 0.75rem;
   transition: color 0.2s, background-color 0.2s;
 }
 
@@ -215,5 +215,5 @@
 .logoutBtn:hover {
   color: var(--dark-red);
   border-color: var(--dark-red);
-  background-color: rgba(239, 44, 44, 0.05); /* Легкий красный фон при наведении */
+  background-color: rgba(239, 44, 44, 0.05); 
 }

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const loginSchema = z.object({
-    phone: z.string()
+    phoneNumber: z.string()
         .regex(/^\+?[0-9\s\-()]{7,20}$/, 'Введите корректный номер телефона')
         .refine((val) => {
             const digitsOnly = val.replace(/\D/g, '');
@@ -10,7 +10,10 @@ export const loginSchema = z.object({
 })
 
 export const registerSchema = loginSchema.extend({
-    name: z.string().min(2, 'Имя должно содержать минимум 2 символа')
+    firstName: z.string().min(2, 'Имя должно содержать минимум 2 символа'),
+    role: z.enum(['student', 'parent'], {
+        message: 'Выберите роль'
+    })
 });
 
 export const codeSchema = z.object({

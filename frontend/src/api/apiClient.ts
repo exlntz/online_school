@@ -31,18 +31,23 @@ apiClient.interceptors.response.use(
             originalRequest._isRetry = true
 
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/auth/refresh`, {
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/refresh`, {}, {
                     withCredentials: true
                 })
 
-                accessToken = response.data.accessToken
+                accessToken = response.data.access_token
 
                 originalRequest.headers.Authorization = `Bearer ${accessToken}`
 
                 return apiClient(originalRequest)
             } catch(refreshError) {
                 accessToken = null
-                window.location.href = '/login'
+                
+                const currentPath = window.location.pathname;
+                if (currentPath !== '/login' && currentPath !== '/register') {
+                    window.location.href = '/login';
+                }
+
                 return Promise.reject(refreshError)
             }
         } 

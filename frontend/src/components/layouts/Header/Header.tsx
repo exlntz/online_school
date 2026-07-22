@@ -2,6 +2,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../../api/auth';
 import { useUser } from '../../../hooks/useUser';
 import styles from './Header.module.css';
 
@@ -27,11 +28,14 @@ export const Header = (): JSX.Element => {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('temp_mock_token');
-    localStorage.removeItem('temp_mock_email'); 
-    queryClient.setQueryData(['user'], null); 
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      queryClient.setQueryData(['user'], null);
+      navigate('/');
+    } catch (error) {
+      console.error('Ошибка при выходе', error)
+    }
   };
 
   return (
@@ -54,7 +58,7 @@ export const Header = (): JSX.Element => {
               <span className={styles.loadingText}>Загрузка...</span>
             ) : user ? (
               <div className={styles.userProfile}>
-                <Link to="/profile" className={styles.userName}>{user.name}</Link>
+                <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
                 <button onClick={handleLogout} className={styles.logoutBtn}>Выйти</button>
               </div>
             ) : (
@@ -84,7 +88,7 @@ export const Header = (): JSX.Element => {
                 <span className={styles.loadingText}>Загрузка...</span>
               ) : user ? (
                 <div className={styles.mobileUserProfile}>
-                  <span className={styles.userName}>{user.name}</span>
+                  <span className={styles.userName}>{user.firstName}</span>
                   <button onClick={handleLogout} className={styles.logoutBtn}>Выйти</button>
                 </div>
               ) : (

@@ -1,94 +1,57 @@
-import type { RegisterFirstStep, RegisterSecondStep } from '../types/register';
+import type { AuthMode, AuthResponseDTO, SendCodePayload, UserDto, VerifyCodePayload } from '../types/auth';
 import type { User } from '../types/user';
-import { setAccessToken } from './apiClient';
+import { apiClient, setAccessToken } from './apiClient';
 
-// 1. Функция логина
-export const sendLoginSmsCode = async (data: { phone: string }): Promise<{ success: boolean }> => {
-    console.log(data)
-    return new Promise((resolve) => {
-        setTimeout(() => resolve({ success: true }), 1000);
-    });
+// 1. Функция логина и регистрации
+export const sendAuthCode = async (data: SendCodePayload, mode: AuthMode): Promise<{ success: boolean }> => {
+    const payload = {
+        phone_number: data.phoneNumber,
+        action: mode,
+        ...(data.role && { role: data.role })
+    }
+
+    const response = await apiClient.post(`auth/send-code`, payload);
+    return response.data;
 };
 
-// 2. Проверка СМС при входе (Бэкенд находит юзера по номеру и возвращает его ИМЯ)
-export const verifyLoginSmsCode = async (data: { phone: string; code: string }): Promise<{ user: User }> => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (data.code === '0000') {
-                const mockToken = 'mock-access-token-login';
-                setAccessToken(mockToken);
-                localStorage.setItem('temp_mock_token', mockToken);
-                
-                resolve({
-                    // Эмулируем, что бэкенд нашел Ивана в базе данных по номеру телефона
-                    user: { id: 1, name: 'Вадим', email: '', role: 'user' }
-                });
-            } else {
-                reject(new Error('Неверный код'));
-            }
-        }, 1000);
-    });
+// 2. Проверка СМС при входе и регистрации
+export const verifyAuthCode = async (data: VerifyCodePayload, mode: AuthMode): Promise<{ user: User }> => {
+    const payload = mode === 'register' 
+        ? { phone_number: data.phoneNumber, code: data.code, first_name: data.firstName, role: data.role}
+        : { phone_number: data.phoneNumber, code: data.code };
+
+    const response = await apiClient.post<AuthResponseDTO>(`auth/${mode}`, payload);
+    
+    setAccessToken(response.data.access_token);
+    const userData = response.data.user
+
+    return {
+        user: {
+            id: userData.id,
+            firstName: userData.first_name,
+            lastName: userData.last_name,
+            phoneNumber: userData.phone_number,
+            role: userData.role
+        }
+    }
 };
 
 // 3. Функция проверки пользователя
 export const getMe = async (): Promise<User> => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const token = localStorage.getItem('temp_mock_token');
+    const response = await apiClient.get<UserDto>('/users/me');
+    const userData = response.data
 
-            if (token) {
-                resolve({ 
-                    id: 1, 
-                    name: 'Вадим',
-                    email: '', 
-                    role: 'user' 
-                });
-            } else {
-                reject(new Error('Не авторизован'));
-            }
-        }, 800);
-    });
+    return {
+        id: userData.id,
+        firstName: userData.first_name,
+        lastName: userData.last_name,
+        phoneNumber: userData.phone_number,
+        role: userData.role
+    }
 };
 
-// Отправка телефона
-// export const sendSmsCode = async (data: RegisterFirstStep): Promise<{ status: string }> => {
-//     // В реальности: await apiClient.post('/auth/register/send', data);
-//     return new Promise((resolve) => setTimeout(() => resolve({ status: 'ok' }), 1000));
-// };
+// 4. Выход из аккаунта
+export const logoutUser = async (): Promise<void> => {
+    await apiClient.post('/auth/logout');
+}
 
-// // Проверка кода и завершение регистрации
-// export const verifySmsCode = async (data: RegisterSecondStep): Promise<{ user: User }> => {
-//     // В реальности: await apiClient.post('/auth/register/verify', data);
-//     return new Promise((resolve) => setTimeout(() => {
-//         resolve({ user: { id: 2, name: 'Новый Студент', email: '...', role: 'user' } });
-//     }, 1000));
-// };
-
-// 4. Отправка телефона
-export const sendSmsCode = async (data: RegisterFirstStep): Promise<{ success: boolean }> => {
-    console.log(data)
-    return new Promise((resolve) => {
-        // Имитируем запрос на бэкенд (1 секунда)
-        setTimeout(() => resolve({ success: true }), 1000);
-    });
-};
-
-// 5. Проверка СМС и успешная регистрация
-export const verifySmsCode = async (data: RegisterSecondStep): Promise<{ user: User }> => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // Для мока: пускай "правильным" кодом всегда будет '0000'
-            if (data.code === '0000') {
-                const mockToken = 'mock-access-token-777';
-                setAccessToken(mockToken);
-                localStorage.setItem('temp_mock_token', mockToken);
-                
-                resolve({
-                    user: { id: 2, name: data.name, email: '', role: 'user' }
-                });
-            } else {
-                reject(new Error('Неверный код'));
-            }
-        }, 1000);
-    });
-};

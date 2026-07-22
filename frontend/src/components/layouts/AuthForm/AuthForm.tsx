@@ -1,15 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { isAxiosError } from 'axios';
 import { AsYouType } from 'libphonenumber-js';
 import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { sendLoginSmsCode, sendSmsCode, verifyLoginSmsCode, verifySmsCode } from '../../../api/auth';
+import { sendAuthCode, verifyAuthCode } from '../../../api/auth';
+import type { AuthValues } from '../../../types/auth';
 import { cn } from '../../../utils/cn';
 import { codeSchema, loginSchema, registerSchema, type CodeFormInputs } from '../../../utils/validations';
-import { Input } from "../Input/Input";
+import { Input, Radio } from '../../ui';
 import styles from './AuthForm.module.css';
-import type { AuthFormProps, AuthValues } from "./AuthForm.props";
+import type { AuthFormProps } from "./AuthForm.props";
+
 
 
 export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Element => {
@@ -20,14 +23,15 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
     const schema = isRegister ? registerSchema : loginSchema;
 
     const [step, setStep] = useState<'phone' | 'code'>('phone');
-    const [savedName, setSavedName] = useState('');
-    const [savedPhone, setSavedPhone] = useState('');
+    const [savedFirstName, setSavedFirstName] = useState('');
+    const [savedPhoneNumber, setSavedPhoneNumber] = useState('');
+    const [savedRole, setSavedRole] = useState<'student' | 'parent'>('student');
     const [countdown, setCountdown] = useState(0);
 
     const phoneForm = useForm<AuthValues>({ resolver: zodResolver(schema) });
     const codeForm = useForm<{ code: string }>({ resolver: zodResolver(codeSchema) });
 
-    const { onChange: onPhoneChange, ...restPhoneRegister } = phoneForm.register('phone');
+    const { onChange: onPhoneChange, ...restPhoneRegister } = phoneForm.register('phoneNumber');
 
     useEffect(() => {
         let timerId: ReturnType<typeof setInterval>;
@@ -40,28 +44,50 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
     }, [step, countdown]);
 
     const sendMutation = useMutation({
-        mutationFn: (data: AuthValues) => isRegister ? sendSmsCode(data) : sendLoginSmsCode(data),
+        mutationFn: (data: AuthValues) => sendAuthCode(data, mode),
         onSuccess: (_, variables) => {
-            const cleanPhone = variables.phone.replace(/[^\d+]/g, '');
-            setSavedPhone(cleanPhone);
-            if (isRegister && variables.name) {
-                setSavedName(variables.name); 
+            const cleanPhone = variables.phoneNumber.replace(/[^\d+]/g, '');
+            setSavedPhoneNumber(cleanPhone);
+            if (isRegister && variables.firstName) {
+                setSavedFirstName(variables.firstName);
+                if (variables.role) setSavedRole(variables.role); 
             }
+            
             setStep('code');
             setCountdown(60);
+        }, 
+        onError: (error: unknown) => {
+            let serverErrorMessage = 'Ошибка при отправке кода';
+
+            if (isAxiosError(error)) {
+                serverErrorMessage = error.response?.data?.detail || serverErrorMessage;
+            } else if (error instanceof Error) {
+                serverErrorMessage = error.message;
+            }
+            phoneForm.setError('phoneNumber', { message: serverErrorMessage });
         }
     });
 
     const verifyMutation = useMutation({
-        mutationFn: (data: CodeFormInputs) => isRegister 
-            ? verifySmsCode({ name: savedName, phone: savedPhone, code: data.code })
-            : verifyLoginSmsCode({ phone: savedPhone, code: data.code }),
+        mutationFn: (data: CodeFormInputs) => verifyAuthCode({
+            ...(isRegister && { firstName: savedFirstName, role: savedRole }),
+            phoneNumber: savedPhoneNumber,
+            code: data.code
+        }, mode),
         onSuccess: (data) => {
             queryClient.setQueryData(['user'], data.user);
             navigate('/profile');
         },
-        onError: () => {
-            codeForm.setError('code', { message: 'Неверный код' });
+        onError: (error: unknown) => {
+            let serverErrorMessage = 'Неверный код';
+
+            if (isAxiosError(error)) {
+                serverErrorMessage = error.response?.data?.message || 'Неверный код';
+            } else if (error instanceof Error) {
+                serverErrorMessage = error.message;
+            }
+
+            codeForm.setError('code', { message: serverErrorMessage });
         }
     });
 
@@ -71,8 +97,8 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                 <div className={styles.form}>
                     <form 
                         onSubmit={phoneForm.handleSubmit((data) => {
-                            const cleanPhone = data.phone.replace(/[^\d+]/g, '');
-                            sendMutation.mutate({ ...data, phone: cleanPhone });
+                            const cleanPhone = data.phoneNumber.replace(/[^\d+]/g, '');
+                            sendMutation.mutate({ ...data, phoneNumber: cleanPhone });
                         })} 
                     >
                         <h1 className={styles.title}>
@@ -86,8 +112,8 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                                     type="text"
                                     placeholder="Ваше имя"
                                     className={styles.nameInput}
-                                    {...phoneForm.register('name')} 
-                                    error={phoneForm.formState.errors.name}
+                                    {...phoneForm.register('firstName')} 
+                                    error={phoneForm.formState.errors.firstName}
                                 />
                             )}
 
@@ -97,12 +123,39 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                                 className={styles.telephoneInput} 
                                 {...restPhoneRegister}
                                 onChange={(e) => {
-                                    const formatted = new AsYouType('RU').input(e.target.value);
+                                    let val = e.target.value;
+        
+                                    if (val && !val.startsWith('+7')) {
+                                        const digits = val.replace(/\D/g, '').replace(/^(7|8)/, '');
+                                        val = '+7 ' + digits;
+                                    }
+
+                                    const formatted = new AsYouType('RU').input(val);
                                     e.target.value = formatted;
                                     onPhoneChange(e);
                                 }}
-                                error={phoneForm.formState.errors.phone}
+                                error={phoneForm.formState.errors.phoneNumber}
                             />
+
+                            {isRegister && (
+                                <div className={styles.radioGroupWrapper}>
+                                    <div className={styles.roleGroup}>
+                                        <Radio value="student" {...phoneForm.register('role')}>
+                                            Я ученик
+                                        </Radio>
+
+                                        <Radio value="parent" {...phoneForm.register('role')}>
+                                            Я родитель
+                                        </Radio>
+                                    </div>
+
+                                    {phoneForm.formState.errors.role && (
+                                        <span role='alert' className={styles.errorMessage}>
+                                            {phoneForm.formState.errors.role.message}
+                                        </span>
+                                    )}
+                                </div>
+                            )}
                         </div>
                         <button type="submit" className={styles.submitBtn} disabled={sendMutation.isPending}>
                             {sendMutation.isPending ? 'Загрузка...' : (isRegister ? 'Получить код' : 'Войти')}
@@ -128,7 +181,7 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                 <div className={styles.form}>
                     <form onSubmit={codeForm.handleSubmit((data) => verifyMutation.mutate(data))}>
                         <h1 className={styles.title}>Введите код</h1>
-                        <p className={styles.subtitle}>Код отправлен на {savedPhone}</p>
+                        <p className={styles.subtitle}>Код отправлен на {savedPhoneNumber}</p>
                         
                         <div className={styles.inputs}>
                             <Input 
@@ -150,7 +203,11 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                             ) : (
                                 <button 
                                     type="button" 
-                                    onClick={() => sendMutation.mutate({ name: savedName, phone: savedPhone })}
+                                    onClick={() => sendMutation.mutate({ 
+                                        firstName: savedFirstName, 
+                                        phoneNumber: savedPhoneNumber,
+                                        role: savedRole
+                                    })}
                                     disabled={sendMutation.isPending}
                                     className={styles.resendBtn}
                                 >

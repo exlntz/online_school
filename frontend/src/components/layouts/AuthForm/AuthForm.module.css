@@ -20,7 +20,7 @@
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Расстояние между инпутами */
+  gap: 20px; 
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -34,7 +34,6 @@
   letter-spacing: -0.02em;
 }
 
-/* Контейнер для инпутов */
 .inputs {
   display: flex;
   flex-direction: column;
@@ -42,7 +41,6 @@
   margin-bottom: 16px; 
 }
 
-/* Общие стили для обоих полей */
 .nameInput,
 .telephoneInput,
 .codeInput {
@@ -60,15 +58,34 @@
   box-sizing: border-box;
 }
 
-/* Стилизация плейсхолдера */
 
-/* Состояние при клике/вводе (Фокус) */
 .nameInput:focus,
 .telephoneInput:focus,
 .codeInput:focus {
   border-color: var(--primary);
   background-color: var(--bg-primary);
   box-shadow: 0 0 0 3px rgba(18, 25, 243, 0.1); 
+}
+
+.radioGroupWrapper {
+  position: relative;
+  padding-bottom: 12px; 
+}
+
+.roleGroup {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 4px; 
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  color: var(--dark-red); 
+  font-family: var(--app-font-sans);
+  font-size: 13px;
 }
 
 .submitBtn {
@@ -102,7 +119,6 @@
   box-shadow: none;
 }
 
-/* --- Стили второго шага и ссылок --- */
 .subtitle {
   text-align: center;
   color: var(--text-secondary);
@@ -177,7 +193,6 @@
   text-decoration: underline;
 }
 
-/* Анимация плавного появления карточки */
 @keyframes fadeIn {
   from {
     opacity: 0;

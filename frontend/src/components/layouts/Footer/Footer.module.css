@@ -99,7 +99,6 @@ ul {
   background-color: #262626;
 }
 
-/* Grid */
 .grid {
   display: grid;
   grid-template-columns: 1fr;

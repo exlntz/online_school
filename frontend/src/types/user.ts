@@ -1,6 +1,9 @@
+export type Role = 'student' | 'parent'
+
 export type User = {
     id: number;
-    name: string;
-    email: string;
-    role: 'user' | 'student' | 'admin';
+    firstName: string;
+    lastName?: string;
+    phoneNumber: string;
+    role: Role | 'admin';
 }
