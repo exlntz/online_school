@@ -177,3 +177,15 @@ async def refresh_tokens(
         "token_type": "bearer"
     }
 
+
+@router.post('/logout', summary='Выход из системы')
+async def logout(response: Response):
+    # Сервер дает браузеру команду уничтожить куку
+    response.delete_cookie(
+        key="refresh_token",
+        httponly=True,
+        secure=False,  # TODO: на сервере поставить True
+        samesite="lax"
+    )
+    
+    return {"message": "Вы успешно вышли из системы"}
