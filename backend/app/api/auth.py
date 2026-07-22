@@ -5,7 +5,7 @@ from sqlalchemy import select
 from app.core.token import create_access_token, create_refresh_token, verify_token
 from app.db.models import StudentModel, ParentModel
 from app.db.database import SessionDep
-from app.schemas.auth_schemas import SendCodeRequest, UserRegisterRequest, UserLoginRequest
+from app.schemas.auth_schemas import SendCodeRequest, UserRegisterRequest, UserLoginRequest, RoleEnum, ActionEnum
 
 router = APIRouter(prefix='/auth', tags=['Авторизация'])
 
@@ -38,8 +38,45 @@ def set_auth_cookies_and_tokens(user, role: str, response: Response):
     return access_token
 
 
+async def get_user_and_role_by_phone(session, phone: str):
+    student_query = select(StudentModel).where(StudentModel.phone_number == phone)
+    student = (await session.execute(student_query)).scalar_one_or_none()
+    if student:
+        return student, RoleEnum.student.value
+    
+    # Ищем среди родителей
+    parent_query = select(ParentModel).where(ParentModel.phone_number == phone)
+    parent = (await session.execute(parent_query)).scalar_one_or_none()
+    if parent:
+        return parent, RoleEnum.parent.value
+    
+    return None, None
+
+
 @router.post('/send-code', summary='Запрос кода подтверждения')
-async def request_code(data: SendCodeRequest, background_tasks: BackgroundTasks):
+async def request_code(
+        data: SendCodeRequest,
+        background_tasks: BackgroundTasks,
+        session: SessionDep
+):
+    # Ищем пользователя в базе
+    user, role = await get_user_and_role_by_phone(session, data.phone_number)
+    
+    # 1. Если человек хочет войти, но его нет в базе -> ошибка
+    if data.action == ActionEnum.login and not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Пользователь не найден. Пожалуйста, перейдите к регистрации."
+        )
+    
+    # 2. Если человек хочет зарегистрироваться, но он уже есть -> ошибка
+    if data.action == ActionEnum.register and user:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Пользователь с таким номером уже существует. Пожалуйста, выполните вход."
+        )
+    
+    # Если проверки пройдены, генерируем и отправляем код
     code = str(random.randint(1000, 9999))
     # await redis.set(f"sms:{data.phone_number}", code, ex=180)
     background_tasks.add_task(send_mock_sms, data.phone_number, code)
@@ -47,10 +84,8 @@ async def request_code(data: SendCodeRequest, background_tasks: BackgroundTasks)
     return {
         "status": "success",
         "message": "Код подтверждения отправлен",
-        "phone": data.phone_number,
-        "role": data.role.value
+        "phone": data.phone_number
     }
-
 
 @router.post('/register', summary='Регистрация', status_code=status.HTTP_201_CREATED)
 async def register_user(
@@ -64,16 +99,16 @@ async def register_user(
             detail="Неверный или просроченный код подтверждения"
         )
     
-    model_cls = StudentModel if data.role.value == "student" else ParentModel
-    query = select(model_cls).where(model_cls.phone_number == data.phone_number)
-    result = await session.execute(query)
+    existing_user, _ = await get_user_and_role_by_phone(session, data.phone_number)
     
     # 1. Проверяем, нет ли уже такого пользователя
-    if result.scalar_one_or_none():
+    if existing_user:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail="Пользователь с таким номером уже существует. Пожалуйста, выполните вход."
         )
+    
+    model_cls = StudentModel if data.role == RoleEnum.student else ParentModel
     
     # 2. Создаем нового
     user = model_cls(
@@ -114,10 +149,7 @@ async def login_user(
             detail="Неверный или просроченный код подтверждения"
         )
     
-    model_cls = StudentModel if data.role.value == "student" else ParentModel
-    query = select(model_cls).where(model_cls.phone_number == data.phone_number)
-    result = await session.execute(query)
-    user = result.scalar_one_or_none()
+    user, role = await get_user_and_role_by_phone(session, data.phone_number)
     
     # 1. Проверяем, существует ли пользователь
     if not user:
@@ -127,7 +159,7 @@ async def login_user(
         )
     
     # 2. Выдаем токены
-    access_token = set_auth_cookies_and_tokens(user, data.role.value, response)
+    access_token = set_auth_cookies_and_tokens(user, role, response)
     
     return {
         "message": "Успешный вход",
@@ -138,7 +170,7 @@ async def login_user(
             "first_name": user.first_name,
             "last_name": user.last_name,
             "phone_number": user.phone_number,
-            "role": data.role.value
+            "role": role
         }
     }
 
@@ -159,7 +191,7 @@ async def refresh_tokens(
     user_id = payload.get("sub")
     role = payload.get("role")
     
-    model_cls = StudentModel if role == "student" else ParentModel
+    model_cls = StudentModel if role == RoleEnum.student.value else ParentModel
     query = select(model_cls).where(model_cls.id == int(user_id))
     result = await session.execute(query)
     user = result.scalar_one_or_none()
