@@ -7,28 +7,10 @@ class RoleEnum(str, Enum):
     student = 'student'
     parent = 'parent'
 
-class RegisterRequest(BaseModel):
-    first_name: str
-    last_name: str | None = None
+class SendCodeRequest(BaseModel):
     phone_number: str
     role: RoleEnum
     
-    @field_validator('phone_number')
-    @classmethod
-    def clean_phone(cls, value: str) -> str:
-        cleaned = re.sub(r'[^\d+]', '' , value)
-        
-        if not cleaned.startswith('+') or len(cleaned) < 11:
-            raise ValueError("Номер телефона должен начинаться с '+' и содержать код страны (например, +79991234567)")
-        return cleaned
-
-class VerifyCodeRequest(BaseModel):
-    phone_number: str
-    code: str
-    first_name: str
-    last_name: str | None = None
-    role: RoleEnum
-
     @field_validator("phone_number")
     @classmethod
     def clean_phone(cls, value: str) -> str:
@@ -36,3 +18,35 @@ class VerifyCodeRequest(BaseModel):
         if not cleaned.startswith("+") or len(cleaned) < 11:
             raise ValueError("Номер телефона должен начинаться с '+' и содержать код страны (например, +79991234567)")
         return cleaned
+
+
+class UserLoginRequest(BaseModel):
+    phone_number: str
+    code: str
+    role: RoleEnum
+    
+    @field_validator("phone_number")
+    @classmethod
+    def clean_phone(cls, value: str) -> str:
+        cleaned = re.sub(r"[^\d+]", "", value)
+        if not cleaned.startswith("+") or len(cleaned) < 11:
+            raise ValueError("Номер телефона должен начинаться с '+' и содержать код страны (например, +79991234567)")
+        return cleaned
+
+
+class UserRegisterRequest(BaseModel):
+    phone_number: str
+    code: str
+    first_name: str
+    last_name: str | None = None
+    role: RoleEnum
+    
+    @field_validator("phone_number")
+    @classmethod
+    def clean_phone(cls, value: str) -> str:
+        cleaned = re.sub(r"[^\d+]", "", value)
+        if not cleaned.startswith("+") or len(cleaned) < 11:
+            raise ValueError("Номер телефона должен начинаться с '+' и содержать код страны (например, +79991234567)")
+        return cleaned
+
+    
