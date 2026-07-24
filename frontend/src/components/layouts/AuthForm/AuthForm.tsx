@@ -124,10 +124,13 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                                 {...restPhoneRegister}
                                 onChange={(e) => {
                                     let val = e.target.value;
-        
-                                    if (val && !val.startsWith('+7')) {
-                                        const digits = val.replace(/\D/g, '').replace(/^(7|8)/, '');
-                                        val = '+7 ' + digits;
+                                    
+                                    if (val && !val.startsWith('+')) {
+                                        if (val.startsWith('7') || val.startsWith('8')) {
+                                            val = '+7' + val.substring(1);
+                                        } else {
+                                            val = '+7' + val;
+                                        }
                                     }
 
                                     const formatted = new AsYouType('RU').input(val);
@@ -137,6 +140,7 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                                 error={phoneForm.formState.errors.phoneNumber}
                             />
 
+                            {/* Поле выбора роли рендерим ТОЛЬКО при регистрации */}
                             {isRegister && (
                                 <div className={styles.radioGroupWrapper}>
                                     <div className={styles.roleGroup}>

@@ -34,7 +34,6 @@
 }
 
 .logo {
-  font-family: var(--app-font-sans);
   font-weight: 700;
   font-size: 18px;
   color: var(--text-primary);
@@ -54,7 +53,6 @@
 }
 
 .navLink {
-  font-family: var(--app-font-sans);
   font-size: 14px;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -78,7 +76,6 @@
 }
 
 .loginBtn {
-  font-family: var(--app-font-sans);
   font-size: 14px;
   color: var(--text-primary);
   padding: 10px 24px;
@@ -92,7 +89,6 @@
 }
 
 .registerBtn {
-  font-family: var(--app-font-sans);
   font-size: 14px;
   font-weight: 500;
   color: white;
@@ -146,7 +142,6 @@
 }
 
 .mobileLink {
-  font-family: var(--app-font-sans);
   font-size: 16px;
   color: var(--text-primary);
   padding: 12px 0;
@@ -167,7 +162,7 @@
 /* --- Стили для авторизованного пользователя --- */
 
 .loadingText {
-  font-family: var(--app-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-secondary);
   text-transform: uppercase;
@@ -189,7 +184,6 @@
 }
 
 .userName {
-  font-family: var(--app-font-sans);
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
@@ -202,7 +196,6 @@
 }
 
 .logoutBtn {
-  font-family: var(--app-font-sans);
   font-size: 14px;
   color: var(--text-secondary);
   background: transparent;

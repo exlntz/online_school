@@ -39,7 +39,7 @@
 }
 
 .tickerWord {
-  font-family: var(--app-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -48,7 +48,7 @@
 }
 
 .tickerDot {
-  font-family: var(--app-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   color: var(--primary);
   padding: 0 8px;
@@ -92,7 +92,6 @@
   position: absolute;
   top: -32px;
   left: -8px;
-  font-family: var(--app-font-mul);
   font-weight: 700;
   font-size: clamp(8rem, 15vw, 15rem);
   line-height: 1;
@@ -106,7 +105,7 @@
 
 .eyebrow {
   position: relative;
-  font-family: var(--app-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -136,7 +135,6 @@
 
 .heading {
   position: relative;
-  font-family: var(--app-font-sans);
   font-weight: 700;
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   line-height: 1.1;
@@ -151,7 +149,6 @@
 
 .subtext {
   position: relative;
-  font-family: var(--app-font-sans);
   font-size: clamp(1rem, 1.1vw, 1.125rem);
   color: var(--text-secondary);
   line-height: 1.6;
@@ -162,7 +159,6 @@
 .ctaLink {
   position: relative;
   display: inline-block;
-  font-family: var(--app-font-sans);
   font-size: 14px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -177,7 +173,6 @@
 .ctaLink:hover {
   text-underline-offset: 10px;
 }
-
 
 .list {
   list-style: none;
@@ -222,7 +217,7 @@
 }
 
 .itemNum {
-  font-family: var(--app-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -250,7 +245,6 @@
 }
 
 .itemTitle {
-  font-family: var(--app-font-sans);
   font-weight: 700;
   font-size: clamp(1.25rem, 1.5vw, 1.5rem);
   line-height: 1.2;
@@ -265,7 +259,6 @@
 }
 
 .itemDesc {
-  font-family: var(--app-font-sans);
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;

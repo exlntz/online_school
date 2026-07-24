@@ -25,7 +25,6 @@
 }
 
 .title {
-  font-family: var(--app-font-sans);
   font-weight: 700;
   font-size: 28px;
   color: var(--text-primary);
@@ -50,14 +49,12 @@
   background-color: var(--bg-secondary); 
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  font-family: var(--app-font-sans);
   font-size: 15px;
   color: var(--text-primary);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   box-sizing: border-box;
 }
-
 
 .nameInput:focus,
 .telephoneInput:focus,
@@ -84,7 +81,6 @@
   bottom: -8px;
   left: 0;
   color: var(--dark-red); 
-  font-family: var(--app-font-sans);
   font-size: 13px;
 }
 
@@ -95,7 +91,6 @@
   width: 100%;
   height: 48px;
   margin-top: 8px;
-  font-family: var(--app-font-sans);
   font-weight: 600;
   font-size: 16px;
   color: var(--white);
@@ -123,7 +118,6 @@
   text-align: center;
   color: var(--text-secondary);
   margin-bottom: 16px;
-  font-family: var(--app-font-sans);
   font-size: 15px;
 }
 
@@ -138,7 +132,6 @@
 .timerText {
   font-size: 14px;
   color: var(--text-secondary);
-  font-family: var(--app-font-sans);
 }
 
 .resendBtn {
@@ -148,7 +141,6 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  font-family: var(--app-font-sans);
   padding: 4px 8px;
   transition: opacity 0.2s;
 }
@@ -165,7 +157,6 @@
   font-size: 13px;
   text-decoration: underline;
   padding: 4px;
-  font-family: var(--app-font-sans);
   transition: color 0.2s;
 }
 
@@ -176,7 +167,6 @@
 .registerPrompt {
   text-align: center;
   margin-top: 24px;
-  font-family: var(--app-font-sans);
   font-size: 14px;
   color: var(--text-secondary);
 }

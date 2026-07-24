@@ -1,24 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* 
+========================
+MULISH (Базовый шрифт)
+======================== 
+*/
+@font-face {
+  font-family: 'Mulish';
+  src: url('/fonts/mulish/mulish-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
-  font-family: 'EvergrowSans';
-  src: url('/fonts/EvergrowSans-Regular.woff') format('woff');
+  font-family: 'Mulish';
+  src: url('/fonts/mulish/mulish-regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'EvergrowSans';
-  src: url('/fonts/EvergrowSans-Medium.woff') format('woff');
+  font-family: 'Mulish';
+  src: url('/fonts/mulish/mulish-500.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'EvergrowSans';
-  src: url('/fonts/EvergrowSans-Bold.woff') format('woff');
+  font-family: 'Mulish';
+  src: url('/fonts/mulish/mulish-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mulish';
+  src: url('/fonts/mulish/mulish-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+========================
+JETBRAINS MONO (Для кода и бейджей)
+======================== 
+*/
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono/jetbrains-mono-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+========================
+SOURCE SERIF 4 (Акцентный)
+======================== 
+*/
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif/source-serif-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif/source-serif-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif/source-serif-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif/source-serif-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Serif 4';
+  src: url('/fonts/source-serif/source-serif-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -48,11 +157,11 @@
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
     --radius: 12px;
     
-    --font-family: "Noto Sans", sans-serif;
-    --app-font-mul: 'Mulish', sans-serif;
-    --app-font-sans: 'EvergrowSans', 'Inter', system-ui, sans-serif;
-    --app-font-serif: Georgia, serif;
-    --app-font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --font-sans: 'Mulish', 'Inter', sans-serif;
+    --font-serif: 'Source Serif 4', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-default: var(--font-sans);
+    
     --transition: all 0.3s ease;
 }
 
@@ -84,7 +193,7 @@
 
 html,
 body {
-    font-family: "Noto Sans", sans-serif;
+    font-family: var(--font-default);
     margin: 0;
     padding: 0;
     color: var(--text-primary); 
