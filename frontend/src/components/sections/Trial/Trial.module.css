@@ -51,9 +51,8 @@
 
 .eyebrowLine {
   display: none;
-  height: 1px;
   width: 80px;
-  background-color: var(--primary);
+  
 }
 
 @media (min-width: 640px) {

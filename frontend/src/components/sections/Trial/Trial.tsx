@@ -1,7 +1,9 @@
 import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
+import { Divider } from '../../ui';
 import styles from './Trial.module.css';
+import { cn } from '../../../utils/cn';
 
 
 const marqueeItems = ['7 ДНЕЙ БЕСПЛАТНО', 'ПОДГОТОВКА К ЕГЭ 2025', 'СТАРТ В ЛЮБОЙ МОМЕНТ'];
@@ -30,12 +32,12 @@ export const Trial = (): JSX.Element => {
       {/* Main content */}
       <div
         ref={contentRef}
-        className={`${styles.content} ${styles.reveal}`}
+        className={cn(styles.content, styles.reveal)}
       >
         <div className={styles.eyebrowRow}>
-          <span className={styles.eyebrowLine}></span>
+          <Divider variant='primary' className={styles.eyebrowLine} />
           <span className={styles.eyebrow}>06 / Пробная неделя</span>
-          <span className={styles.eyebrowLine}></span>
+          <Divider variant='primary' className={styles.eyebrowLine} />
         </div>
 
         <h2 className={styles.heading}>

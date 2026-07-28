@@ -4,11 +4,14 @@ import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../../api/auth';
 import { useUser } from '../../../hooks/useUser';
+import { cn } from '../../../utils/cn';
+import { Button, Container } from '../../ui';
 import styles from './Header.module.css';
+import type { HeaderProps } from './Header.props';
 
 
 
-export const Header = (): JSX.Element => {
+export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -39,27 +42,71 @@ export const Header = (): JSX.Element => {
   };
 
   return (
-    <>
-      <header className={`${styles.header}${scrolled ? ` ${styles.scrolled}` : ''}`}>
-        <div className={styles.inner}>
-          {/* Logo */}
-          <Link to="/" className={styles.logo} aria-label="Из нуля в сотку">
-            Из нуля в сотку
-          </Link>
+    <header className={cn(styles.header, {
+      [styles.scrolled]: scrolled,
+      className
+    })} {...props}>
+      <Container className={styles.headerContent}>
+        {/* Logo */}
+        <Link to="/" className={styles.logo} aria-label="Из нуля в сотку">
+          Из нуля в сотку
+        </Link>
 
-          {/* Desktop nav */}
-          <nav className={styles.nav}>
-            <Link to="/pricing" className={styles.navLink}>Тарифы</Link>
-          </nav>
+        {/* Desktop nav */}
+        <nav className={styles.nav}>
+          <Link to="/pricing" className={styles.navLink}>Тарифы</Link>
+        </nav>
 
-          {/* Desktop actions */}
-          <div className={styles.auth}>
+        {/* Desktop actions */}
+        <div className={styles.auth}>
+          {isLoading ? (
+            <span className={styles.loadingText}>Загрузка...</span>
+          ) : user ? (
+            <div className={styles.userProfile}>
+              <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
+              <Button 
+                variant="danger" 
+                size="s" 
+                onClick={handleLogout} 
+              >
+                Выйти
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Link to="/login" className={styles.loginBtn}>Войти</Link>
+              <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
+            </>
+          )}
+        </div>
+
+        {/* Hamburger */}
+        <button
+          className={styles.hamburger}
+          onClick={() => setMobileOpen(o => !o)}
+          aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </Container>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className={styles.mobileMenu}>
+          <Link to="/pricing" className={styles.mobileLink}>Тарифы</Link>
+          <div className={styles.mobileAuth}>
             {isLoading ? (
               <span className={styles.loadingText}>Загрузка...</span>
             ) : user ? (
-              <div className={styles.userProfile}>
-                <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
-                <button onClick={handleLogout} className={styles.logoutBtn}>Выйти</button>
+              <div className={styles.mobileUserProfile}>
+                <span className={styles.userName}>{user.firstName}</span>
+                <Button 
+                  variant="danger" 
+                  size="s" 
+                  onClick={handleLogout} 
+                >
+                  Выйти
+                </Button>
               </div>
             ) : (
               <>
@@ -68,39 +115,9 @@ export const Header = (): JSX.Element => {
               </>
             )}
           </div>
-
-          {/* Hamburger */}
-          <button
-            className={styles.hamburger}
-            onClick={() => setMobileOpen(o => !o)}
-            aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className={styles.mobileMenu}>
-            <Link to="/pricing" className={styles.mobileLink}>Тарифы</Link>
-            <div className={styles.mobileAuth}>
-              {isLoading ? (
-                <span className={styles.loadingText}>Загрузка...</span>
-              ) : user ? (
-                <div className={styles.mobileUserProfile}>
-                  <span className={styles.userName}>{user.firstName}</span>
-                  <button onClick={handleLogout} className={styles.logoutBtn}>Выйти</button>
-                </div>
-              ) : (
-                <>
-                  <Link to="/login" className={styles.loginBtn}>Войти</Link>
-                  <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
-                </>
-              )}
-            </div>
-          </div>
-        )}
-      </header>
-    </>
+      )}
+    </header>
+    
   );
 }

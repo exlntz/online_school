@@ -44,7 +44,9 @@ apiClient.interceptors.response.use(
                 accessToken = null
                 
                 const currentPath = window.location.pathname;
-                if (currentPath !== '/login' && currentPath !== '/register') {
+                const publicPaths = ['/', '/pricing']
+
+                if (!publicPaths.includes(currentPath) && currentPath !== '/login' && currentPath !== '/register') {
                     window.location.href = '/login';
                 }
 

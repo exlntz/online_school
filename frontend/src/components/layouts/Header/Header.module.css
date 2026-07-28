@@ -17,19 +17,19 @@
   box-shadow: 0 1px 8px rgba(0,0,0,0.06);
 }
 
-.inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 32px 24px;
+.headerContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: padding 0.5s;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 @media (min-width: 1024px) {
-  .inner {
-    padding: 24px 40px;
+  .headerContent {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 }
 
@@ -112,11 +112,12 @@
   height: 36px;
   border-radius: 6px;
   color: var(--text-primary);
+  background-color: transparent;
   transition: background-color 0.2s;
 }
 
 .hamburger:hover {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
 }
 
 @media (min-width: 1024px) {
@@ -193,20 +194,4 @@
 
 .userName:hover {
   color: var(--primary); 
-}
-
-.logoutBtn {
-  font-size: 14px;
-  color: var(--text-secondary);
-  background: transparent;
-  padding: 8px 16px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-
-.logoutBtn:hover {
-  color: var(--dark-red);
-  border-color: var(--dark-red);
-  background-color: rgba(239, 44, 44, 0.05); 
 }

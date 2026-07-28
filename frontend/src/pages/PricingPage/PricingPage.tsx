@@ -2,6 +2,8 @@ import { Plus } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Badge, Divider } from '../../components/ui';
+import { cn } from '../../utils/cn';
 import styles from './PricingPage.module.css';
 
 
@@ -92,7 +94,7 @@ export const PricingPage = (): JSX.Element => {
           <div className={styles.container}>
             <div className={styles.noise} aria-hidden="true"></div>
 
-            <div ref={heroRef} className={`${styles.hero} ${styles.reveal}`}>
+            <div ref={heroRef} className={cn(styles.hero, styles.reveal)}>
               <p className={styles.eyebrow}>Тарифная сетка</p>
               <h2 className={styles.heading}>
                 Три пути<br />
@@ -111,12 +113,8 @@ export const PricingPage = (): JSX.Element => {
                   className={styles.reveal}
                   style={{ transitionDelay: `${i * 120}ms` }}
                 >
-                  <div className={`${styles.card} ${t.featured ? styles.cardFeatured : ''}`}>
-                    {t.popular && (
-                      <div className={styles.popularBadgeWrap}>
-                        <span className={styles.popularBadge}>Популярно</span>
-                      </div>
-                    )}
+                  <div className={cn(styles.card, t.featured && styles.cardFeatured)}>
+                    {t.popular && <Badge variant="primary" size="m" className={styles.popularBadgeWrap}>Популярно</Badge>}
                     <p className={styles.cardTier}>{t.tier}</p>
                     <h3 className={styles.cardName}>{t.name}</h3>
                     <p className={styles.cardSub}>{t.sub}</p>
@@ -124,7 +122,9 @@ export const PricingPage = (): JSX.Element => {
                         <span className={styles.priceNum}>{t.price}</span>
                         <span className={styles.priceUnit}>{t.unit}</span>
                     </div>
-                    <div className={styles.separator}></div>
+
+                    <Divider className={styles.divider} />
+
                     <ul className={styles.featureList}>
                       {t.features.map(f => (
                         <li key={f} className={styles.featureItem}>
@@ -134,7 +134,7 @@ export const PricingPage = (): JSX.Element => {
                       ))}
                     </ul>
                     <div className={styles.cardFooter}>
-                      <Link to="/register" className={`${styles.btn} ${styles['btn_' + t.btnClass]}`}>
+                      <Link to="/register" className={cn(styles.btn, styles[`btn_${t.btnClass}`])}>
                           {t.btnText}
                       </Link>
                     </div>

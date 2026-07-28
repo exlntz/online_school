@@ -193,10 +193,7 @@
   color: var(--text-secondary);
 }
 
-.separator {
-  height: 1px;
-  width: 100%;
-  background-color: var(--border-color);
+.divider {
   margin: 32px 0;
 }
 

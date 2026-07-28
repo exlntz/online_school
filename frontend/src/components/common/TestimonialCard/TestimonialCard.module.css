@@ -1,0 +1,87 @@
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 32px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+@media (min-width: 1024px) {
+  .cardOffset {
+    transform: translateY(-24px);
+  }
+  .cardOffset:hover {
+    transform: translateY(-26px);
+  }
+}
+
+.quoteIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+  margin-bottom: 24px;
+  stroke-width: 1.5;
+}
+
+.quote {
+  font-style: italic;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0 0 32px;
+}
+
+.separator {
+  margin-bottom: 24px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cardAuthor {
+  min-width: 0;
+}
+
+.authorName {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.authorSubject {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardStars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.starSmall {
+  width: 14px;
+  height: 14px;
+  fill: var(--primary);
+  color: var(--primary);
+  stroke-width: 2;
+}

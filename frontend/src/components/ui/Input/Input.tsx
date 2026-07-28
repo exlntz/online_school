@@ -1,10 +1,10 @@
-import { type ForwardedRef, forwardRef, type JSX } from "react";
+import { type JSX } from "react";
 import { cn } from '../../../utils/cn';
 import styles from './Input.module.css';
 import type { InputProps } from "./Input.props";
 
 
-export const Input = forwardRef(({ className, type, error, ...props}: InputProps, ref: ForwardedRef<HTMLInputElement>): JSX.Element => {
+export const Input = ({ className, type, error, ref, ...props}: InputProps): JSX.Element => {
     return (
         <div className={styles.inputWrapper}>
             <input 
@@ -18,4 +18,4 @@ export const Input = forwardRef(({ className, type, error, ...props}: InputProps
             {error && <span role='alert' className={styles.errorMessage}>{error.message}</span>}
         </div>
     )
-})
+}

@@ -9,7 +9,7 @@ import { sendAuthCode, verifyAuthCode } from '../../../api/auth';
 import type { AuthValues } from '../../../types/auth';
 import { cn } from '../../../utils/cn';
 import { codeSchema, loginSchema, registerSchema, type CodeFormInputs } from '../../../utils/validations';
-import { Input, Radio } from '../../ui';
+import { Button, Input, Radio } from '../../ui';
 import styles from './AuthForm.module.css';
 import type { AuthFormProps } from "./AuthForm.props";
 
@@ -161,9 +161,15 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                                 </div>
                             )}
                         </div>
-                        <button type="submit" className={styles.submitBtn} disabled={sendMutation.isPending}>
-                            {sendMutation.isPending ? 'Загрузка...' : (isRegister ? 'Получить код' : 'Войти')}
-                        </button>
+                        <Button 
+                            type="submit" 
+                            variant="primary" 
+                            size="m" 
+                            isLoading={sendMutation.isPending} 
+                            className={styles.submitBtn}
+                        >
+                            {isRegister ? 'Получить код' : 'Войти'}
+                        </Button>
                     </form>
 
                     {/* Динамические ссылки внизу */}
@@ -197,35 +203,45 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
                             />
                         </div>
                         
-                        <button type="submit" className={styles.submitBtn} disabled={verifyMutation.isPending}>
-                            {verifyMutation.isPending ? 'Проверка...' : 'Подтвердить'}
-                        </button>
+                        <Button 
+                            type="submit" 
+                            variant="primary" 
+                            size="m" 
+                            isLoading={verifyMutation.isPending} 
+                            className={styles.submitBtn}
+                        >
+                            Подтвердить
+                        </Button>
                         
                         <div className={styles.actionsWrapper}>
                             {countdown > 0 ? (
                                 <span className={styles.timerText}>Запросить повторно через {countdown} сек</span>
                             ) : (
-                                <button 
-                                    type="button" 
+                                <Button
+                                    type='button'
+                                    variant='ghost'
+                                    size='s'
+                                    noBg
                                     onClick={() => sendMutation.mutate({ 
                                         firstName: savedFirstName, 
                                         phoneNumber: savedPhoneNumber,
                                         role: savedRole
                                     })}
-                                    disabled={sendMutation.isPending}
-                                    className={styles.resendBtn}
+                                    isLoading={sendMutation.isPending}
                                 >
-                                    {sendMutation.isPending ? 'Отправляем...' : 'Отправить код повторно'}
-                                </button>
+                                    Отправить код повторно
+                                </Button>
                             )}
-
-                            <button 
+                            <Button 
                                 type="button" 
-                                onClick={() => setStep('phone')} 
+                                variant="ghost-secondary" 
+                                size="xs" 
+                                noBg
+                                onClick={() => setStep('phone')}
                                 className={styles.changeNumberBtn}
                             >
                                 Изменить номер
-                            </button>
+                            </Button>
                         </div>
                     </form>
                 </div>

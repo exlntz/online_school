@@ -5,6 +5,8 @@ import imgAlexey from '../../../assets/images/mentor_alexey.webp';
 import imgDmitry from '../../../assets/images/mentor_dmitry.png';
 import imgElena from '../../../assets/images/mentor_elena.webp';
 import imgMaria from '../../../assets/images/mentor_maria.webp';
+import { cn } from '../../../utils/cn';
+import { Badge, Button, Container, Divider } from '../../ui';
 import styles from './Mentors.module.css';
 
 
@@ -36,14 +38,14 @@ export const Mentors = (): JSX.Element => {
 
   return (
     <section id="наши-наставники" className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         {/* Header */}
         <div className={styles.header}>
-          <p ref={eyebrowRef} className={`${styles.eyebrow} ${styles.animIn}`}>[04_TEAM]</p>
-          <h1 ref={headingRef} className={`${styles.heading} ${styles.animIn} ${styles.animDelay1}`}>
+          <p ref={eyebrowRef} className={cn(styles.eyebrow, styles.animIn)}>[04_TEAM]</p>
+          <h1 ref={headingRef} className={cn(styles.heading, styles.animIn, styles.animDelay1)}>
             Наши наставники
           </h1>
-          <p ref={subRef} className={`${styles.sub} ${styles.animIn} ${styles.animDelay2}`}>
+          <p ref={subRef} className={cn(styles.sub, styles.animIn, styles.animDelay2)}>
             Лучшие выпускники топовых вузов страны, которые помогут вам сдать ЕГЭ на 100 баллов.
           </p>
         </div>
@@ -56,10 +58,10 @@ export const Mentors = (): JSX.Element => {
             <input className={styles.toolbarInput} placeholder="Поиск по имени или предмету..." />
           </div>
           <div className={styles.toolbarRight}>
-            <button className={styles.toolbarBtn}>
+            <Button variant="ghost-secondary" size="s" className={styles.toolbarBtn}>
               <ArrowUpDown size={14} />
               А–Я
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -79,7 +81,7 @@ export const Mentors = (): JSX.Element => {
                 </div>
                 <div className={styles.cardFooter}>
                   <div className={styles.cardTags}>
-                    {m.tags.map(t => <span key={t} className={styles.cardTag}>{t}</span>)}
+                    {m.tags.map(t => <Badge key={t} variant="outline" size='s'>{t}</Badge>)}
                   </div>
                 </div>
               </div>
@@ -91,21 +93,35 @@ export const Mentors = (): JSX.Element => {
         </div>
 
         {/* Pagination */}
+        <Divider className={styles.paginationDivider} />
+        
         <div className={styles.pagination}>
           <p className={styles.paginationEmpty}></p>
           <nav className={styles.paginationNav}>
-            <a href="#" className={styles.paginationPrev}>
+            <Button 
+              variant="ghost-secondary" 
+              size="s" 
+              noBg
+              className={styles.paginationBtn}
+            >
               <ChevronLeft size={16} />
-              <span>Previous</span>
-            </a>
+              <span className={styles.paginationText}>Previous</span>
+            </Button>
+
             <a href="#" className={`${styles.paginationPage} ${styles.paginationActive}`}>01</a>
-            <a href="#" className={styles.paginationNext}>
-              <span>Next</span>
+
+            <Button 
+              variant="ghost-secondary" 
+              size="s" 
+              noBg
+              className={styles.paginationBtn}
+            >
+              <span className={styles.paginationText}>Next</span>
               <ChevronRight size={16} />
-            </a>
+            </Button>
           </nav>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

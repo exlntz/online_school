@@ -2,6 +2,8 @@ import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { cn } from '../../../utils/cn';
+import { Container, Divider } from '../../ui';
 import styles from './Ecosystem.module.css';
 
 
@@ -54,13 +56,13 @@ export const Ecosystem = (): JSX.Element => {
         </div>
       </div>
 
-      <div className={styles.inner}>
+      <Container>
         <div className={styles.grid}>
           {/* LEFT: sticky heading */}
           <div className={styles.leftCol}>
             <div
               ref={leftRef}
-              className={`${styles.stickyWrap} ${styles.reveal}`}  
+              className={cn(styles.stickyWrap, styles.reveal)}
             >
               <div className={styles.bg100} aria-hidden="true">100</div>
               <p className={styles.eyebrow}>§ 01 · ЭКОСИСТЕМА ОБУЧЕНИЯ</p>
@@ -87,7 +89,9 @@ export const Ecosystem = (): JSX.Element => {
                   <li
                     key={f.num}
                     ref={el => { itemRefs.current[i] = el; }}
-                    className={`${styles.listItem} ${i > 0 ? styles.listItemBorder : ''} ${styles.reveal}`}
+                    className={cn(styles.listItem, styles.reveal, {
+                      [styles.listItemBorder]: i > 0
+                    })}
                     style={{ transitionDelay: `${i * 90}ms` }}
                   >
                     <div className={styles.itemMeta}>
@@ -104,13 +108,15 @@ export const Ecosystem = (): JSX.Element => {
                         <div className={styles.itemLineDot}></div>
                       </div>
                     </div>
+
+                    {i < features.length - 1 && <Divider className={styles.itemDivider} />}
                   </li>
                 );
               })}
             </ul>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
