@@ -63,6 +63,18 @@
   color: var(--primary);
 }
 
+.actionsGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+@media (min-width: 1024px) {
+  .actionsGroup {
+    gap: 16px; 
+  }
+}
+
 .auth {
   display: none;
   align-items: center;
@@ -80,12 +92,13 @@
   color: var(--text-primary);
   padding: 10px 24px;
   border-radius: 0.75rem;
+  background-color: var(--bg-secondary); 
   transition: color 0.2s, background-color 0.2s;
 }
 
 .loginBtn:hover {
   color: var(--primary);
-  background-color: var(--bg-primary);
+  background-color: var(--border-color); 
 }
 
 .registerBtn {

@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { isAxiosError } from 'axios';
 import { AsYouType } from 'libphonenumber-js';
+import { ArrowLeft } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,7 +13,6 @@ import { codeSchema, loginSchema, registerSchema, type CodeFormInputs } from '..
 import { Button, Input, Radio } from '../../ui';
 import styles from './AuthForm.module.css';
 import type { AuthFormProps } from "./AuthForm.props";
-
 
 
 export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Element => {
@@ -93,6 +93,11 @@ export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Elem
 
     return (
         <div className={cn(styles.container, className)} {...props}>
+            <Link to="/" className={styles.backLink}>
+                <ArrowLeft size={20} />
+                <span className={styles.backButtonText}>На главную</span>
+            </Link>
+
             {step === 'phone' ? (
                 <div className={styles.form}>
                     <form 

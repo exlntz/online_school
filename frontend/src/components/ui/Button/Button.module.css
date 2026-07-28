@@ -73,6 +73,15 @@
   background-color: var(--bg-secondary); 
 }
 
+.ghost-accent {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+.ghost-accent:hover:not(:disabled) {
+  color: var(--primary); 
+  background-color: var(--bg-secondary); 
+}
+
 .danger {
   background-color: transparent;
   border: 1px solid var(--border-color);
@@ -137,6 +146,13 @@
   font-size: 18px; 
   font-weight: 700; 
   border-radius: 16px; 
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px; 
 }
 
 /* background */

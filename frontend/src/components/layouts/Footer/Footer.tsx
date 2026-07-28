@@ -37,7 +37,7 @@ export const Footer = ( { className, ...props }: FooterProps ): JSX.Element => {
           </div>
         </div>
 
-        <Divider />
+        <Divider variant="dark" />
 
         {/* Grid */}
         <div className={styles.grid}>
@@ -95,7 +95,8 @@ export const Footer = ( { className, ...props }: FooterProps ): JSX.Element => {
           </div>
         </div>
 
-        <Divider />
+        <Divider variant="dark" />
+
         {/* Bottom bar */}
         <div className={styles.bottom}>
           <p className={styles.copyright}>

@@ -29,3 +29,7 @@
 .primary-light {
     background-color: rgba(51, 57, 241, 0.2);
 }
+
+.dark {
+  background-color: #262626;
+}

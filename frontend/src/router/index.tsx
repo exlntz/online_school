@@ -5,18 +5,26 @@ import { HomePage, NotFoundPage, PricingPage, ProfilePage } from "../pages";
 
 
 export const router = createBrowserRouter(
-    [{
-        path: "/",
-        element: <MainLayout />,
-        children: [
-            { index: true, element: <HomePage />},
-            { path: 'pricing', element: <PricingPage />},
-            { path: 'profile', element: <ProfilePage />},
-            { path: 'login', element: <AuthForm mode="login" key="login" />},
-            { path: 'register', element: <AuthForm mode="register" key="register" />},
-            { path: '*', element: <NotFoundPage />}
-        ],
-    }],
+    [
+        {
+            path: "/",
+            element: <MainLayout />,
+            children: [
+                { index: true, element: <HomePage />},
+                { path: 'pricing', element: <PricingPage />},
+                { path: 'profile', element: <ProfilePage />},
+                { path: '*', element: <NotFoundPage />}
+            ],
+        },
+        { 
+            path: 'login', 
+            element: <AuthForm mode="login" key="login" />
+        },
+        { 
+            path: 'register', 
+            element: <AuthForm mode="register" key="register" />
+        }
+    ],
     {
         basename: import.meta.env.BASE_URL,
     }

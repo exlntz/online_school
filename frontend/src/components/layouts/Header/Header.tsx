@@ -1,8 +1,9 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { Menu, X } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../../api/auth';
+import { useTheme } from '../../../hooks/useTheme';
 import { useUser } from '../../../hooks/useUser';
 import { cn } from '../../../utils/cn';
 import { Button, Container } from '../../ui';
@@ -14,11 +15,13 @@ import type { HeaderProps } from './Header.props';
 export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const { data: user, isLoading } = useUser();
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -58,36 +61,47 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
         </nav>
 
         {/* Desktop actions */}
-        <div className={styles.auth}>
-          {isLoading ? (
-            <span className={styles.loadingText}>Загрузка...</span>
-          ) : user ? (
-            <div className={styles.userProfile}>
-              <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
-              <Button 
-                variant="danger" 
-                size="s" 
-                onClick={handleLogout} 
-              >
-                Выйти
-              </Button>
-            </div>
-          ) : (
-            <>
-              <Link to="/login" className={styles.loginBtn}>Войти</Link>
-              <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
-            </>
-          )}
-        </div>
+        <div className={styles.actionsGroup}>
+          <Button 
+            variant="ghost-accent" 
+            size="icon" 
+            onClick={toggleTheme} 
+            aria-label="Сменить тему"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </Button>
 
-        {/* Hamburger */}
-        <button
-          className={styles.hamburger}
-          onClick={() => setMobileOpen(o => !o)}
-          aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <div className={styles.auth}>
+            {isLoading ? (
+              <span className={styles.loadingText}>Загрузка...</span>
+            ) : user ? (
+              <div className={styles.userProfile}>
+                <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
+                <Button 
+                  variant="danger" 
+                  size="s" 
+                  onClick={handleLogout} 
+                >
+                  Выйти
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className={styles.loginBtn}>Войти</Link>
+                <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
+              </>
+            )}
+          </div>
+
+          {/* Hamburger */}
+          <button
+            className={styles.hamburger}
+            onClick={() => setMobileOpen(o => !o)}
+            aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </Container>
 
       {/* Mobile menu */}
