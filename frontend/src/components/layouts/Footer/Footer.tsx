@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import { Link } from 'react-router-dom';
 import { cn } from "../../../utils/cn";
+import { Logo } from "../../common";
 import { Container, Divider } from "../../ui";
 import styles from './Footer.module.css';
 import type { FooterProps } from "./Footer.props";
@@ -43,10 +44,8 @@ export const Footer = ( { className, ...props }: FooterProps ): JSX.Element => {
         <div className={styles.grid}>
           {/* Col 1: Logo + socials */}
           <div className={styles.col}>
-            <Link to="/" className={styles.logoWrapper}>
-              <div className={styles.logoMark}>0→</div>
-              <div className={styles.logoText}>Из нуля<br />в сотку</div>
-            </Link>
+            <Logo variant="footer" />
+            
             <p className={styles.tagline}>Онлайн-школа ЕГЭ — 2025</p>
             <div className={styles.socials}>
               <a href="#" aria-label="Instagram" className={styles.socialLink}>

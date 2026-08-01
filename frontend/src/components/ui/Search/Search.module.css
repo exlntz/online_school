@@ -1,0 +1,35 @@
+.search {
+    position: relative;
+    width: 100%; 
+}
+
+.input {
+    width: 100%; 
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px; 
+    height: 32px; 
+    padding: 0; 
+}
+
+.inputLeft {
+    padding-left: 44px;
+    padding-right: 12px;
+}
+
+.buttonLeft {
+    left: 4px;
+}
+
+.inputRight {
+    padding-left: 12px;
+    padding-right: 44px;
+}
+
+.buttonRight {
+    right: 4px;
+}

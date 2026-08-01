@@ -26,34 +26,6 @@
   border-top: 1px solid var(--border-color);
 }
 
-.tickerTrack {
-  display: flex;
-  white-space: nowrap;
-  width: max-content;
-  animation: ticker-x 40s linear infinite;
-}
-
-.tickerGroup {
-  display: flex;
-  flex-shrink: 0;
-}
-
-.tickerWord {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  padding: 0 32px;
-}
-
-.tickerDot {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--primary);
-  padding: 0 8px;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -298,7 +270,3 @@
   transform: translateY(0);
 }
 
-@keyframes ticker-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}

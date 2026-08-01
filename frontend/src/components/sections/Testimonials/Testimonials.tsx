@@ -1,10 +1,10 @@
 import { Star } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { TestimonialCard } from '../../common';
-import { Container } from '../../ui';
-import styles from './Testimonials.module.css';
 import { cn } from '../../../utils/cn';
+import { TestimonialCard } from '../../common';
+import { Container, Marquee } from '../../ui';
+import styles from './Testimonials.module.css';
 
 
 const reviews = [
@@ -72,14 +72,7 @@ export const Testimonials = (): JSX.Element => {
 
       {/* Bottom marquee */}
       <div className={styles.marqueeWrap}>
-        <div className={styles.marqueeTrack}>
-          {[...marqueeWords, ...marqueeWords, ...marqueeWords].map((w, i) => (
-            <span key={i} className={styles.marqueeItem}>
-              <span className={styles.marqueeWord}>{w}</span>
-              <span className={styles.marqueeDot}>•</span>
-            </span>
-          ))}
-        </div>
+        <Marquee items={marqueeWords} speed={60} />
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../../../utils/cn';
-import { Container, Divider } from '../../ui';
+import { Container, Divider, Marquee } from '../../ui';
 import styles from './Ecosystem.module.css';
 
 
@@ -16,8 +16,7 @@ const features = [
   { num: '06', icon: Award, title: 'Помощь с поступлением', desc: 'Мы не просто готовим к экзаменам, мы помогаем выстроить стратегию поступления, выбрать вуз мечты и подготовить все необходимые документы для зачисления.' },
 ];
 
-const baseWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
-const tickerWords = [...baseWords, ...baseWords, ...baseWords, ...baseWords];
+const tickerWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
 
 export const Ecosystem = (): JSX.Element => {
   const leftRef = useRef<HTMLDivElement>(null);
@@ -42,18 +41,7 @@ export const Ecosystem = (): JSX.Element => {
     <section id="игровая-экосистема" className={styles.section}>
       {/* Bottom ticker strip */}
       <div className={styles.bottomTicker}>
-        <div className={styles.tickerTrack}>
-          {[0,1].map(r => (
-            <div key={r} className={styles.tickerGroup}>
-            {tickerWords.map((t,i) => (
-              <span key={i}>
-                <span className={styles.tickerWord}>{t}</span>
-                <span className={styles.tickerDot}>·</span>
-              </span>
-            ))}
-          </div>
-          ))}
-        </div>
+        <Marquee items={tickerWords} />
       </div>
 
       <Container>

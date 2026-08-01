@@ -138,30 +138,6 @@
   }
 }
 
-.marqueeTrack {
-  display: flex;
-  white-space: nowrap;
-  animation: marquee-x 60s linear infinite;
-}
-
-.marqueeItem {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--text-secondary);
-}
-
-.marqueeWord {
-  padding: 0 32px;
-}
-
-.marqueeDot {
-  color: var(--primary);
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -171,9 +147,4 @@
 .visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-@keyframes marquee-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-33.333%); }
 }

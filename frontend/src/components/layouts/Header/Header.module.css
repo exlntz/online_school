@@ -33,13 +33,6 @@
   }
 }
 
-.logo {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
 .nav {
   display: none;
   align-items: center;

@@ -6,6 +6,7 @@ import { logoutUser } from '../../../api/auth';
 import { useTheme } from '../../../hooks/useTheme';
 import { useUser } from '../../../hooks/useUser';
 import { cn } from '../../../utils/cn';
+import { Logo } from '../../common';
 import { Button, Container } from '../../ui';
 import styles from './Header.module.css';
 import type { HeaderProps } from './Header.props';
@@ -51,9 +52,7 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
     })} {...props}>
       <Container className={styles.headerContent}>
         {/* Logo */}
-        <Link to="/" className={styles.logo} aria-label="Из нуля в сотку">
-          Из нуля в сотку
-        </Link>
+        <Logo variant="header" />
 
         {/* Desktop nav */}
         <nav className={styles.nav}>

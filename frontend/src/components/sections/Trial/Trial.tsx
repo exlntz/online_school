@@ -1,9 +1,9 @@
 import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { Divider } from '../../ui';
-import styles from './Trial.module.css';
 import { cn } from '../../../utils/cn';
+import { Divider, Marquee } from '../../ui';
+import styles from './Trial.module.css';
 
 
 const marqueeItems = ['7 ДНЕЙ БЕСПЛАТНО', 'ПОДГОТОВКА К ЕГЭ 2025', 'СТАРТ В ЛЮБОЙ МОМЕНТ'];
@@ -70,14 +70,13 @@ export const Trial = (): JSX.Element => {
 
       {/* Bottom marquee strip */}
       <div className={styles.marqueeStrip}>
-        <div className={styles.marqueeTrack}>
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
-            <div key={i} className={styles.marqueeItem}>
-              <span className={styles.marqueeText}>{item}</span>
-              <span className={styles.marqueeSep}>/</span>
-            </div>
-          ))}
-        </div>
+        <Marquee 
+          items={marqueeItems} 
+          separator="/" 
+          speed={65} 
+          textClassName={styles.trialMarqueeText} 
+          repeatMultiplier={6}
+        />
       </div>
     </section>
   );

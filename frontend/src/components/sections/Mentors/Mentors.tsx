@@ -1,12 +1,13 @@
-import { ArrowUpDown, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import imgAlexey from '../../../assets/images/mentor_alexey.webp';
 import imgDmitry from '../../../assets/images/mentor_dmitry.png';
 import imgElena from '../../../assets/images/mentor_elena.webp';
 import imgMaria from '../../../assets/images/mentor_maria.webp';
 import { cn } from '../../../utils/cn';
-import { Badge, Button, Container, Divider } from '../../ui';
+import { MentorCard } from '../../common';
+import { Button, Container, Divider, Search } from '../../ui';
 import styles from './Mentors.module.css';
 
 
@@ -22,6 +23,13 @@ export const Mentors = (): JSX.Element => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
+
+  const [ searchQuery, setSearchQuery ]= useState('');
+
+  const filteredMentors = mentors.filter(m => 
+    m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    m.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -54,8 +62,11 @@ export const Mentors = (): JSX.Element => {
         <div className={styles.toolbar}>
           <div className={styles.toolbarLeft}>
             <span className={styles.toolbarDollar}>$</span>
-            <Search size={16} className={styles.toolbarSearchIcon} />
-            <input className={styles.toolbarInput} placeholder="Поиск по имени или предмету..." />
+            <Search 
+                onSearch={setSearchQuery} 
+                placeholder="Поиск по имени или предмету..."
+                iconPosition='left'
+            />
           </div>
           <div className={styles.toolbarRight}>
             <Button variant="ghost-secondary" size="s" className={styles.toolbarBtn}>
@@ -65,30 +76,21 @@ export const Mentors = (): JSX.Element => {
           </div>
         </div>
 
-        <p className={styles.count}>[ ПОКАЗАНО 04 ИЗ 04 НАСТАВНИКОВ ]</p>
+        <p className={styles.count}>
+            [ ПОКАЗАНО {String(filteredMentors.length).padStart(2, '0')} ИЗ {String(mentors.length).padStart(2, '0')} НАСТАВНИКОВ ]
+        </p>
 
         {/* Grid */}
         <div className={styles.grid}>
-          {mentors.map((m) => (
-            <div key={m.id} className={styles.card}>
-              <div className={styles.cardImage}>
-                <img src={m.img} alt={m.name} loading="lazy" className={styles.cardImg} />
-              </div>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardName}>{m.name}</h3>
-                  <p className={styles.cardTitle}>{m.title}</p>
-                </div>
-                <div className={styles.cardFooter}>
-                  <div className={styles.cardTags}>
-                    {m.tags.map(t => <Badge key={t} variant="outline" size='s'>{t}</Badge>)}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.cardHover}>
-                <a href="#" className={styles.cardProfileLink}>→ Профиль</a>
-              </div>
-            </div>
+          {filteredMentors.map((m) => (
+            <MentorCard 
+              key={m.id}
+              name={m.name}
+              title={m.title}
+              tags={m.tags}
+              img={m.img}
+              // profileUrl={`/mentors/${m.id}`} 
+            />
           ))}
         </div>
 

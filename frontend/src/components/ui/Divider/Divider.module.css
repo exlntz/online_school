@@ -33,3 +33,7 @@
 .dark {
   background-color: #262626;
 }
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.2);
+}

@@ -47,8 +47,8 @@
 }
 
 .glass {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: color-mix(in srgb, var(--bg-primary) 15%, transparent);
   color: var(--bg-primary); 
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px); 
+  border: 1px solid color-mix(in srgb, var(--bg-primary) 25%, transparent);
+  backdrop-filter: blur(4px);
 }

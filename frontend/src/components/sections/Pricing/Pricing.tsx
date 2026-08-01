@@ -3,7 +3,8 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../../../utils/cn';
-import { Badge, Container, Divider } from '../../ui';
+import { PricingCard } from '../../common';
+import { Container, Divider } from '../../ui';
 import styles from './Pricing.module.css';
 
 
@@ -80,47 +81,25 @@ export const Pricing = (): JSX.Element => {
         </div>
 
         {/* Cards */}
-        <div
-          ref={gridRef}
-          className={cn(styles.grid, styles.reveal, styles.delay200)}
-        >
+        <div ref={gridRef} className={cn(styles.grid, styles.reveal, styles.delay200)}>
           {tiers.map(t => (
-            <div
-              key={t.tier}
-              className={cn(styles.cardWrap, t.featured && styles.cardWrapFeatured)}
-            >
-              <div className={cn(styles.card, t.featured && styles.cardFeatured)}>
-                <Leaf
-                  size={24}
-                  className={cn(styles.cardLeaf, t.featured && styles.cardLeafFeatured)}
-                  aria-hidden="true"
-                />
-                {t.badge && (
-                  <Badge variant="secondary" size="m" className={styles.cardBadge}>{t.badge}</Badge>
-                )}
-
-                <p className={cn(styles.cardTier, t.featured && styles.cardTierFeatured)}>{t.tier}</p>
-                <h3 className={cn(styles.cardName, t.featured && styles.cardNameFeatured)}>{t.name}</h3>
-                <p className={cn(styles.cardDuration, t.featured && styles.cardDurationFeatured)}>{t.duration}</p>
-                <p className={cn(styles.cardLabel, t.featured && styles.cardLabelFeatured)}>{t.label}</p>
-
-                <Divider className={cn(styles.separator, t.featured && styles.separatorFeatured)} />
-
-                <ul className={styles.featureList}>
-                  {t.features.map(f => (
-                    <li key={f} className={styles.featureItem}>
-                      <Leaf size={14} className={cn(styles.featureIcon, t.featured && styles.featureIconFeatured)} />
-                      <span className={cn(styles.featureText, t.featured && styles.featureTextFeatured)}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className={styles.cardBtn}>
+            <div key={t.tier} className={cn(styles.cardWrap, t.featured && styles.cardWrapFeatured)}>
+              <PricingCard 
+                layout="compact"
+                colorTheme={t.featured ? 'primary' : 'default'}
+                badgeText={t.badge}
+                tier={t.tier}
+                name={t.name}
+                duration={t.duration}
+                label={t.label}
+                features={t.features}
+                featureIcon={Leaf}
+                actionButton={
                   <Link to="/pricing" className={cn(styles.btn, t.featured && styles.btnFeatured)}>
                     Выбрать
                   </Link>
-                </div>
-              </div>
+                }
+              />
             </div>
           ))}
         </div>

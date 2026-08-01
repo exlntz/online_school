@@ -124,33 +124,6 @@ ul {
   color: rgba(245, 245, 245, 0.5);
 }
 
-.logoWrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logoMark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background-color: hsl(var(--primary));
-  color: white;
-  font-weight: 700;
-  font-size: 0.8rem;
-  flex-shrink: 0;
-}
-
-.logoText {
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #f5f5f5;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
 .tagline {
   font-size: 0.7rem;
   letter-spacing: 0.14em;
