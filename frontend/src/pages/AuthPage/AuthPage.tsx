@@ -6,16 +6,16 @@ import { ArrowLeft } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { sendAuthCode, verifyAuthCode } from '../../../api/auth';
-import type { AuthValues } from '../../../types/auth';
-import { cn } from '../../../utils/cn';
-import { codeSchema, loginSchema, registerSchema, type CodeFormInputs } from '../../../utils/validations';
-import { Button, Input, Radio } from '../../ui';
-import styles from './AuthForm.module.css';
-import type { AuthFormProps } from "./AuthForm.props";
+import { sendAuthCode, verifyAuthCode } from '../../api/auth';
+import { Button, Input, Radio } from '../../components/ui';
+import type { AuthValues } from '../../types/auth';
+import { cn } from '../../utils/cn';
+import { codeSchema, loginSchema, registerSchema, type CodeFormInputs } from '../../utils/validations';
+import styles from './AuthPage.module.css';
+import type { AuthPageProps } from "./AuthPage.props";
 
 
-export const AuthForm = ({ mode, className, ...props }: AuthFormProps): JSX.Element => {
+export const AuthPage = ({ mode, className, ...props }: AuthPageProps): JSX.Element => {
     const navigate = useNavigate();
     const queryClient = useQueryClient();
 

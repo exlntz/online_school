@@ -157,10 +157,6 @@
   }
 }
 
-.toolbarBtn {
-  font-family: var(--font-mono);
-}
-
 .count {
   font-family: var(--font-mono);
   font-size: 12px;

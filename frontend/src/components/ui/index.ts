@@ -7,4 +7,5 @@ export * from './Input/Input';
 export * from './Marquee/Marquee';
 export * from './Radio/Radio';
 export * from './Search/Search';
+export * from './Sort/Sort';
 

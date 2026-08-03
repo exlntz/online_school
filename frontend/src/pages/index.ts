@@ -1,5 +1,10 @@
+export * from './AuthPage/AuthPage'
+export * from './GraduatesPage/GraduatesPage'
 export * from './HomePage/HomePage'
 export * from './NotFoundPage/NotFoundPage'
+export * from './ParentsPage/ParentsPage'
 export * from './PricingPage/PricingPage'
 export * from './ProfilePage/ProfilePage'
+export * from './PsychologistsPage/PsychologistsPage'
+export * from './TeachersPage/TeachersPage'
 

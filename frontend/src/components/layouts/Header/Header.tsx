@@ -57,6 +57,10 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
         {/* Desktop nav */}
         <nav className={styles.nav}>
           <Link to="/pricing" className={styles.navLink}>Тарифы</Link>
+          <Link to="/teachers" className={styles.navLink}>Преподаватели</Link>
+          <Link to="/psychologists" className={styles.navLink}>Психологи</Link>
+          <Link to="/graduates" className={styles.navLink}>Выпускники</Link>
+          <Link to="/parents" className={styles.navLink}>Родителям</Link>
         </nav>
 
         {/* Desktop actions */}

@@ -1,13 +1,15 @@
-import { ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import imgAlexey from '../../../assets/images/mentor_alexey.webp';
 import imgDmitry from '../../../assets/images/mentor_dmitry.png';
 import imgElena from '../../../assets/images/mentor_elena.webp';
 import imgMaria from '../../../assets/images/mentor_maria.webp';
+import type { SortEnum } from '../../../types/sort';
 import { cn } from '../../../utils/cn';
 import { MentorCard } from '../../common';
-import { Button, Container, Divider, Search } from '../../ui';
+import { Button, Container, Divider, Search, Sort } from '../../ui';
 import styles from './Mentors.module.css';
 
 
@@ -25,11 +27,18 @@ export const Mentors = (): JSX.Element => {
   const subRef = useRef<HTMLParagraphElement>(null);
 
   const [ searchQuery, setSearchQuery ]= useState('');
+  const [ sort, setSort ] = useState<SortEnum>('Initial');
 
-  const filteredMentors = mentors.filter(m => 
+  const [animationParent] = useAutoAnimate({ duration: 800, easing: 'ease-in-out' })
+  
+  let filteredMentors = mentors.filter(m => 
     m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     m.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   );
+
+  if (sort === 'Name') {
+    filteredMentors = filteredMentors.sort((a, b) => b.name.localeCompare(a.name));
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -69,10 +78,7 @@ export const Mentors = (): JSX.Element => {
             />
           </div>
           <div className={styles.toolbarRight}>
-            <Button variant="ghost-secondary" size="s" className={styles.toolbarBtn}>
-              <ArrowUpDown size={14} />
-              А–Я
-            </Button>
+            <Sort sort={sort} setSort={setSort} />
           </div>
         </div>
 
@@ -81,7 +87,7 @@ export const Mentors = (): JSX.Element => {
         </p>
 
         {/* Grid */}
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={animationParent}>
           {filteredMentors.map((m) => (
             <MentorCard 
               key={m.id}
