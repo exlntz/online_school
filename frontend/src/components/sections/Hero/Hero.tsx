@@ -1,10 +1,10 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
-import { Badge, Divider } from '../../ui';
+import { StatusBadge } from '../../common';
+import { Divider } from '../../ui';
 import ArrowRightIcon from './arrowRight.svg?react';
 import styles from './Hero.module.css';
-import MortarboardIcon from './mortarboard.svg?react';
 import UnderLineIcon from './underline.svg?react';
 
 
@@ -87,25 +87,10 @@ export const Hero = (): JSX.Element => {
           />
 
           {/* Status card */}
-          <div className={styles.statusCard}>
-            <div className={styles.statusHeader}>
-              <MortarboardIcon />
-              <span className={styles.statusHeaderText}>Статус обучения</span>
-            </div>
-            <div className={styles.progressRow}>
-              <span className={styles.progressDot} />
-              <Divider variant="primary" className={styles.progressDivider} />
-              <span className={styles.progressDotEnd} />
-            </div>
-            <p className={styles.progressLabel}>ПРОГРЕСС: 85% К ЦЕЛИ</p>
-            <Badge variant="glass" size="m">
-              <span className={styles.pingDot}>
-                <span className={styles.pingRipple} />
-                <span className={styles.pingCore} />
-              </span>
-              <span className={styles.statusBadgeText}>В процессе</span>
-            </Badge>
-          </div>
+          <StatusBadge 
+             className={styles.statusCardWrapper} 
+             progress={85} 
+          />
 
           {/* Vertical ticker */}
           <div className={styles.verticalTicker} aria-hidden="true">

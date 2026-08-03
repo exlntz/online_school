@@ -5,10 +5,10 @@ import { Logo } from "../../common";
 import { Container, Divider } from "../../ui";
 import styles from './Footer.module.css';
 import type { FooterProps } from "./Footer.props";
-import DiagonalArrowIcon from './diagonalArrow.svg?react';
-import InstagramIcon from './instagram.svg?react';
-import VkIcon from './vk.svg?react';
-import YoutubeIcon from './youtube.svg?react';
+import DiagonalArrowIcon from './icons/diagonalArrow.svg?react';
+import InstagramIcon from './icons/instagram.svg?react';
+import VkIcon from './icons/vk.svg?react';
+import YoutubeIcon from './icons/youtube.svg?react';
 
 
 const menuLinks = [

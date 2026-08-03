@@ -80,35 +80,6 @@
   }
 }
 
-.loginBtn {
-  font-size: 14px;
-  color: var(--text-primary);
-  padding: 10px 24px;
-  border-radius: 0.75rem;
-  background-color: var(--bg-secondary); 
-  transition: color 0.2s, background-color 0.2s;
-}
-
-.loginBtn:hover {
-  color: var(--primary);
-  background-color: var(--border-color); 
-}
-
-.registerBtn {
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
-  background-color: var(--primary);
-  padding: 10px 24px;
-  border-radius: 0.75rem;
-  transition: background-color 0.3s;
-  white-space: nowrap;
-}
-
-.registerBtn:hover {
-  background-color: var(--primary-hover);
-}
-
 /* Mobile */
 .hamburger {
   display: flex;
@@ -130,74 +101,4 @@
   .hamburger {
     display: none;
   }
-}
-
-.mobileMenu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 16px 24px 24px;
-  border-top: 1px solid var(--border-color);
-  background-color: var(--bg-primary);
-}
-
-@media (min-width: 1024px) {
-  .mobileMenu {
-    display: none;
-  }
-}
-
-.mobileLink {
-  font-size: 16px;
-  color: var(--text-primary);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: color 0.2s;
-}
-
-.mobileLink:hover {
-  color: var(--primary);
-}
-
-.mobileAuth {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-/* --- Стили для авторизованного пользователя --- */
-
-.loadingText {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.userProfile {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.mobileUserProfile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.userName {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none; 
-  transition: color 0.2s;
-}
-
-.userName:hover {
-  color: var(--primary); 
 }

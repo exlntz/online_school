@@ -3,7 +3,8 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '../../../utils/cn';
-import { Container, Divider, Marquee } from '../../ui';
+import { FeatureItem } from '../../common';
+import { Container, Marquee } from '../../ui';
 import styles from './Ecosystem.module.css';
 
 
@@ -71,36 +72,19 @@ export const Ecosystem = (): JSX.Element => {
           {/* RIGHT: vertical list */}
           <div className={styles.rightCol}>
             <ul className={styles.list}>
-              {features.map((f, i) => {
-                const Icon = f.icon;
-                return (
-                  <li
-                    key={f.num}
-                    ref={el => { itemRefs.current[i] = el; }}
-                    className={cn(styles.listItem, styles.reveal, {
-                      [styles.listItemBorder]: i > 0
-                    })}
-                    style={{ transitionDelay: `${i * 90}ms` }}
-                  >
-                    <div className={styles.itemMeta}>
-                      <span className={styles.itemNum}>{f.num}</span>
-                      <div className={styles.itemIconWrap}>
-                        <Icon size={24} className={styles.itemIcon} />
-                      </div>
-                    </div>
-                    <div className={styles.itemContent}>
-                      <h3 className={styles.itemTitle}>{f.title}</h3>
-                      <p className={styles.itemDesc}>{f.desc}</p>
-                      <div className={styles.itemLine}>
-                        <div className={styles.itemLineLine}></div>
-                        <div className={styles.itemLineDot}></div>
-                      </div>
-                    </div>
-
-                    {i < features.length - 1 && <Divider className={styles.itemDivider} />}
-                  </li>
-                );
-              })}
+              {features.map((f, i) => (
+                <FeatureItem 
+                  key={f.num}
+                  ref={el => { itemRefs.current[i] = el; }}
+                  num={f.num}
+                  icon={f.icon}
+                  title={f.title}
+                  description={f.desc}
+                  delay={i * 90}
+                  hasDivider={i < features.length - 1}
+                  className={styles.reveal}
+                />
+              ))}
             </ul>
           </div>
         </div>

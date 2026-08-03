@@ -3,10 +3,11 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../../api/auth';
+import { headerMenu } from '../../../helpers/menu.helpers';
 import { useTheme } from '../../../hooks/useTheme';
 import { useUser } from '../../../hooks/useUser';
 import { cn } from '../../../utils/cn';
-import { Logo } from '../../common';
+import { AuthBlock, Logo, MobileMenu } from '../../common';
 import { Button, Container } from '../../ui';
 import styles from './Header.module.css';
 import type { HeaderProps } from './Header.props';
@@ -45,6 +46,8 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
     }
   };
 
+  const handleCloseMobileMenu = () => setMobileOpen(false);
+
   return (
     <header className={cn(styles.header, {
       [styles.scrolled]: scrolled,
@@ -56,11 +59,9 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
 
         {/* Desktop nav */}
         <nav className={styles.nav}>
-          <Link to="/pricing" className={styles.navLink}>Тарифы</Link>
-          <Link to="/teachers" className={styles.navLink}>Преподаватели</Link>
-          <Link to="/psychologists" className={styles.navLink}>Психологи</Link>
-          <Link to="/graduates" className={styles.navLink}>Выпускники</Link>
-          <Link to="/parents" className={styles.navLink}>Родителям</Link>
+          {headerMenu.map((item) => (
+            <Link key={item.route} to={item.route} className={styles.navLink}>{item.name}</Link>
+          ))}
         </nav>
 
         {/* Desktop actions */}
@@ -74,27 +75,12 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </Button>
 
-          <div className={styles.auth}>
-            {isLoading ? (
-              <span className={styles.loadingText}>Загрузка...</span>
-            ) : user ? (
-              <div className={styles.userProfile}>
-                <Link to="/profile" className={styles.userName}>{user.firstName}</Link>
-                <Button 
-                  variant="danger" 
-                  size="s" 
-                  onClick={handleLogout} 
-                >
-                  Выйти
-                </Button>
-              </div>
-            ) : (
-              <>
-                <Link to="/login" className={styles.loginBtn}>Войти</Link>
-                <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
-              </>
-            )}
-          </div>
+          <AuthBlock 
+            user={user} 
+            isLoading={isLoading} 
+            onLogout={handleLogout} 
+            className={styles.auth} 
+          />
 
           {/* Hamburger */}
           <button
@@ -109,32 +95,13 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className={styles.mobileMenu}>
-          <Link to="/pricing" className={styles.mobileLink}>Тарифы</Link>
-          <div className={styles.mobileAuth}>
-            {isLoading ? (
-              <span className={styles.loadingText}>Загрузка...</span>
-            ) : user ? (
-              <div className={styles.mobileUserProfile}>
-                <span className={styles.userName}>{user.firstName}</span>
-                <Button 
-                  variant="danger" 
-                  size="s" 
-                  onClick={handleLogout} 
-                >
-                  Выйти
-                </Button>
-              </div>
-            ) : (
-              <>
-                <Link to="/login" className={styles.loginBtn}>Войти</Link>
-                <Link to="/register" className={styles.registerBtn}>Регистрация</Link>
-              </>
-            )}
-          </div>
-        </div>
+        <MobileMenu 
+          user={user} 
+          isLoading={isLoading} 
+          onLogout={handleLogout} 
+          onClose={handleCloseMobileMenu} 
+        />
       )}
     </header>
-    
   );
 }
