@@ -1,12 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { isAxiosError } from 'axios';
 import { AsYouType } from 'libphonenumber-js';
 import { type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { sendAuthCode } from '../../../api/auth';
 import { Button, Input, Radio } from '../../../components/ui';
+import { parseApiError } from '../../../helpers/error.helpers';
 import type { AuthValues } from '../../../types/auth';
 import { cn } from '../../../utils/cn';
 import { loginSchema, registerSchema } from '../../../utils/validations';
@@ -33,14 +33,7 @@ export const PhoneStep = ( { mode, onSuccess, className, ...props }: PhoneStepPr
             });
         }, 
         onError: (error: unknown) => {
-            let serverErrorMessage = 'Ошибка при отправке кода';
-
-            if (isAxiosError(error)) {
-                serverErrorMessage = error.response?.data?.detail || serverErrorMessage;
-            } else if (error instanceof Error) {
-                serverErrorMessage = error.message;
-            }
-            setError('phoneNumber', { message: serverErrorMessage });
+            setError('phoneNumber', { message: parseApiError(error, 'Ошибка при отправке кода') });
         }
     });
 

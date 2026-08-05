@@ -1,19 +1,23 @@
 import type { JSX } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
+import { cn } from '../../../utils/cn';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
+import styles from './MainLayout.module.css';
+import type { MainLayoutProps } from './MainLayout.props';
 
-export const MainLayout = (): JSX.Element => {
+
+export const MainLayout = ({ className, ...props }: MainLayoutProps): JSX.Element => {
   useScrollToTop();
   
   return (
-    <>
+    <div className={cn(styles.layout, className)} {...props}>
       <Header />
-      <main style={{ minHeight: '100vh' }}>
+      <main className={styles.main}>
         <Outlet /> 
       </main>
       <Footer />
-    </>
+    </div>
   );
 };

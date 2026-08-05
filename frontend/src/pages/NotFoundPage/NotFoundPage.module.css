@@ -1,17 +1,8 @@
-.container {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-secondary); 
-}
-
 .cardWrapper {
   width: 100%;
   max-width: 448px; 
-  margin-left: 16px; 
-  margin-right: 16px;
+  height: fit-content;
+  transform: translateY(-32px);
 }
 
 .cardContent {

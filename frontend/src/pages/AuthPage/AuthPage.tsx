@@ -1,8 +1,8 @@
 import { ArrowLeft } from 'lucide-react';
 import { useState, type JSX } from 'react';
 import { Link } from 'react-router-dom';
+import { Container } from '../../components/ui';
 import type { AuthValues } from '../../types/auth';
-import { cn } from '../../utils/cn';
 import styles from './AuthPage.module.css';
 import type { AuthPageProps } from "./AuthPage.props";
 import { CodeStep } from './CodeStep/CodeStep';
@@ -19,7 +19,7 @@ export const AuthPage = ({ mode, className, ...props }: AuthPageProps): JSX.Elem
     };
 
     return (
-        <div className={cn(styles.container, className)} {...props}>
+        <Container variant='layout' className={className} {...props}>
             <Link to="/" className={styles.backLink}>
                 <ArrowLeft size={20} />
                 <span className={styles.backButtonText}>На главную</span>
@@ -41,6 +41,6 @@ export const AuthPage = ({ mode, className, ...props }: AuthPageProps): JSX.Elem
                     />
                 )
             )}
-        </div>
+        </Container>
     )
 } 

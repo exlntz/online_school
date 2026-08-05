@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { isAxiosError } from 'axios';
 import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { sendAuthCode, verifyAuthCode } from '../../../api/auth';
 import { Button, Input } from '../../../components/ui';
+import { parseApiError } from '../../../helpers/error.helpers';
 import { cn } from '../../../utils/cn';
 import { codeSchema, type CodeFormInputs } from '../../../utils/validations';
 import styles from './CodeStep.module.css';
@@ -36,15 +36,7 @@ export const CodeStep = ( { mode, phoneNumber, firstName, role, onChangeNumber, 
             navigate('/profile');
         },
         onError: (error: unknown) => {
-            let serverErrorMessage = 'Неверный код';
-
-            if (isAxiosError(error)) {
-                serverErrorMessage = error.response?.data?.message || 'Неверный код';
-            } else if (error instanceof Error) {
-                serverErrorMessage = error.message;
-            }
-
-            setError('code', { message: serverErrorMessage });
+            setError('code', { message: parseApiError(error, 'Неверный код') });
         }
     });
 

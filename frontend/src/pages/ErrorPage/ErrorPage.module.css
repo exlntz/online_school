@@ -1,0 +1,54 @@
+.cardWrapper {
+  width: 100%;
+  max-width: 500px;
+  height: fit-content;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  height: 32px;
+  width: 32px;
+  color: var(--dark-red);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.errorDetails {
+  background-color: var(--bg-primary);
+  padding: 12px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--dark-red);
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+}
+
+.actions {
+  margin-top: 8px;
+}

@@ -23,16 +23,6 @@
     pointer-events: none;
 }
 
-.loader {
-    display: inline-block;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
 /* variants */
 .primary {
   background-color: var(--primary);

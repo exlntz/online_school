@@ -1,4 +1,5 @@
 import { type JSX } from "react";
+import { Loader } from "..";
 import { cn } from "../../../utils/cn";
 import styles from './Button.module.css';
 import type { ButtonProps } from "./Button.props";
@@ -33,7 +34,7 @@ export const Button = ({
             disabled={disabled || isLoading}
             {...props}
         >
-            {isLoading ? <span className={styles.loader}>Загрузка...</span> : children}
+            {isLoading ? <Loader size="s" /> : children}
             {arrow !== 'none' && (
                 <span className={cn(styles.arrow, {
                     [styles.right]: arrow === 'right',

@@ -1,26 +1,13 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
+import { HERO_STATS, HERO_TICKER_ITEMS } from '../../../data/home.data';
 import { StatusBadge } from '../../common';
 import { Divider } from '../../ui';
 import ArrowRightIcon from './arrowRight.svg?react';
 import styles from './Hero.module.css';
 import UnderLineIcon from './underline.svg?react';
 
-
-const tickerItems = [
-  'МАТЕМАТИКА → 100 БАЛЛОВ',
-  'ФИЗИКА → 100 БАЛЛОВ',
-  'ИНФОРМАТИКА → 100 БАЛЛОВ',
-  'РУССКИЙ → 100 БАЛЛОВ',
-];
-
-const stats = [
-  'Наставники из МГУ/ВШЭ',
-  'Геймификация обучения',
-  'Анонимный психолог',
-  'Родительский контроль',
-];
 
 export const Hero = (): JSX.Element => {
   return (
@@ -68,7 +55,7 @@ export const Hero = (): JSX.Element => {
           <Divider className={styles.statsDivider} />
 
           <div className={styles.statsBar}>
-            {stats.map((s, i) => (
+            {HERO_STATS.map((s, i) => (
               <div key={i} className={styles.statItem}>
                 {i > 0 && <span className={styles.statDot} />}
                 <span>{s}</span>
@@ -95,7 +82,7 @@ export const Hero = (): JSX.Element => {
           {/* Vertical ticker */}
           <div className={styles.verticalTicker} aria-hidden="true">
             <div className={styles.tickerInner}>
-              {[...tickerItems, ...tickerItems].map((item, i) => (
+              {[...HERO_TICKER_ITEMS, ...HERO_TICKER_ITEMS].map((item, i) => (
                 <span key={i} className={styles.tickerItem}>{item}</span>
               ))}
             </div>

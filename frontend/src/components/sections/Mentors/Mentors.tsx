@@ -13,7 +13,6 @@ import { Button, Container, Divider, Search, Sort } from '../../ui';
 import styles from './Mentors.module.css';
 
 
-
 const mentors = [
   { id: 'M-001', name: 'Алексей Смирнов', title: 'ВЫПУСКНИК МГУ — ЭКСПЕРТ ЕГЭ', tags: ['Алгебра', 'Геометрия'], img: imgAlexey },
   { id: 'M-003', name: 'Дмитрий Петров', title: 'ВЫПУСКНИК ВШЭ — ПРОГРАММИСТ', tags: ['Python', 'Алгоритмы'], img: imgDmitry },

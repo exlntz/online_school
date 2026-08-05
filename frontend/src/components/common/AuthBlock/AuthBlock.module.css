@@ -1,9 +1,5 @@
-.loadingText {
-  font-family: var(--font-mono);
-  font-size: 12px;
+.loadingWrapper {
   color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .userProfile {

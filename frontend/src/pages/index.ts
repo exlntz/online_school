@@ -1,4 +1,5 @@
 export * from './AuthPage/AuthPage'
+export * from './ErrorPage/ErrorPage'
 export * from './GraduatesPage/GraduatesPage'
 export * from './HomePage/HomePage'
 export * from './NotFoundPage/NotFoundPage'

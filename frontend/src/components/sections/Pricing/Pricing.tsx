@@ -2,44 +2,12 @@ import { Leaf } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { PRICING_TIERS, PRICING_TRUST_BADGES } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { PricingCard } from '../../common';
 import { Container, Divider } from '../../ui';
 import styles from './Pricing.module.css';
 
-
-const tiers = [
-  {
-    index: 0,
-    tier: 'TIER 01 · START',
-    name: 'Базовый уровень',
-    duration: '3 МЕСЯЦА · ОНЛАЙН',
-    label: 'Доступно',
-    featured: false,
-    features: ['Доступ к видеолекциям', 'Базовые домашние задания', 'Чат с наставником', 'Еженедельные тесты', 'Проверка ошибок'],
-  },
-  {
-    index: 1,
-    tier: 'TIER 02 · PRO',
-    name: 'Интенсивный курс',
-    duration: '6 МЕСЯЦЕВ · ОНЛАЙН',
-    label: 'Популярно',
-    featured: true,
-    badge: 'ВЫБОР УЧЕНИКОВ',
-    features: ['Все материалы базового', 'Личный куратор из МГУ', 'Разбор сложных задач', 'Индивидуальный план', 'Психологическая поддержка', 'Пробные ЕГЭ ежемесячно', 'Приоритетная поддержка'],
-  },
-  {
-    index: 2,
-    tier: 'TIER 03 · ELITE',
-    name: 'Максимальный результат',
-    duration: '9 МЕСЯЦЕВ · ОНЛАЙН',
-    label: 'Премиум',
-    featured: false,
-    features: ['Полное сопровождение', 'Личный ментор 24/7', 'Помощь с поступлением', 'Профиль для родителей', 'Закрытые вебинары', 'Три пробных ЕГЭ в месяц'],
-  },
-];
-
-const trust = ['ЛИЦЕНЗИЯ РФ', 'АВТОРСКИЕ МЕТОДИКИ', 'НАУЧНЫЙ ПОДХОД', 'ТОП-ВУЗЫ НАСТАВНИКИ'];
 
 export const Pricing = (): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -82,7 +50,7 @@ export const Pricing = (): JSX.Element => {
 
         {/* Cards */}
         <div ref={gridRef} className={cn(styles.grid, styles.reveal, styles.delay200)}>
-          {tiers.map(t => (
+          {PRICING_TIERS.map(t => (
             <div key={t.tier} className={cn(styles.cardWrap, t.featured && styles.cardWrapFeatured)}>
               <PricingCard 
                 layout="compact"
@@ -111,7 +79,7 @@ export const Pricing = (): JSX.Element => {
         >
           <Divider className={styles.trustDivider}/>
           <div className={styles.trustRow}>
-            {trust.map(label => (
+            {PRICING_TRUST_BADGES.map(label => (
               <div key={label} className={styles.trustItem}>
                 <span className={styles.trustLabel}>{label}</span>
               </div>

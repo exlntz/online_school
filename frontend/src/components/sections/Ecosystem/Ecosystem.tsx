@@ -2,6 +2,7 @@ import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { ECOSYSTEM_TICKER_ITEMS } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { FeatureItem } from '../../common';
 import { Container, Marquee } from '../../ui';
@@ -16,8 +17,6 @@ const features = [
   { num: '05', icon: Target, title: 'Умное повторение', desc: 'Система автоматически анализирует ваши ошибки и формирует индивидуальные задания для их проработки. Огонёк streak поддерживает мотивацию заниматься каждый день.' },
   { num: '06', icon: Award, title: 'Помощь с поступлением', desc: 'Мы не просто готовим к экзаменам, мы помогаем выстроить стратегию поступления, выбрать вуз мечты и подготовить все необходимые документы для зачисления.' },
 ];
-
-const tickerWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
 
 export const Ecosystem = (): JSX.Element => {
   const leftRef = useRef<HTMLDivElement>(null);
@@ -42,7 +41,7 @@ export const Ecosystem = (): JSX.Element => {
     <section id="игровая-экосистема" className={styles.section}>
       {/* Bottom ticker strip */}
       <div className={styles.bottomTicker}>
-        <Marquee items={tickerWords} />
+        <Marquee items={ECOSYSTEM_TICKER_ITEMS} />
       </div>
 
       <Container>

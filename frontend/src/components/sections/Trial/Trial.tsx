@@ -1,12 +1,11 @@
 import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
+import { TRIAL_MARQUEE_WORDS } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { Divider, Marquee } from '../../ui';
 import styles from './Trial.module.css';
 
-
-const marqueeItems = ['7 ДНЕЙ БЕСПЛАТНО', 'ПОДГОТОВКА К ЕГЭ 2025', 'СТАРТ В ЛЮБОЙ МОМЕНТ'];
 
 export const Trial = (): JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -71,7 +70,7 @@ export const Trial = (): JSX.Element => {
       {/* Bottom marquee strip */}
       <div className={styles.marqueeStrip}>
         <Marquee 
-          items={marqueeItems} 
+          items={TRIAL_MARQUEE_WORDS} 
           separator="/" 
           speed={65} 
           textClassName={styles.trialMarqueeText} 
