@@ -1,0 +1,1 @@
+export type SortEnum = 'Initial' | 'Name';

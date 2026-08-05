@@ -1,10 +1,15 @@
-import { ArrowUpDown, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import imgAlexey from '../../../assets/images/mentor_alexey.webp';
 import imgDmitry from '../../../assets/images/mentor_dmitry.png';
 import imgElena from '../../../assets/images/mentor_elena.webp';
 import imgMaria from '../../../assets/images/mentor_maria.webp';
+import type { SortEnum } from '../../../types/sort';
+import { cn } from '../../../utils/cn';
+import { MentorCard } from '../../common';
+import { Button, Container, Divider, Search, Sort } from '../../ui';
 import styles from './Mentors.module.css';
 
 
@@ -21,6 +26,20 @@ export const Mentors = (): JSX.Element => {
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
 
+  const [ searchQuery, setSearchQuery ]= useState('');
+  const [ sort, setSort ] = useState<SortEnum>('Initial');
+
+  const [animationParent] = useAutoAnimate({ duration: 800, easing: 'ease-in-out' })
+  
+  let filteredMentors = mentors.filter(m => 
+    m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    m.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
+  if (sort === 'Name') {
+    filteredMentors = filteredMentors.sort((a, b) => b.name.localeCompare(a.name));
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -36,14 +55,14 @@ export const Mentors = (): JSX.Element => {
 
   return (
     <section id="наши-наставники" className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         {/* Header */}
         <div className={styles.header}>
-          <p ref={eyebrowRef} className={`${styles.eyebrow} ${styles.animIn}`}>[04_TEAM]</p>
-          <h1 ref={headingRef} className={`${styles.heading} ${styles.animIn} ${styles.animDelay1}`}>
+          <p ref={eyebrowRef} className={cn(styles.eyebrow, styles.animIn)}>[04_TEAM]</p>
+          <h1 ref={headingRef} className={cn(styles.heading, styles.animIn, styles.animDelay1)}>
             Наши наставники
           </h1>
-          <p ref={subRef} className={`${styles.sub} ${styles.animIn} ${styles.animDelay2}`}>
+          <p ref={subRef} className={cn(styles.sub, styles.animIn, styles.animDelay2)}>
             Лучшие выпускники топовых вузов страны, которые помогут вам сдать ЕГЭ на 100 баллов.
           </p>
         </div>
@@ -52,60 +71,65 @@ export const Mentors = (): JSX.Element => {
         <div className={styles.toolbar}>
           <div className={styles.toolbarLeft}>
             <span className={styles.toolbarDollar}>$</span>
-            <Search size={16} className={styles.toolbarSearchIcon} />
-            <input className={styles.toolbarInput} placeholder="Поиск по имени или предмету..." />
+            <Search 
+                onSearch={setSearchQuery} 
+                placeholder="Поиск по имени или предмету..."
+                iconPosition='left'
+            />
           </div>
           <div className={styles.toolbarRight}>
-            <button className={styles.toolbarBtn}>
-              <ArrowUpDown size={14} />
-              А–Я
-            </button>
+            <Sort sort={sort} setSort={setSort} />
           </div>
         </div>
 
-        <p className={styles.count}>[ ПОКАЗАНО 04 ИЗ 04 НАСТАВНИКОВ ]</p>
+        <p className={styles.count}>
+            [ ПОКАЗАНО {String(filteredMentors.length).padStart(2, '0')} ИЗ {String(mentors.length).padStart(2, '0')} НАСТАВНИКОВ ]
+        </p>
 
         {/* Grid */}
-        <div className={styles.grid}>
-          {mentors.map((m) => (
-            <div key={m.id} className={styles.card}>
-              <div className={styles.cardImage}>
-                <img src={m.img} alt={m.name} loading="lazy" className={styles.cardImg} />
-              </div>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardName}>{m.name}</h3>
-                  <p className={styles.cardTitle}>{m.title}</p>
-                </div>
-                <div className={styles.cardFooter}>
-                  <div className={styles.cardTags}>
-                    {m.tags.map(t => <span key={t} className={styles.cardTag}>{t}</span>)}
-                  </div>
-                </div>
-              </div>
-              <div className={styles.cardHover}>
-                <a href="#" className={styles.cardProfileLink}>→ Профиль</a>
-              </div>
-            </div>
+        <div className={styles.grid} ref={animationParent}>
+          {filteredMentors.map((m) => (
+            <MentorCard 
+              key={m.id}
+              name={m.name}
+              title={m.title}
+              tags={m.tags}
+              img={m.img}
+              // profileUrl={`/mentors/${m.id}`} 
+            />
           ))}
         </div>
 
         {/* Pagination */}
+        <Divider className={styles.paginationDivider} />
+        
         <div className={styles.pagination}>
           <p className={styles.paginationEmpty}></p>
           <nav className={styles.paginationNav}>
-            <a href="#" className={styles.paginationPrev}>
+            <Button 
+              variant="ghost-secondary" 
+              size="s" 
+              noBg
+              className={styles.paginationBtn}
+            >
               <ChevronLeft size={16} />
-              <span>Previous</span>
-            </a>
+              <span className={styles.paginationText}>Previous</span>
+            </Button>
+
             <a href="#" className={`${styles.paginationPage} ${styles.paginationActive}`}>01</a>
-            <a href="#" className={styles.paginationNext}>
-              <span>Next</span>
+
+            <Button 
+              variant="ghost-secondary" 
+              size="s" 
+              noBg
+              className={styles.paginationBtn}
+            >
+              <span className={styles.paginationText}>Next</span>
               <ChevronRight size={16} />
-            </a>
+            </Button>
           </nav>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

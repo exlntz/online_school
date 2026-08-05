@@ -2,6 +2,9 @@ import { Leaf } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { cn } from '../../../utils/cn';
+import { PricingCard } from '../../common';
+import { Container, Divider } from '../../ui';
 import styles from './Pricing.module.css';
 
 
@@ -58,11 +61,11 @@ export const Pricing = (): JSX.Element => {
 
   return (
     <section id="твой-план-подготовки" className={styles.section}>
-      <div className={styles.inner}>
+      <Container>
         {/* Header */}
         <div
           ref={headerRef}
-          className={`${styles.header} ${styles.reveal}`}
+          className={cn(styles.header, styles.reveal)}
         >
           <div className={styles.headerLeft}>
             <p className={styles.eyebrow}>НАШИ ТАРИФЫ</p>
@@ -78,43 +81,25 @@ export const Pricing = (): JSX.Element => {
         </div>
 
         {/* Cards */}
-        <div
-          ref={gridRef}
-          className={`${styles.grid} ${styles.reveal} ${styles.delay200}`}
-        >
+        <div ref={gridRef} className={cn(styles.grid, styles.reveal, styles.delay200)}>
           {tiers.map(t => (
-            <div
-              key={t.tier}
-              className={`${styles.cardWrap} ${t.featured ? styles.cardWrapFeatured : ''}`}
-            >
-              <div className={`${styles.card} ${t.featured ? styles.cardFeatured : ''}`}>
-                <Leaf
-                  size={24}
-                  className={`${styles.cardLeaf} ${t.featured ? styles.cardLeafFeatured : ''}`}
-                  aria-hidden="true"
-                />
-                {t.badge && (
-                  <span className={styles.cardBadge}>{t.badge}</span>
-                )}
-                <p className={`${styles.cardTier} ${t.featured ? styles.cardTierFeatured : ''}`}>{t.tier}</p>
-                <h3 className={`${styles.cardName} ${t.featured ? styles.cardNameFeatured : ''}`}>{t.name}</h3>
-                <p className={`${styles.cardDuration} ${t.featured ? styles.cardDurationFeatured : ''}`}>{t.duration}</p>
-                <p className={`${styles.cardLabel} ${t.featured ? styles.cardLabelFeatured : ''}`}>{t.label}</p>
-                <div className={`${styles.separator} ${t.featured ? styles.separatorFeatured : ''}`}></div>
-                <ul className={styles.featureList}>
-                  {t.features.map(f => (
-                    <li key={f} className={styles.featureItem}>
-                      <Leaf size={14} className={`${styles.featureIcon} ${t.featured ? styles.featureIconFeatured : ''}`} />
-                      <span className={`${styles.featureText} ${t.featured ? styles.featureTextFeatured : ''}`}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className={styles.cardBtn}>
-                  <Link to="/pricing" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
+            <div key={t.tier} className={cn(styles.cardWrap, t.featured && styles.cardWrapFeatured)}>
+              <PricingCard 
+                layout="compact"
+                colorTheme={t.featured ? 'primary' : 'default'}
+                badgeText={t.badge}
+                tier={t.tier}
+                name={t.name}
+                duration={t.duration}
+                label={t.label}
+                features={t.features}
+                featureIcon={Leaf}
+                actionButton={
+                  <Link to="/pricing" className={cn(styles.btn, t.featured && styles.btnFeatured)}>
                     Выбрать
                   </Link>
-                </div>
-              </div>
+                }
+              />
             </div>
           ))}
         </div>
@@ -122,9 +107,9 @@ export const Pricing = (): JSX.Element => {
         {/* Trust badges */}
         <div
           ref={trustRef}
-          className={`${styles.trust} ${styles.reveal} ${styles.delay400}`}
+          className={cn(styles.trust, styles.reveal, styles.delay400)}
         >
-          <div className={styles.trustSep}></div>
+          <Divider className={styles.trustDivider}/>
           <div className={styles.trustRow}>
             {trust.map(label => (
               <div key={label} className={styles.trustItem}>
@@ -133,7 +118,7 @@ export const Pricing = (): JSX.Element => {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

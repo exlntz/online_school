@@ -1,0 +1,95 @@
+.card {
+  max-width: 280px;
+  background-color: var(--text-primary); 
+  color: var(--bg-primary);
+  padding: 1.25rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.statusHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.statusHeaderText {
+  font-family: var(--font-mono);
+  color: var(--bg-primary);
+  opacity: 0.5;
+  font-size: 0.625rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.progressDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+.progressDivider {
+  flex: 1; 
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.progressDotEnd {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.progressLabel {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  color: var(--bg-primary);
+  margin-bottom: 0.75rem;
+}
+
+.pingDot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+.pingRipple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--primary);
+  opacity: 0.75;
+  animation: ping 1.5s ease-out infinite;
+}
+
+.pingCore {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.statusBadgeText {
+  margin-left: 8px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}

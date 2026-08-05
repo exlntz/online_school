@@ -1,6 +1,8 @@
 import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
+import { cn } from '../../../utils/cn';
+import { Divider, Marquee } from '../../ui';
 import styles from './Trial.module.css';
 
 
@@ -30,12 +32,12 @@ export const Trial = (): JSX.Element => {
       {/* Main content */}
       <div
         ref={contentRef}
-        className={`${styles.content} ${styles.reveal}`}
+        className={cn(styles.content, styles.reveal)}
       >
         <div className={styles.eyebrowRow}>
-          <span className={styles.eyebrowLine}></span>
+          <Divider variant='primary' className={styles.eyebrowLine} />
           <span className={styles.eyebrow}>06 / Пробная неделя</span>
-          <span className={styles.eyebrowLine}></span>
+          <Divider variant='primary' className={styles.eyebrowLine} />
         </div>
 
         <h2 className={styles.heading}>
@@ -68,14 +70,13 @@ export const Trial = (): JSX.Element => {
 
       {/* Bottom marquee strip */}
       <div className={styles.marqueeStrip}>
-        <div className={styles.marqueeTrack}>
-          {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
-            <div key={i} className={styles.marqueeItem}>
-              <span className={styles.marqueeText}>{item}</span>
-              <span className={styles.marqueeSep}>/</span>
-            </div>
-          ))}
-        </div>
+        <Marquee 
+          items={marqueeItems} 
+          separator="/" 
+          speed={65} 
+          textClassName={styles.trialMarqueeText} 
+          repeatMultiplier={6}
+        />
       </div>
     </section>
   );

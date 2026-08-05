@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 import PsychoSupport from '../../../assets/images/psychologist_session_support.png';
+import { Container, Divider } from '../../ui';
 import styles from './MentalSupport.module.css';
 import CtaArrowIcon from './ctaArrow.svg?react';
 
@@ -8,7 +9,7 @@ import CtaArrowIcon from './ctaArrow.svg?react';
 export const MentalSupport = (): JSX.Element => {
   return (
     <section id="ментальная-поддержка" className={styles.section}>
-      <div className={styles.inner}>
+      <Container className={styles.contentWrap}>
         <div className={styles.layout}>
           {/* Image column */}
           <div className={styles.imageCol}>
@@ -52,19 +53,32 @@ export const MentalSupport = (): JSX.Element => {
             </div>
 
             {/* Stats */}
+            <Divider variant="primary-light" />
+            
             <div className={styles.stats}>
+              {/* Колонка 1 */}
               <div className={styles.statItem}>
                 <div>
                   <span className={styles.statValue}>24/7</span>
                 </div>
                 <p className={styles.statLabel}>Поддержка</p>
               </div>
+              
+              {/* Колонка 2: Автоматически сожмется под 1px разделителя */}
+              <Divider orientation="vertical" variant="primary-light" />
+              
+              {/* Колонка 3 */}
               <div className={styles.statItem}>
                 <div>
                   <span className={styles.statValue}>100%</span>
                 </div>
                 <p className={styles.statLabel}>Анонимно</p>
               </div>
+
+              {/* Колонка 4 */}
+              <Divider orientation="vertical" variant="primary-light" />
+              
+              {/* Колонка 5 */}
               <div className={styles.statItem}>
                 <div>
                   <span className={styles.statValue}>TOP</span>
@@ -79,7 +93,7 @@ export const MentalSupport = (): JSX.Element => {
             </a>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

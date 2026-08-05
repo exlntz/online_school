@@ -1,0 +1,6 @@
+.sort {
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-mono);
+}
+

@@ -2,6 +2,8 @@ import { Plus } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { PricingCard } from '../../components/common';
+import { cn } from '../../utils/cn';
 import styles from './PricingPage.module.css';
 
 
@@ -40,7 +42,7 @@ const tiers = [
       'Анонимная поддержка психолога',
       'Родительский контроль',
     ],
-    btnText: 'Выбрать — Популярно →',
+    btnText: 'Выбрать →',
     btnClass: 'primary',
   },
   {
@@ -90,9 +92,11 @@ export const PricingPage = (): JSX.Element => {
       <main>
         <section id="стоимость-обучения" className={styles.section}>
           <div className={styles.container}>
+
+            {/* noise & hero */}
             <div className={styles.noise} aria-hidden="true"></div>
 
-            <div ref={heroRef} className={`${styles.hero} ${styles.reveal}`}>
+            <div ref={heroRef} className={cn(styles.hero, styles.reveal)}>
               <p className={styles.eyebrow}>Тарифная сетка</p>
               <h2 className={styles.heading}>
                 Три пути<br />
@@ -111,34 +115,23 @@ export const PricingPage = (): JSX.Element => {
                   className={styles.reveal}
                   style={{ transitionDelay: `${i * 120}ms` }}
                 >
-                  <div className={`${styles.card} ${t.featured ? styles.cardFeatured : ''}`}>
-                    {t.popular && (
-                      <div className={styles.popularBadgeWrap}>
-                        <span className={styles.popularBadge}>Популярно</span>
-                      </div>
-                    )}
-                    <p className={styles.cardTier}>{t.tier}</p>
-                    <h3 className={styles.cardName}>{t.name}</h3>
-                    <p className={styles.cardSub}>{t.sub}</p>
-                    <div className={styles.priceRow}>
-                        <span className={styles.priceNum}>{t.price}</span>
-                        <span className={styles.priceUnit}>{t.unit}</span>
-                    </div>
-                    <div className={styles.separator}></div>
-                    <ul className={styles.featureList}>
-                      {t.features.map(f => (
-                        <li key={f} className={styles.featureItem}>
-                          <Plus className={styles.featureIcon} aria-hidden="true" />
-                          <span className={styles.featureText}>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className={styles.cardFooter}>
-                      <Link to="/register" className={`${styles.btn} ${styles['btn_' + t.btnClass]}`}>
+                  <PricingCard 
+                    layout="detailed"
+                    isLifted={t.featured}
+                    badgeText={t.popular ? "Популярно" : undefined}
+                    tier={t.tier}
+                    name={t.name}
+                    sub={t.sub}
+                    price={t.price}
+                    unit={t.unit}
+                    features={t.features}
+                    featureIcon={Plus}
+                    actionButton={
+                      <Link to="/register" className={cn(styles.btn, styles[`btn_${t.btnClass}`])}>
                           {t.btnText}
                       </Link>
-                    </div>
-                  </div>
+                    }
+                  />
                 </div>
               ))}
             </div>

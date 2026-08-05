@@ -1,9 +1,10 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
+import { StatusBadge } from '../../common';
+import { Divider } from '../../ui';
 import ArrowRightIcon from './arrowRight.svg?react';
 import styles from './Hero.module.css';
-import MortarboardIcon from './mortarboard.svg?react';
 import UnderLineIcon from './underline.svg?react';
 
 
@@ -33,7 +34,7 @@ export const Hero = (): JSX.Element => {
               <span className={styles.eyebrowDot} />
               <span className={styles.eyebrowText}>ИЗ НУЛЯ В СОТКУ / ЕГЭ 2025</span>
             </div>
-            <div className={styles.dividerLine} />
+            <Divider className={styles.dividerLine} />
           </div>
 
           <div>
@@ -64,6 +65,8 @@ export const Hero = (): JSX.Element => {
             </div>
           </div>
 
+          <Divider className={styles.statsDivider} />
+
           <div className={styles.statsBar}>
             {stats.map((s, i) => (
               <div key={i} className={styles.statItem}>
@@ -84,27 +87,10 @@ export const Hero = (): JSX.Element => {
           />
 
           {/* Status card */}
-          <div className={styles.statusCard}>
-            <div className={styles.statusHeader}>
-              <MortarboardIcon />
-              <span className={styles.statusHeaderText}>Статус обучения</span>
-            </div>
-            <div className={styles.progressRow}>
-              <span className={styles.progressDot} />
-              <div className={styles.progressBar}>
-                <div className={styles.progressFill} />
-              </div>
-              <span className={styles.progressDotEnd} />
-            </div>
-            <p className={styles.progressLabel}>ПРОГРЕСС: 85% К ЦЕЛИ</p>
-            <div className={styles.statusBadge}>
-              <span className={styles.pingDot}>
-                <span className={styles.pingRipple} />
-                <span className={styles.pingCore} />
-              </span>
-              <span className={styles.statusBadgeText}>В процессе</span>
-            </div>
-          </div>
+          <StatusBadge 
+             className={styles.statusCardWrapper} 
+             progress={85} 
+          />
 
           {/* Vertical ticker */}
           <div className={styles.verticalTicker} aria-hidden="true">

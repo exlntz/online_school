@@ -1,0 +1,54 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* sizes */
+
+.s {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 0 8px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.m {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  padding: 0 12px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+/* variants */
+
+.primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+}
+
+.secondary {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color); 
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.glass {
+  background-color: color-mix(in srgb, var(--bg-primary) 15%, transparent);
+  color: var(--bg-primary); 
+  border: 1px solid color-mix(in srgb, var(--bg-primary) 25%, transparent);
+  backdrop-filter: blur(4px);
+}

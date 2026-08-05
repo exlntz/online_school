@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API } from '../helpers/api.helpers';
 
 
 let accessToken: string | null = null
@@ -31,7 +32,7 @@ apiClient.interceptors.response.use(
             originalRequest._isRetry = true
 
             try {
-                const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/refresh`, {}, {
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}${API.auth.refresh}`, {}, {
                     withCredentials: true
                 })
 
@@ -44,7 +45,9 @@ apiClient.interceptors.response.use(
                 accessToken = null
                 
                 const currentPath = window.location.pathname;
-                if (currentPath !== '/login' && currentPath !== '/register') {
+                const publicPaths = ['/', '/pricing']
+
+                if (!publicPaths.includes(currentPath) && currentPath !== '/login' && currentPath !== '/register') {
                     window.location.href = '/login';
                 }
 

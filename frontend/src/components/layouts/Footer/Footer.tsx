@@ -1,10 +1,14 @@
 import type { JSX } from "react";
 import { Link } from 'react-router-dom';
+import { cn } from "../../../utils/cn";
+import { Logo } from "../../common";
+import { Container, Divider } from "../../ui";
 import styles from './Footer.module.css';
-import DiagonalArrowIcon from './diagonalArrow.svg?react';
-import InstagramIcon from './instagram.svg?react';
-import VkIcon from './vk.svg?react';
-import YoutubeIcon from './youtube.svg?react';
+import type { FooterProps } from "./Footer.props";
+import DiagonalArrowIcon from './icons/diagonalArrow.svg?react';
+import InstagramIcon from './icons/instagram.svg?react';
+import VkIcon from './icons/vk.svg?react';
+import YoutubeIcon from './icons/youtube.svg?react';
 
 
 const menuLinks = [
@@ -14,12 +18,12 @@ const menuLinks = [
   { label: 'Пробная неделя', href: '/#твой-тест-драйв' },
 ];
 
-export const Footer = (): JSX.Element => {
+export const Footer = ( { className, ...props }: FooterProps ): JSX.Element => {
   return (
-    <footer id="подвал" className={styles.footer}>
+    <footer id="подвал" className={cn(styles.footer, className)} {...props}>
       <div className={styles.dotPattern} aria-hidden="true" />
 
-      <div className={styles.inner}>
+      <Container className={styles.footerContent}>
         {/* Hero row */}
         <div className={styles.heroRow}>
           <h2 className={styles.bigHeading}>
@@ -34,16 +38,14 @@ export const Footer = (): JSX.Element => {
           </div>
         </div>
 
-        <div className={styles.divider} />
+        <Divider variant="dark" />
 
         {/* Grid */}
         <div className={styles.grid}>
           {/* Col 1: Logo + socials */}
           <div className={styles.col}>
-            <Link to="/" className={styles.logoWrapper}>
-              <div className={styles.logoMark}>0→</div>
-              <div className={styles.logoText}>Из нуля<br />в сотку</div>
-            </Link>
+            <Logo variant="footer" />
+            
             <p className={styles.tagline}>Онлайн-школа ЕГЭ — 2025</p>
             <div className={styles.socials}>
               <a href="#" aria-label="Instagram" className={styles.socialLink}>
@@ -92,6 +94,8 @@ export const Footer = (): JSX.Element => {
           </div>
         </div>
 
+        <Divider variant="dark" />
+
         {/* Bottom bar */}
         <div className={styles.bottom}>
           <p className={styles.copyright}>
@@ -106,7 +110,7 @@ export const Footer = (): JSX.Element => {
         <div className={styles.watermarkWrapper}>
           <div className={styles.watermark}>100</div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

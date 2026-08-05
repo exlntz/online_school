@@ -2,6 +2,9 @@ import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { cn } from '../../../utils/cn';
+import { FeatureItem } from '../../common';
+import { Container, Marquee } from '../../ui';
 import styles from './Ecosystem.module.css';
 
 
@@ -14,8 +17,7 @@ const features = [
   { num: '06', icon: Award, title: 'Помощь с поступлением', desc: 'Мы не просто готовим к экзаменам, мы помогаем выстроить стратегию поступления, выбрать вуз мечты и подготовить все необходимые документы для зачисления.' },
 ];
 
-const baseWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
-const tickerWords = [...baseWords, ...baseWords, ...baseWords, ...baseWords];
+const tickerWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
 
 export const Ecosystem = (): JSX.Element => {
   const leftRef = useRef<HTMLDivElement>(null);
@@ -40,27 +42,16 @@ export const Ecosystem = (): JSX.Element => {
     <section id="игровая-экосистема" className={styles.section}>
       {/* Bottom ticker strip */}
       <div className={styles.bottomTicker}>
-        <div className={styles.tickerTrack}>
-          {[0,1].map(r => (
-            <div key={r} className={styles.tickerGroup}>
-            {tickerWords.map((t,i) => (
-              <span key={i}>
-                <span className={styles.tickerWord}>{t}</span>
-                <span className={styles.tickerDot}>·</span>
-              </span>
-            ))}
-          </div>
-          ))}
-        </div>
+        <Marquee items={tickerWords} />
       </div>
 
-      <div className={styles.inner}>
+      <Container>
         <div className={styles.grid}>
           {/* LEFT: sticky heading */}
           <div className={styles.leftCol}>
             <div
               ref={leftRef}
-              className={`${styles.stickyWrap} ${styles.reveal}`}  
+              className={cn(styles.stickyWrap, styles.reveal)}
             >
               <div className={styles.bg100} aria-hidden="true">100</div>
               <p className={styles.eyebrow}>§ 01 · ЭКОСИСТЕМА ОБУЧЕНИЯ</p>
@@ -81,36 +72,23 @@ export const Ecosystem = (): JSX.Element => {
           {/* RIGHT: vertical list */}
           <div className={styles.rightCol}>
             <ul className={styles.list}>
-              {features.map((f, i) => {
-                const Icon = f.icon;
-                return (
-                  <li
-                    key={f.num}
-                    ref={el => { itemRefs.current[i] = el; }}
-                    className={`${styles.listItem} ${i > 0 ? styles.listItemBorder : ''} ${styles.reveal}`}
-                    style={{ transitionDelay: `${i * 90}ms` }}
-                  >
-                    <div className={styles.itemMeta}>
-                      <span className={styles.itemNum}>{f.num}</span>
-                      <div className={styles.itemIconWrap}>
-                        <Icon size={24} className={styles.itemIcon} />
-                      </div>
-                    </div>
-                    <div className={styles.itemContent}>
-                      <h3 className={styles.itemTitle}>{f.title}</h3>
-                      <p className={styles.itemDesc}>{f.desc}</p>
-                      <div className={styles.itemLine}>
-                        <div className={styles.itemLineLine}></div>
-                        <div className={styles.itemLineDot}></div>
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
+              {features.map((f, i) => (
+                <FeatureItem 
+                  key={f.num}
+                  ref={el => { itemRefs.current[i] = el; }}
+                  num={f.num}
+                  icon={f.icon}
+                  title={f.title}
+                  description={f.desc}
+                  delay={i * 90}
+                  hasDivider={i < features.length - 1}
+                  className={styles.reveal}
+                />
+              ))}
             </ul>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
