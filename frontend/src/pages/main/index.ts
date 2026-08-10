@@ -1,0 +1,6 @@
+export * from './GraduatesPage/GraduatesPage'
+export * from './HomePage/HomePage'
+export * from './ParentsPage/ParentsPage'
+export * from './PricingPage/PricingPage'
+export * from './PsychologistsPage/PsychologistsPage'
+export * from './TeachersPage/TeachersPage'

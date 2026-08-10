@@ -126,50 +126,6 @@
   margin-top: 2rem;
 }
 
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #ffffff;
-  background-color: var(--primary);
-  border: none;
-  cursor: pointer;
-  padding: 0 1.75rem;
-  height: 3rem;
-  border-radius: 1rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 12px rgba(51, 57, 241, 0.3);
-}
-
-.btnPrimary:hover {
-  background-color: var(--primary-hover);
-}
-
-.btnOutline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--text-primary);
-  background-color: transparent;
-  border: 2px solid var(--text-primary);
-  cursor: pointer;
-  padding: 0 1.75rem;
-  height: 3rem;
-  border-radius: 1rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btnOutline:hover {
-  background-color: var(--text-primary);
-  color: var(--text-secondary);
-}
-
 /* Stats bar */
 .statsDivider {
   margin-top: 3rem;

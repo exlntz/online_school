@@ -1,0 +1,149 @@
+.section {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 48px 20px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1260px) {
+  .section {
+    padding: 80px;
+  }
+}
+
+.container {
+  position: relative;
+  background-color: var(--bg-secondary);
+  overflow: hidden;
+  padding: 64px 24px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 96px 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 128px 64px;
+  }
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+.hero {
+  position: relative;
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 0;
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: 13px;
+  }
+}
+
+.heading {
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 24px 0 24px;
+}
+
+.headingEm {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.sub {
+  max-width: 36rem;
+  margin: 0 auto;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.grid {
+  position: relative;
+  max-width: 1152px;
+  margin: 64px auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    margin-top: 112px;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    
+    gap: 32px;
+  }
+}
+
+.btn {
+  width: 100%; 
+  max-width: 260px;
+}
+
+.footnote {
+  position: relative;
+  font-style: italic;
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  margin: 64px auto 0;
+}
+
+@media (min-width: 768px) {
+  .footnote {
+    margin-top: 96px;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

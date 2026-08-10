@@ -88,6 +88,15 @@
   background-color: var(--bg-secondary); 
 }
 
+.soft {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+.soft:hover:not(:disabled) {
+  background-color: var(--border-color);
+  color: var(--primary);
+}
+
 .danger {
   background-color: transparent;
   border: 1px solid var(--border-color);
@@ -155,8 +164,6 @@
 }
 
 .icon {
-  width: 36px;
-  height: 36px;
   padding: 0;
   border-radius: 8px; 
 }
@@ -170,4 +177,10 @@
 
 .noBg:hover:not(:disabled) {
   background-color: transparent !important;
+}
+
+/* jump animation */
+
+.noJump:hover:not(:disabled) {
+    transform: none !important;
 }

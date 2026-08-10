@@ -66,28 +66,10 @@ ul {
 }
 
 .ctaBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   font-weight: 700;
-  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ffffff;
-  background-color: var(--primary);
-  border: none;
-  cursor: pointer;
-  padding: 0 2rem;
-  height: 3.5rem;
-  border-radius: 1rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.ctaBtn:hover {
-  background-color: var(--primary-hover);
 }
 
 .grid {

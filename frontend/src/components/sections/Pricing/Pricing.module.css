@@ -118,32 +118,9 @@
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  background-color: var(--primary);
-  color: white;
-  padding: 0 28px;
-  height: 40px;
-  border-radius: 8px;
-  transition: background-color 0.2s;
-}
-
-.btn:hover {
-  background-color: var(--primary-hover);
-}
-
-.btnFeatured {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-.btnFeatured:hover {
-  background-color: var(--border-color);
 }
 
 /* Trust */

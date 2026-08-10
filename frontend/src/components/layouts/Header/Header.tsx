@@ -1,23 +1,21 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { Menu, Moon, Sun, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../../api/auth';
 import { headerMenu } from '../../../helpers/menu.helpers';
-import { useTheme } from '../../../hooks/useTheme';
 import { useUser } from '../../../hooks/useUser';
 import { cn } from '../../../utils/cn';
-import { AuthBlock, Logo, MobileMenu } from '../../common';
-import { Button, Container } from '../../ui';
+import { AuthBlock } from '../../auth';
+import { Logo, MobileMenu, ThemeToggleBtn } from '../../navigation';
+import { Container } from '../../ui';
 import styles from './Header.module.css';
 import type { HeaderProps } from './Header.props';
-
 
 
 export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const { data: user, isLoading } = useUser();
   const queryClient = useQueryClient();
@@ -66,14 +64,7 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
 
         {/* Desktop actions */}
         <div className={styles.actionsGroup}>
-          <Button 
-            variant="ghost-accent" 
-            size="icon" 
-            onClick={toggleTheme} 
-            aria-label="Сменить тему"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </Button>
+          <ThemeToggleBtn />
 
           <AuthBlock 
             user={user} 

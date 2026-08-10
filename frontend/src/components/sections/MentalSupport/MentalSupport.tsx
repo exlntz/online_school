@@ -5,7 +5,6 @@ import styles from './MentalSupport.module.css';
 import CtaArrowIcon from './ctaArrow.svg?react';
 
 
-
 export const MentalSupport = (): JSX.Element => {
   return (
     <section id="ментальная-поддержка" className={styles.section}>

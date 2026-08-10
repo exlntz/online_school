@@ -1,11 +1,10 @@
 import type { JSX } from "react";
 import { Link } from 'react-router-dom';
 import { cn } from "../../../utils/cn";
-import { Logo } from "../../common";
-import { Container, Divider } from "../../ui";
+import { Logo } from "../../navigation";
+import { Button, Container, Divider } from "../../ui";
 import styles from './Footer.module.css';
 import type { FooterProps } from "./Footer.props";
-import DiagonalArrowIcon from './icons/diagonalArrow.svg?react';
 import InstagramIcon from './icons/instagram.svg?react';
 import VkIcon from './icons/vk.svg?react';
 import YoutubeIcon from './icons/youtube.svg?react';
@@ -31,10 +30,18 @@ export const Footer = ( { className, ...props }: FooterProps ): JSX.Element => {
             <span className={styles.bigHeadingItalic}>к сотке.</span>
           </h2>
           <div>
-            <Link to="/" className={styles.ctaBtn}>
+            <Button 
+              as={Link} 
+              to="/" 
+              variant="primary" 
+              size="l" 
+              radius={16} 
+              arrow="right-up" 
+              disableJump
+              className={styles.ctaBtn}
+            >
               Начать обучение
-              <DiagonalArrowIcon />
-            </Link>
+            </Button>
           </div>
         </div>
 

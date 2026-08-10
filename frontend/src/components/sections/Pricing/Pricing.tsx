@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { PRICING_TIERS, PRICING_TRUST_BADGES } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { PricingCard } from '../../common';
-import { Container, Divider } from '../../ui';
+import { Button, Container, Divider } from '../../ui';
 import styles from './Pricing.module.css';
 
 
@@ -63,9 +63,16 @@ export const Pricing = (): JSX.Element => {
                 features={t.features}
                 featureIcon={Leaf}
                 actionButton={
-                  <Link to="/pricing" className={cn(styles.btn, t.featured && styles.btnFeatured)}>
+                  <Button 
+                    as={Link} 
+                    to="/pricing" 
+                    variant={t.featured ? 'secondary' : 'primary'} 
+                    size="m" 
+                    disableJump
+                    className={styles.btn}
+                  >
                     Выбрать
-                  </Link>
+                  </Button>
                 }
               />
             </div>

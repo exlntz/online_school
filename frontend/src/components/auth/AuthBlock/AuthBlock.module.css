@@ -1,0 +1,29 @@
+.loadingWrapper {
+  color: var(--text-secondary);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobileUserProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none; 
+  transition: color 0.2s;
+}
+
+.userName:hover {
+  color: var(--primary); 
+}

@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
 import { HERO_STATS, HERO_TICKER_ITEMS } from '../../../data/home.data';
 import { StatusBadge } from '../../common';
-import { Divider } from '../../ui';
-import ArrowRightIcon from './arrowRight.svg?react';
+import { Button, Divider } from '../../ui';
 import styles from './Hero.module.css';
 import UnderLineIcon from './underline.svg?react';
 
@@ -42,13 +41,12 @@ export const Hero = (): JSX.Element => {
             </p>
 
             <div className={styles.actions}>
-              <Link to="/" className={styles.btnPrimary}>
+              <Button as={Link} to="/" variant="primary" size="m" arrow="right" radius={16}>
                 Бесплатная неделя
-                <ArrowRightIcon />
-              </Link>
-              <Link to="/pricing" className={styles.btnOutline}>
+              </Button>
+              <Button as={Link} to="/pricing" variant="outline" size="m" radius={16}>
                 Выбрать тариф
-              </Link>
+              </Button>
             </div>
           </div>
 

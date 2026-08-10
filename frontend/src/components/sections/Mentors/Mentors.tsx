@@ -2,23 +2,13 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import imgAlexey from '../../../assets/images/mentor_alexey.webp';
-import imgDmitry from '../../../assets/images/mentor_dmitry.png';
-import imgElena from '../../../assets/images/mentor_elena.webp';
-import imgMaria from '../../../assets/images/mentor_maria.webp';
+import { MENTORS_ITEMS } from '../../../data/home.data';
 import type { SortEnum } from '../../../types/sort';
 import { cn } from '../../../utils/cn';
 import { MentorCard } from '../../common';
 import { Button, Container, Divider, Search, Sort } from '../../ui';
 import styles from './Mentors.module.css';
 
-
-const mentors = [
-  { id: 'M-001', name: 'Алексей Смирнов', title: 'ВЫПУСКНИК МГУ — ЭКСПЕРТ ЕГЭ', tags: ['Алгебра', 'Геометрия'], img: imgAlexey },
-  { id: 'M-003', name: 'Дмитрий Петров', title: 'ВЫПУСКНИК ВШЭ — ПРОГРАММИСТ', tags: ['Python', 'Алгоритмы'], img: imgDmitry },
-  { id: 'M-004', name: 'Елена Соколова', title: 'ВЫПУСКНИК МИФИ — ФИЛОЛОГ', tags: ['Сочинение', 'Грамматика'], img: imgElena },
-  { id: 'M-002', name: 'Мария Иванова', title: 'ВЫПУСКНИК МФТИ — МЕТОДИСТ', tags: ['Механика', 'Термодинамика'], img: imgMaria },
-];
 
 export const Mentors = (): JSX.Element => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -30,7 +20,7 @@ export const Mentors = (): JSX.Element => {
 
   const [animationParent] = useAutoAnimate({ duration: 800, easing: 'ease-in-out' })
   
-  let filteredMentors = mentors.filter(m => 
+  let filteredMentors = MENTORS_ITEMS.filter(m => 
     m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     m.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
   );
@@ -82,7 +72,7 @@ export const Mentors = (): JSX.Element => {
         </div>
 
         <p className={styles.count}>
-            [ ПОКАЗАНО {String(filteredMentors.length).padStart(2, '0')} ИЗ {String(mentors.length).padStart(2, '0')} НАСТАВНИКОВ ]
+            [ ПОКАЗАНО {String(filteredMentors.length).padStart(2, '0')} ИЗ {String(MENTORS_ITEMS.length).padStart(2, '0')} НАСТАВНИКОВ ]
         </p>
 
         {/* Grid */}

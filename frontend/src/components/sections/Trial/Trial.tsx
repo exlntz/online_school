@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { TRIAL_MARQUEE_WORDS } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
-import { Divider, Marquee } from '../../ui';
+import { Button, Divider, Marquee } from '../../ui';
 import styles from './Trial.module.css';
 
 
@@ -53,7 +53,16 @@ export const Trial = (): JSX.Element => {
 
         <div className={styles.btnWrap}>
           <div className={styles.btnGlow} aria-hidden="true"></div>
-          <a href="#" className={styles.btn}>Начать бесплатно</a>
+          <Button 
+            as="a" 
+            href="#" 
+            variant="primary" 
+            size="xl" 
+            radius={16}
+            className={styles.btn}
+          >
+            Начать бесплатно
+          </Button>
         </div>
 
         <p className={styles.phoneRow}>

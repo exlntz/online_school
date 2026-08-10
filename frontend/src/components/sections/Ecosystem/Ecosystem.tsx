@@ -1,22 +1,12 @@
-import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ECOSYSTEM_TICKER_ITEMS } from '../../../data/home.data';
+import { ECOSYSTEM_FEATURES, ECOSYSTEM_TICKER_ITEMS } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { FeatureItem } from '../../common';
 import { Container, Marquee } from '../../ui';
 import styles from './Ecosystem.module.css';
 
-
-const features = [
-  { num: '01', icon: Users, title: 'Геймификация и кланы', desc: 'Объединяйтесь в кланы по 20 человек, соревнуйтесь в битвах, выполняйте квесты и зарабатывайте достижения. Система уровней и очков делает подготовку к ЕГЭ азартным приключением.' },
-  { num: '02', icon: Brain, title: 'Анонимная поддержка', desc: 'Ваше ментальное здоровье — наш приоритет. Получайте профессиональную психологическую помощь анонимно, чтобы справляться со стрессом и сохранять фокус на пути к 100 баллам.' },
-  { num: '03', icon: GraduationCap, title: 'Наставники из топ-вузов', desc: 'Вас ведут кураторы из МГУ, МФТИ, ВШЭ и МИФИ. Они не только объясняют сложные темы, но и делятся личным опытом поступления в лучшие университеты страны.' },
-  { num: '04', icon: ShieldCheck, title: 'Профиль родителя', desc: 'Полная прозрачность процесса: отслеживайте прогресс ребёнка, его успехи, пропуски и результаты тестов в удобном личном кабинете, чтобы всегда быть в курсе достижений.' },
-  { num: '05', icon: Target, title: 'Умное повторение', desc: 'Система автоматически анализирует ваши ошибки и формирует индивидуальные задания для их проработки. Огонёк streak поддерживает мотивацию заниматься каждый день.' },
-  { num: '06', icon: Award, title: 'Помощь с поступлением', desc: 'Мы не просто готовим к экзаменам, мы помогаем выстроить стратегию поступления, выбрать вуз мечты и подготовить все необходимые документы для зачисления.' },
-];
 
 export const Ecosystem = (): JSX.Element => {
   const leftRef = useRef<HTMLDivElement>(null);
@@ -71,7 +61,7 @@ export const Ecosystem = (): JSX.Element => {
           {/* RIGHT: vertical list */}
           <div className={styles.rightCol}>
             <ul className={styles.list}>
-              {features.map((f, i) => (
+              {ECOSYSTEM_FEATURES.map((f, i) => (
                 <FeatureItem 
                   key={f.num}
                   ref={el => { itemRefs.current[i] = el; }}
@@ -80,7 +70,7 @@ export const Ecosystem = (): JSX.Element => {
                   title={f.title}
                   description={f.desc}
                   delay={i * 90}
-                  hasDivider={i < features.length - 1}
+                  hasDivider={i < ECOSYSTEM_FEATURES.length - 1}
                   className={styles.reveal}
                 />
               ))}

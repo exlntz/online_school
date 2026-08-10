@@ -148,25 +148,11 @@
 
 .btn {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 700;
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  background-color: var(--primary);
-  color: var(--white);
   width: clamp(220px, 70vw, 280px);
   height: 72px;
-  border-radius: 1rem;
-  transition: transform 0.3s;
-  box-shadow: 0 20px 60px -10px var(--primary);
-}
-
-.btnWrap:hover .btn {
-  transform: translateY(-2px);
-  background-color: var(--primary-hover);
 }
 
 .phoneRow {

@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RequireAuth } from "../components/common";
-import { MainLayout } from "../components/layouts";
-import { AuthPage, ErrorPage, GraduatesPage, HomePage, NotFoundPage, ParentsPage, PricingPage, ProfilePage, PsychologistsPage, TeachersPage } from "../pages";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import { RequireAuth } from "../components/auth";
+import { MainLayout, ProfileLayout } from "../components/layouts";
+import { AuthPage, ErrorPage, GraduatesPage, HomePage, LearningPage, NotFoundPage, ParentsPage, PricingPage, ProfilePage, PsychologistPage, PsychologistsPage, SettingsPage, StatisticsPage, TeachersPage } from "../pages";
 
 
 export const router = createBrowserRouter(
@@ -17,16 +17,34 @@ export const router = createBrowserRouter(
                 { path: 'psychologists', element: <PsychologistsPage />},
                 { path: 'graduates', element: <GraduatesPage />},
                 { path: 'parents', element: <ParentsPage />},
-                { 
-                    path: 'profile', 
-                    element: (
-                        <RequireAuth>
-                            <ProfilePage />
-                        </RequireAuth>
-                    )
-                },
                 { path: '*', element: <NotFoundPage />}
             ],
+        },
+        {
+            path: '/profile',
+            element: (
+                <RequireAuth>
+                    <Outlet />
+                </RequireAuth>
+            ),
+            errorElement: <ErrorPage />,
+            children: [
+                {
+                    element: <ProfileLayout />,
+                    children: [
+                        { index: true, element: <ProfilePage />}, 
+                        { path: 'settings', element: <SettingsPage />},
+                    ]
+                },
+                {
+                    element: <ProfileLayout />,
+                    children: [
+                        { path: 'learning', element: <LearningPage />}, 
+                        { path: 'psychologist', element: <PsychologistPage />}, 
+                        { path: 'statistics', element: <StatisticsPage />},
+                    ]
+                }
+            ]
         },
         { 
             path: 'login', 
