@@ -1,5 +1,5 @@
 import { type JSX } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import LogoIcon from '../../../assets/icons/logo.svg?react'
 import { cn } from '../../../utils/cn'
 import styles from './Logo.module.css'

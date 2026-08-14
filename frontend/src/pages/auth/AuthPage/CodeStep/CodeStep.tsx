@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { sendAuthCode, verifyAuthCode } from '../../../../api/auth';
 import { Button, Input } from '../../../../components/ui';
 import { parseApiError } from '../../../../helpers/error.helpers';

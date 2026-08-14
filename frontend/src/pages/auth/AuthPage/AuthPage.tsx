@@ -1,6 +1,6 @@
 import { ArrowLeft } from 'lucide-react';
 import { useState, type JSX } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Container } from '../../../components/ui';
 import type { AuthValues } from '../../../types/auth';
 import styles from './AuthPage.module.css';

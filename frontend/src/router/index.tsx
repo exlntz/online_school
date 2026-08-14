@@ -1,7 +1,16 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router";
 import { RequireAuth } from "../components/auth";
-import { MainLayout, ProfileLayout } from "../components/layouts";
-import { AuthPage, ErrorPage, GraduatesPage, HomePage, LearningPage, NotFoundPage, ParentsPage, PricingPage, ProfilePage, PsychologistPage, PsychologistsPage, SettingsPage, StatisticsPage, TeachersPage } from "../pages";
+import { LearningLayout, MainLayout, ProfileLayout } from "../components/layouts";
+import {
+    AuthPage, ErrorPage, GraduatesPage, HomePage,
+    HomeworkPage,
+    LearningHomePage, NotFoundPage, ParentsPage,
+    PracticePage,
+    PricingPage, ProfilePage, PsychologistPage,
+    PsychologistsPage, RepetionQuickPage, SettingsPage, StatisticsPage, TaskBankPage, TeachersPage,
+    TheoryPage,
+    VariantsPage
+} from "../pages";
 
 
 export const router = createBrowserRouter(
@@ -34,14 +43,21 @@ export const router = createBrowserRouter(
                     children: [
                         { index: true, element: <ProfilePage />}, 
                         { path: 'settings', element: <SettingsPage />},
+                        { path: 'psychologist', element: <PsychologistPage />}, 
+                        { path: 'statistics', element: <StatisticsPage />},
                     ]
                 },
                 {
-                    element: <ProfileLayout />,
+                    path: 'learning', 
+                    element: <LearningLayout />,
                     children: [
-                        { path: 'learning', element: <LearningPage />}, 
-                        { path: 'psychologist', element: <PsychologistPage />}, 
-                        { path: 'statistics', element: <StatisticsPage />},
+                        { index: true, element: <LearningHomePage /> }, 
+                        { path: 'theory', element: <TheoryPage /> }, 
+                        { path: 'homework', element: <HomeworkPage /> }, 
+                        { path: 'task-bank', element: <TaskBankPage /> },
+                        { path: 'practice', element: <PracticePage /> },
+                        { path: 'variants', element: <VariantsPage /> },
+                        { path: 'quick-review', element: <RepetionQuickPage /> },
                     ]
                 }
             ]

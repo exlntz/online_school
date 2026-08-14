@@ -1,0 +1,53 @@
+.actionsGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .actionsGroup {
+    gap: 12px;
+  }
+}
+
+.profileBtn {
+  gap: 12px;
+  padding: 6px 10px 6px 6px;
+  color: var(--text-primary);
+}
+
+.avatar {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.userInfo {
+  display: none;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .userInfo {
+    display: block;
+  }
+}
+
+.userName {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.userRole {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+}

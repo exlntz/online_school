@@ -1,35 +1,54 @@
 .search {
-    position: relative;
-    width: 100%; 
+  position: relative;
+  width: 100%;
 }
 
 .input {
-    width: 100%; 
+  height: 40px; 
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: color-mix(in srgb, var(--bg-secondary) 40%, transparent);
+  font-size: 14px; 
+  color: var(--text-primary); 
+  transition: border-color 0.2s, box-shadow 0.2s; 
+  box-shadow: none; 
+}
+
+.input::placeholder {
+  color: var(--text-secondary); 
+}
+
+.input:focus {
+  border-color: var(--primary); 
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 40%, transparent); 
+  outline: none;
 }
 
 .button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 32px; 
-    height: 32px; 
-    padding: 0; 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--text-secondary);
 }
 
 .inputLeft {
-    padding-left: 44px;
-    padding-right: 12px;
+  padding-left: 36px; 
+  padding-right: 12px; 
 }
 
 .buttonLeft {
-    left: 4px;
+  left: 4px;
 }
 
 .inputRight {
-    padding-left: 12px;
-    padding-right: 44px;
+  padding-left: 12px;
+  padding-right: 36px;
 }
 
 .buttonRight {
-    right: 4px;
+  right: 4px;
 }

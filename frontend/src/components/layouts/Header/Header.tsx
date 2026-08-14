@@ -1,7 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { logoutUser } from '../../../api/auth';
 import { headerMenu } from '../../../helpers/menu.helpers';
 import { useUser } from '../../../hooks/useUser';
@@ -64,7 +64,7 @@ export const Header = ( { className, ...props }: HeaderProps ): JSX.Element => {
 
         {/* Desktop actions */}
         <div className={styles.actionsGroup}>
-          <ThemeToggleBtn />
+          <ThemeToggleBtn iconSize={35} />
 
           <AuthBlock 
             user={user} 

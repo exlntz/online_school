@@ -1,0 +1,6 @@
+.container {
+    display: flex;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    justify-content: center;
+}

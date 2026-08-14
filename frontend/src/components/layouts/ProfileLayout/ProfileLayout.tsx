@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import { ProfileHeader } from "../";
 import { cn } from "../../../utils/cn";
 import styles from "./ProfileLayout.module.css";

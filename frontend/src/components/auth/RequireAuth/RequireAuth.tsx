@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router";
 import { useUser } from "../../../hooks/useUser";
 import { cn } from "../../../utils/cn";
 import { Loader } from "../../ui";

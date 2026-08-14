@@ -1,0 +1,13 @@
+.bellBtn {
+  position: relative;
+}
+
+.bellIndicator {
+  position: absolute;
+  top: 25%; 
+  right: 25%; 
+  width: 20%; 
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--primary);
+}

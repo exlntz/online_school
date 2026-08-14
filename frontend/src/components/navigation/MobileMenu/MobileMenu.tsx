@@ -1,10 +1,10 @@
 import { type JSX } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { headerMenu } from '../../../helpers/menu.helpers';
 import { cn } from '../../../utils/cn';
+import { AuthBlock } from '../../auth';
 import styles from './MobileMenu.module.css';
 import type { MobileMenuProps } from './MobileMenu.props';
-import { AuthBlock } from '../../auth';
 
 
 export const MobileMenu = ( { user, isLoading, onLogout, onClose, className, ...props }: MobileMenuProps ): JSX.Element => {

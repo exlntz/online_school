@@ -1,5 +1,5 @@
 import { type JSX } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { cn } from '../../../utils/cn';
 import { Button, Loader } from '../../ui';
 import styles from './AuthBlock.module.css';

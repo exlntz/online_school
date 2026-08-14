@@ -1,4 +1,4 @@
-export * from './LearningPage/LearningPage'
+export * from './learning'
 export * from './ProfilePage/ProfilePage'
 export * from './PsychologistPage/PsychologistPage'
 export * from './SettingsPage/SettingsPage'

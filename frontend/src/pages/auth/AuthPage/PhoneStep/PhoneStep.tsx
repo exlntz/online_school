@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { AsYouType } from 'libphonenumber-js';
 import { type JSX } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { sendAuthCode } from '../../../../api/auth';
 import { Button, Input, Radio } from '../../../../components/ui';
 import { parseApiError } from '../../../../helpers/error.helpers';

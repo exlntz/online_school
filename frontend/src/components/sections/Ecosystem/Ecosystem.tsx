@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { ECOSYSTEM_FEATURES, ECOSYSTEM_TICKER_ITEMS } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { FeatureItem } from '../../common';

@@ -1,7 +1,7 @@
 import { Leaf } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { PRICING_TIERS, PRICING_TRUST_BADGES } from '../../../data/home.data';
 import { cn } from '../../../utils/cn';
 import { PricingCard } from '../../common';

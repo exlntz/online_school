@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { useScrollToTop } from '../../../hooks/useScrollToTop';
 import { cn } from '../../../utils/cn';
 import { Footer } from '../Footer/Footer';

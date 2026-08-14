@@ -152,11 +152,14 @@ SOURCE SERIF 4 (Акцентный)
     --green: #007c49;
     --green-light: #C8F8E4;
 
-    --border-color: #EBEBEB; /* Твой --gray-light */
+    --border-color: #EBEBEB;
     --card-bg: #FFFFFF;
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
     --radius: 12px;
     
+    --glass-border: rgba(0, 0, 0, 0.08); 
+    --glass-bg: rgba(255, 255, 255, 0.7);
+
     --font-sans: 'Mulish', 'Inter', sans-serif;
     --font-serif: 'Source Serif 4', serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -164,6 +167,7 @@ SOURCE SERIF 4 (Акцентный)
     
     --transition: all 0.3s ease;
 }
+
 
 [data-theme="dark"] {
     --bg-primary: #0a0a0a;
@@ -174,6 +178,9 @@ SOURCE SERIF 4 (Акцентный)
     --border-color: #333333;
     --card-bg: #1E1E1E;
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -185,6 +192,17 @@ SOURCE SERIF 4 (Акцентный)
         --border-color: #333333;
         --card-bg: #1E1E1E;
     }
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glow-blue {
+  box-shadow: 0 0 0 1px rgba(18, 25, 243, 0.4), 0 8px 40px -8px rgba(18, 25, 243, 0.6);
 }
 
 *, *::before, *::after {

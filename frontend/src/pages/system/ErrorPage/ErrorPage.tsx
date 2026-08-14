@@ -1,6 +1,6 @@
 import { AlertOctagon } from 'lucide-react';
 import { type JSX } from 'react';
-import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import { isRouteErrorResponse, useRouteError } from 'react-router';
 import { Button, Card, Container } from '../../../components/ui';
 import { parseApiError } from '../../../helpers/error.helpers';
 import styles from './ErrorPage.module.css';

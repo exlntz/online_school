@@ -46,7 +46,7 @@ export const Search = ( { className, onSearch, placeholder='Поиск...', icon
                 noBg
                 aria-label="Искать"
             >
-                <SearchIcon size={18} />
+                <SearchIcon size={16} />
             </Button>
         </form>
     )

@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import heroImage from '../../../assets/images/student_learning_online.webp';
 import { HERO_STATS, HERO_TICKER_ITEMS } from '../../../data/home.data';
 import { StatusBadge } from '../../common';
