@@ -4,12 +4,13 @@ import styles from './Card.module.css';
 import type { CardProps } from './Card.props';
 
 
-export const Card = ({ className, children, footer, hoverable, ref, ...props }: CardProps): JSX.Element => {
+export const Card = ({ footer, hoverable, variant='default', className, children, ref, ...props }: CardProps): JSX.Element => {
     return (
         <div
             ref={ref}
             className={cn(
                 styles.card, 
+                styles[variant],
                 hoverable && styles.hoverable,
                 className
             )} 

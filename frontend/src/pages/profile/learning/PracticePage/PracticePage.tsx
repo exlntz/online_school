@@ -1,13 +1,12 @@
 import type { JSX } from 'react'
-import styles from './PracticePage.module.css'
+import { PageHeader } from '../../../../components/common'
+import { Container } from '../../../../components/ui'
 
 
 export const PracticePage = (): JSX.Element => {
     return (
-        <>
-            <div className={styles.container}>
-                <h1>Страница "практика" в разработке</h1>
-            </div>
-        </>
+        <Container variant='page'>
+            <PageHeader />
+        </Container>
     )
 }

@@ -1,13 +1,12 @@
 import type { JSX } from 'react'
-import styles from './RepetionQuickPage.module.css'
+import { PageHeader } from '../../../../components/common'
+import { Container } from '../../../../components/ui'
 
 
 export const RepetionQuickPage = (): JSX.Element => {
     return (
-        <>
-            <div className={styles.container}>
-                <h1>Страница "быстрое повторение" в разработке</h1>
-            </div>
-        </>
+        <Container variant='page'>
+            <PageHeader />
+        </Container>
     )
 }

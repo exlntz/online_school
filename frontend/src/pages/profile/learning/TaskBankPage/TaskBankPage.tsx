@@ -1,13 +1,12 @@
 import type { JSX } from 'react'
-import styles from './TaskBankPage.module.css'
+import { PageHeader } from '../../../../components/common'
+import { Container } from '../../../../components/ui'
 
 
 export const TaskBankPage = (): JSX.Element => {
     return (
-        <>
-            <div className={styles.container}>
-                <h1>Страница "банк заданий" в разработке</h1>
-            </div>
-        </>
+        <Container variant='page'>
+            <PageHeader />
+        </Container>
     )
 }

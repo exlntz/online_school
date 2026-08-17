@@ -30,3 +30,9 @@
     background-size: 24px 24px;
     position: relative;
 }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; 
+}
