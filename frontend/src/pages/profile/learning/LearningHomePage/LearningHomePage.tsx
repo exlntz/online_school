@@ -1,5 +1,4 @@
 import type { JSX } from 'react';
-import { StatsPanel } from '../../../../components/profile';
 import { SUBJECTS } from '../../../../data/profile.data';
 import { MOCK_API_LESSON } from '../../../../data/temp.data';
 import { NextLesson, UpcomingLessons } from '../../../../entities/lesson';
@@ -7,6 +6,7 @@ import { useSubject } from '../../../../entities/subject';
 import { useUser } from '../../../../hooks/useUser';
 import { Container } from '../../../../shared/ui';
 import { PageHeader } from '../../../../widgets/page-header';
+import { StatsPanel } from '../../../../widgets/statistics-panel';
 import styles from './LearningHomePage.module.css';
 
 

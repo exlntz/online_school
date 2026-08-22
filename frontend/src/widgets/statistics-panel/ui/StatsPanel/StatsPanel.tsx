@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
-import { cn } from '../../../shared/lib';
-import { Card, ProgressRing } from '../../../shared/ui';
+import { cn } from '../../../../shared/lib';
+import { Card, ProgressRing } from '../../../../shared/ui';
 import { WeeklyActivity } from '../WeeklyActivity/WeeklyActivity';
 import { WidgetMetric } from '../WidgetMetric/WidgetMetric';
 import styles from './StatsPanel.module.css';

@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
-import { MOCK_DATA_WEEKLY_ACTIVITY } from '../../../data/temp.data';
-import { cn } from '../../../shared/lib';
+import { MOCK_DATA_WEEKLY_ACTIVITY } from '../../../../data/temp.data';
+import { cn } from '../../../../shared/lib';
 import styles from './WeeklyActivity.module.css';
 import type { WeeklyActivityProps } from './WeeklyActivity.props';
 
