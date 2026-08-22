@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import type { AuthMode } from "../../../../types/auth";
+import type { AuthMode } from "../../../../features/auth";
 import type { Role } from "../../../../types/user";
 
 

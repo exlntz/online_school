@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios";
-import type { ApiErrorResponse, ParseApiErrorFn } from "../types/error";
+import type { ParseApiErrorFn, ApiErrorResponse } from "./types";
 
 
 export const parseApiError: ParseApiErrorFn = (error, fallbackMessage='Произошла ошибка') => {

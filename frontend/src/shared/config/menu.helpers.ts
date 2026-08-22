@@ -1,4 +1,4 @@
-import type { MenuItem } from "../types/menu";
+import type { MenuItem } from "./types";
 
 
 export const headerMenu: MenuItem[] = [

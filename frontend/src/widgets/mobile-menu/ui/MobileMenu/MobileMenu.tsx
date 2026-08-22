@@ -1,7 +1,7 @@
 import { type JSX } from 'react';
 import { Link } from 'react-router';
 import { AuthBlock } from '../../../../features/auth';
-import { headerMenu } from '../../../../helpers/menu.helpers';
+import { headerMenu } from '../../../../shared/config/menu.helpers';
 import { cn } from '../../../../shared/lib';
 import styles from './MobileMenu.module.css';
 import type { MobileMenuProps } from './MobileMenu.props';

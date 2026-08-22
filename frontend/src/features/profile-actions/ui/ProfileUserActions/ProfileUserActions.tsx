@@ -1,12 +1,12 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router';
-import { useUser } from '../../../../hooks/useUser';
 import { cn } from '../../../../shared/lib';
 import { Button } from '../../../../shared/ui';
 import { NotificationBtn } from '../../../notifications';
 import { ThemeToggleBtn } from '../../../theme-switcher';
 import styles from './ProfileUserActions.module.css';
 import type { ProfileUserActionsProps } from './ProfileUserActions.props';
+import { useUser } from '../../../../entities/user';
 
 export const ProfileUserActions = ({ className, ...props }: ProfileUserActionsProps): JSX.Element => {
     const { data: user } = useUser();

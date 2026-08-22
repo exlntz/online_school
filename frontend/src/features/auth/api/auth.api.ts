@@ -1,7 +1,6 @@
-import { API } from '../helpers/api.helpers';
-import { apiClient, setAccessToken } from '../shared/api';
-import type { AuthMode, AuthResponseDTO, SendCodePayload, UserDto, VerifyCodePayload } from '../types/auth';
-import type { User } from '../types/user';
+import { API, apiClient, setAccessToken } from '../../../shared/api';
+import type { User } from '../../../types/user';
+import type { SendCodePayload, AuthMode, VerifyCodePayload, AuthResponseDTO } from '../model/types';
 
 
 // 1. Функция логина и регистрации
@@ -38,22 +37,7 @@ export const verifyAuthCode = async (data: VerifyCodePayload, mode: AuthMode): P
     }
 };
 
-// 3. Функция проверки пользователя
-export const getMe = async (): Promise<User> => {
-    const response = await apiClient.get<UserDto>(API.users.me);
-    const userData = response.data
-
-    return {
-        id: userData.id,
-        firstName: userData.first_name,
-        lastName: userData.last_name,
-        phoneNumber: userData.phone_number,
-        role: userData.role
-    }
-};
-
-// 4. Выход из аккаунта
+// 3. Выход из аккаунта
 export const logoutUser = async (): Promise<void> => {
     await apiClient.post(API.auth.logout);
 }
-

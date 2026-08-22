@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router";
-import { RequireAuth } from "../../components/auth";
+import { RequireAuth } from "../../features/auth";
 import {
     AuthPage, ErrorPage, GraduatesPage, HomePage,
     HomeworkPage,
