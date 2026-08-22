@@ -13,4 +13,5 @@ export * from './ProgressRing/ProgressRing';
 export * from './Radio/Radio';
 export * from './Search/Search';
 export * from './Sort/Sort';
+export * from './Sort/Sort.props';
 export * from './StatusBadge/StatusBadge';

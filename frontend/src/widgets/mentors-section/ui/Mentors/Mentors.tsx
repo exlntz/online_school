@@ -5,8 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MentorCard } from '../../../../entities/mentor';
 import { MENTORS_ITEMS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
-import { Button, Container, Divider, Search, Sort } from '../../../../shared/ui';
-import type { SortEnum } from '../../../../shared/ui/Sort/Sort.props';
+import { Button, Container, Divider, Search, Sort, type SortEnum } from '../../../../shared/ui';
 import styles from './Mentors.module.css';
 
 
