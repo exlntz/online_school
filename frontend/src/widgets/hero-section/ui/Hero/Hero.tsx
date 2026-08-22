@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router';
-import { HERO_STATS, HERO_TICKER_ITEMS } from '../../../../data/home.data';
 import heroImage from '../../../../shared/assets/images/student_learning_online.webp';
+import { HERO_STATS, HERO_TICKER_ITEMS } from '../../../../shared/constants';
 import { Button, Divider, StatusBadge } from '../../../../shared/ui';
 import styles from './Hero.module.css';
 import UnderLineIcon from './underline.svg?react';

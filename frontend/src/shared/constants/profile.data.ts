@@ -1,16 +1,16 @@
 import {
-  Atom,
-  BarChart3,
-  BookOpen,
-  Brain,
-  ClipboardList,
-  FolderOpen, Home, Layers, Repeat,
-  Settings,
-  Sigma,
-  Terminal,
-  Zap
+    Atom,
+    BarChart3,
+    BookOpen,
+    Brain,
+    ClipboardList,
+    FolderOpen, Home, Layers, Repeat,
+    Settings,
+    Sigma,
+    Terminal,
+    Zap
 } from 'lucide-react';
-import type { NavItem } from "../types/profile";
+import type { NavItem } from '../config';
 
 export const PROFILE_DASHBOARD_CARDS = [
   {

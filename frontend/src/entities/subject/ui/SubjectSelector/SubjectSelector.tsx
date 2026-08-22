@@ -1,7 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import { useRef, useState, type JSX } from 'react';
 import { useSubject, useSubjectActions } from '../..';
-import { SUBJECTS } from '../../../../data/profile.data';
+import { SUBJECTS } from '../../../../shared/constants';
 import { cn, useClickOutside } from '../../../../shared/lib';
 import styles from './SubjectSelector.module.css';
 import type { SubjectSelectorProps } from './SubjectSelector.props';

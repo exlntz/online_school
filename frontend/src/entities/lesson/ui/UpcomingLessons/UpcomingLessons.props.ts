@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
-import type { LessonModel } from '../../../types/profile';
+import type { LessonModel } from '../../model/types';
 
 
 export interface UpcomingLessonsProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

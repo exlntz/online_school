@@ -1,8 +1,8 @@
 import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-react';
-import imgAlexey from '../shared/assets/images/mentor_alexey.webp';
-import imgDmitry from '../shared/assets/images/mentor_dmitry.png';
-import imgElena from '../shared/assets/images/mentor_elena.webp';
-import imgMaria from '../shared/assets/images/mentor_maria.webp';
+import imgAlexey from '../assets/images/mentor_alexey.webp';
+import imgDmitry from '../assets/images/mentor_dmitry.png';
+import imgElena from '../assets/images/mentor_elena.webp';
+import imgMaria from '../assets/images/mentor_maria.webp';
 
 
 // --- HERO SECTION ---

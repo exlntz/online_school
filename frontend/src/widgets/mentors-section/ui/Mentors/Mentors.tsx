@@ -2,11 +2,11 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { MENTORS_ITEMS } from '../../../../data/home.data';
 import { MentorCard } from '../../../../entities/mentor';
+import { MENTORS_ITEMS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
 import { Button, Container, Divider, Search, Sort } from '../../../../shared/ui';
-import type { SortEnum } from '../../../../types/sort';
+import type { SortEnum } from '../../../../shared/ui/Sort/Sort.props';
 import styles from './Mentors.module.css';
 
 

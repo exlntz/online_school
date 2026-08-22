@@ -1,6 +1,6 @@
+import type { User } from '../../../entities/user';
 import { API, apiClient, setAccessToken } from '../../../shared/api';
-import type { User } from '../../../types/user';
-import type { SendCodePayload, AuthMode, VerifyCodePayload, AuthResponseDTO } from '../model/types';
+import type { AuthMode, AuthResponseDTO, SendCodePayload, VerifyCodePayload } from '../model/types';
 
 
 // 1. Функция логина и регистрации

@@ -1,11 +1,11 @@
 import type { JSX } from 'react';
 import { NavLink } from 'react-router';
-import { PROFILE_NAV_ITEMS } from '../../../../data/profile.data';
 import { SubjectSelector } from '../../../../entities/subject';
+import { PROFILE_NAV_ITEMS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
+import { Logo } from '../../../../shared/ui';
 import styles from './Sidebar.module.css';
 import type { SidebarProps } from './Sidebar.props';
-import { Logo } from '../../../../shared/ui';
 
 
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {

@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
-import { ECOSYSTEM_FEATURES, ECOSYSTEM_TICKER_ITEMS } from '../../../../data/home.data';
+import { ECOSYSTEM_FEATURES, ECOSYSTEM_TICKER_ITEMS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
 import { Container, FeatureItem, Marquee } from '../../../../shared/ui';
 import styles from './Ecosystem.module.css';

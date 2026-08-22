@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { MOCK_WIDGET_METRIC } from '../../../../data/temp.data';
+import { MOCK_WIDGET_METRIC } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
 import styles from './WidgetMetric.module.css';
 import type { WidgetMetricProps } from './WidgetMetric.props';

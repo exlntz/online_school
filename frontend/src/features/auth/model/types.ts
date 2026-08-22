@@ -1,4 +1,4 @@
-import type { Role } from "../../../types/user";
+import type { Role } from "../../../entities/user";
 
 
 export type AuthMode = 'login' | 'register';

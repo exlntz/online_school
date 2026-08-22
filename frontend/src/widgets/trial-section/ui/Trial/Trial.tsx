@@ -1,7 +1,7 @@
 import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { TRIAL_MARQUEE_WORDS } from '../../../../data/home.data';
+import { TRIAL_MARQUEE_WORDS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
 import { Button, Divider, Marquee } from '../../../../shared/ui';
 import styles from './Trial.module.css';

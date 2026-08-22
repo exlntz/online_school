@@ -1,5 +1,5 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import type { User } from "../../../../types/user";
+import type { User } from "../../../../entities/user";
 
 
 export interface AuthBlockProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

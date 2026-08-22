@@ -1,8 +1,8 @@
 import { Star } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
-import { TESTIMONIALS_MARQUEE_WORDS, TESTIMONIALS_REVIEWS } from '../../../../data/home.data';
 import { TestimonialCard } from '../../../../entities/review';
+import { TESTIMONIALS_MARQUEE_WORDS, TESTIMONIALS_REVIEWS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
 import { Container, Marquee } from '../../../../shared/ui';
 import styles from './Testimonials.module.css';
