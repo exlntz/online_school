@@ -1,7 +1,7 @@
 import { Moon, Sun } from 'lucide-react'
 import { type JSX } from 'react'
+import { useTheme, useThemeActions } from '../../../entities/theme'
 import { Button } from '../../../shared/ui'
-import { useTheme, useThemeActions } from '../../../store/theme/hooks'
 import type { ThemeToggleBtnProps } from './ThemeToggleBtn.props'
 
 

@@ -1,6 +1,6 @@
 import { createBrowserRouter, Outlet } from "react-router";
-import { RequireAuth } from "../components/auth";
-import { LearningLayout, MainLayout, ProfileLayout } from "../components/layouts";
+import { RequireAuth } from "../../components/auth";
+import { LearningLayout, MainLayout, ProfileLayout } from "../../components/layouts";
 import {
     AuthPage, ErrorPage, GraduatesPage, HomePage,
     HomeworkPage,
@@ -10,7 +10,7 @@ import {
     PsychologistsPage, RepetionQuickPage, SettingsPage, StatisticsPage, TaskBankPage, TeachersPage,
     TheoryPage,
     VariantsPage
-} from "../pages";
+} from "../../pages";
 
 
 export const router = createBrowserRouter(
