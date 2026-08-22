@@ -1,9 +1,9 @@
 import type { JSX } from 'react'
+import { Ecosystem } from '../../../widgets/ecosystem-section'
 import { Hero } from '../../../widgets/hero-section'
-import { Pricing } from '../../../widgets/pricing-section'
-import { Ecosystem } from '../../../widgets/ecosystem-section/ui/Ecosystem/Ecosystem'
 import { MentalSupport } from '../../../widgets/mental-support-section'
 import { Mentors } from '../../../widgets/mentors-section'
+import { Pricing } from '../../../widgets/pricing-section'
 import { Testimonials } from '../../../widgets/testimonials-section'
 import { Trial } from '../../../widgets/trial-section'
 
