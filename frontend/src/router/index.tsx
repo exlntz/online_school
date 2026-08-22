@@ -26,7 +26,6 @@ export const router = createBrowserRouter(
                 { path: 'psychologists', element: <PsychologistsPage />},
                 { path: 'graduates', element: <GraduatesPage />},
                 { path: 'parents', element: <ParentsPage />},
-                { path: '*', element: <NotFoundPage />}
             ],
         },
         {
@@ -71,6 +70,10 @@ export const router = createBrowserRouter(
             path: 'register', 
             errorElement: <ErrorPage />,
             element: <AuthPage mode="register" key="register" />
+        },
+        { 
+            path: '*', 
+            element: <NotFoundPage /> 
         }
     ],
     {

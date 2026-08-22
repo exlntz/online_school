@@ -1,14 +1,17 @@
 import { Moon, Sun } from 'lucide-react'
 import { type JSX } from 'react'
-import { useTheme } from '../../../hooks/useTheme'
+import { useTheme, useThemeActions } from '../../../store/theme/hooks'
 import { Button } from '../../ui'
 import type { ThemeToggleBtnProps } from './ThemeToggleBtn.props'
 
 
+
 export const ThemeToggleBtn = ( { iconSize=40, className, ...props }: ThemeToggleBtnProps ): JSX.Element => {
-    const { theme, toggleTheme } = useTheme();
-    const themeIconSize = iconSize * 0.6
+    const theme = useTheme();
+    const { toggleTheme } = useThemeActions();
     
+    const themeIconSize = iconSize * 0.6;
+
     return (
         <Button 
             variant="ghost-accent" 

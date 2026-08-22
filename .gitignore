@@ -20,3 +20,22 @@ dist/
 dist-ssr/
 *.local
 npm-debug.log*
+
+# =========================
+# Local AI Assistants & ECC 
+# =========================
+
+# Полностью игнорируем всю экосистему ECC
+.ecc/
+ecc.config.json
+
+# Игнорируем любые глобальные правила ИИ
+.cursorrules
+.clauderules
+.claude/
+.continue/
+
+# Локальная история чатов и память
+.aider*
+.mcp*.json
+.cursor/
