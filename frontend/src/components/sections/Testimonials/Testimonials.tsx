@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import { TESTIMONIALS_MARQUEE_WORDS, TESTIMONIALS_REVIEWS } from '../../../data/home.data';
 import { cn } from '../../../shared/lib';
 import { Container, Marquee } from '../../../shared/ui';
-import { TestimonialCard } from '../../common';
 import styles from './Testimonials.module.css';
+import { TestimonialCard } from '../../../entities/review';
 
 
 export const Testimonials = (): JSX.Element => {

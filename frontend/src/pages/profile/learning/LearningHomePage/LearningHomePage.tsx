@@ -1,12 +1,13 @@
 import type { JSX } from 'react';
 import { PageHeader } from '../../../../components/common';
-import { NextLesson, StatsPanel, UpcomingLessons } from '../../../../components/profile';
+import { StatsPanel } from '../../../../components/profile';
 import { SUBJECTS } from '../../../../data/profile.data';
 import { MOCK_API_LESSON } from '../../../../data/temp.data';
+import { useSubject } from '../../../../entities/subject';
 import { useUser } from '../../../../hooks/useUser';
 import { Container } from '../../../../shared/ui';
 import styles from './LearningHomePage.module.css';
-import { useSubject } from '../../../../entities/subject';
+import { NextLesson, UpcomingLessons } from '../../../../entities/lesson';
 
 
 export const LearningHomePage = (): JSX.Element => {

@@ -1,5 +1,7 @@
 import type { JSX } from 'react'
-import { Ecosystem, Hero, MentalSupport, Mentors, Pricing, Testimonials, Trial } from "../../../components/sections"
+import { Ecosystem, MentalSupport, Mentors, Testimonials, Trial } from "../../../components/sections"
+import { Hero } from '../../../widgets/hero-section'
+import { Pricing } from '../../../widgets/pricing-section'
 
 
 

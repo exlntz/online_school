@@ -1,10 +1,11 @@
 import type { JSX } from "react";
 import { Outlet } from "react-router";
 import { cn } from "../../../shared/lib";
+import { Sidebar } from "../../../widgets/sidebar";
 import { LearningHeader } from "../LearningHeader/LearningHeader";
-import { Sidebar } from "../Sidebar/Sidebar";
 import styles from "./LearningLayout.module.css";
 import type { LearningLayoutProps } from "./LearningLayout.props";
+
 
 export const LearningLayout = ({ className, ...props }: LearningLayoutProps): JSX.Element => {
   return (

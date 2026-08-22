@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
+import { ProfileUserActions } from '../../../features/profile-actions';
 import { cn } from '../../../shared/lib';
 import { Search } from '../../../shared/ui';
-import { ProfileUserActions } from '../../profile';
 import styles from './LearningHeader.module.css';
 import type { LearningHeaderProps } from './LearningHeader.props';
 

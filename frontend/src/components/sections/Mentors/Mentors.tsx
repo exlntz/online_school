@@ -6,8 +6,8 @@ import { MENTORS_ITEMS } from '../../../data/home.data';
 import { cn } from '../../../shared/lib';
 import { Button, Container, Divider, Search, Sort } from '../../../shared/ui';
 import type { SortEnum } from '../../../types/sort';
-import { MentorCard } from '../../common';
 import styles from './Mentors.module.css';
+import { MentorCard } from '../../../entities/mentor';
 
 
 export const Mentors = (): JSX.Element => {
