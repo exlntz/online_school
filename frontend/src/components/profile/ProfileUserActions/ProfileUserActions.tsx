@@ -1,9 +1,9 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router';
 import { useUser } from '../../../hooks/useUser';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
+import { Button } from '../../../shared/ui';
 import { NotificationBtn, ThemeToggleBtn } from '../../navigation';
-import { Button } from '../../ui';
 import styles from './ProfileUserActions.module.css';
 import type { ProfileUserActionsProps } from './ProfileUserActions.props';
 

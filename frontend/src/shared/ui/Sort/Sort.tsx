@@ -1,7 +1,7 @@
 import { ArrowUpDown } from 'lucide-react';
 import { type JSX } from 'react';
 import { Button } from '..';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../lib/cn';
 import styles from './Sort.module.css';
 import type { SortProps } from './Sort.props';
 

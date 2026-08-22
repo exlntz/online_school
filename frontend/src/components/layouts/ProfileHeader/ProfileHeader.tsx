@@ -1,5 +1,5 @@
 import { type JSX } from 'react';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
 import { Logo } from '../../navigation';
 import { ProfileUserActions } from '../../profile';
 import styles from './ProfileHeader.module.css';

@@ -3,10 +3,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { MENTORS_ITEMS } from '../../../data/home.data';
+import { cn } from '../../../shared/lib';
+import { Button, Container, Divider, Search, Sort } from '../../../shared/ui';
 import type { SortEnum } from '../../../types/sort';
-import { cn } from '../../../utils/cn';
 import { MentorCard } from '../../common';
-import { Button, Container, Divider, Search, Sort } from '../../ui';
 import styles from './Mentors.module.css';
 
 

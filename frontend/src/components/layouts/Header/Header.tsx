@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router';
 import { logoutUser } from '../../../api/auth';
 import { headerMenu } from '../../../helpers/menu.helpers';
 import { useUser } from '../../../hooks/useUser';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
+import { Container } from '../../../shared/ui';
 import { AuthBlock } from '../../auth';
 import { Logo, MobileMenu, ThemeToggleBtn } from '../../navigation';
-import { Container } from '../../ui';
 import styles from './Header.module.css';
 import type { HeaderProps } from './Header.props';
 

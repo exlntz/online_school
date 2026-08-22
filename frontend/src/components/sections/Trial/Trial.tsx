@@ -2,8 +2,8 @@ import { Phone } from 'lucide-react';
 import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { TRIAL_MARQUEE_WORDS } from '../../../data/home.data';
-import { cn } from '../../../utils/cn';
-import { Button, Divider, Marquee } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Button, Divider, Marquee } from '../../../shared/ui';
 import styles from './Trial.module.css';
 
 

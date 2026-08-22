@@ -3,9 +3,9 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 import { PRICING_TIERS, PRICING_TRUST_BADGES } from '../../../data/home.data';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
+import { Button, Container, Divider } from '../../../shared/ui';
 import { PricingCard } from '../../common';
-import { Button, Container, Divider } from '../../ui';
 import styles from './Pricing.module.css';
 
 

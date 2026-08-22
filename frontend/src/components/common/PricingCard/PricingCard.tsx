@@ -1,6 +1,6 @@
 import { type JSX } from 'react';
-import { cn } from '../../../utils/cn';
-import { Badge, Divider } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Badge, Divider } from '../../../shared/ui';
 import styles from './PricingCard.module.css';
 import type { PricingCardProps } from './PricingCard.props';
 

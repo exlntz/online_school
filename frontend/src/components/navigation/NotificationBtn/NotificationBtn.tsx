@@ -1,7 +1,7 @@
 import { Bell } from 'lucide-react';
 import type { JSX } from 'react';
-import { cn } from '../../../utils/cn';
-import { Button } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Button } from '../../../shared/ui';
 import styles from './NotificationBtn.module.css';
 import type { NotificationBtnProps } from './NotificationBtn.props';
 

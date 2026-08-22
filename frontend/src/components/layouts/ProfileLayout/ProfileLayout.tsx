@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { Outlet } from "react-router";
 import { ProfileHeader } from "../";
-import { cn } from "../../../utils/cn";
+import { cn } from "../../../shared/lib";
 import styles from "./ProfileLayout.module.css";
 import type { ProfileLayoutProps } from "./ProfileLayout.props";
 

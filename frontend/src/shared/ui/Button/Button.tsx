@@ -1,6 +1,6 @@
 import { type ElementType, type JSX } from "react";
 import { Loader } from "..";
-import { cn } from "../../../utils/cn";
+import { cn } from "../../lib/cn";
 import styles from './Button.module.css';
 import type { ButtonProps } from "./Button.props";
 import ArrowIcon from './arrow.svg?react';

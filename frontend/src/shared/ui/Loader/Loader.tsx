@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../lib/cn';
 import styles from './Loader.module.css';
 import type { LoaderProps } from './Loader.props';
 import SpinnerIcon from './spinner.svg?react';

@@ -1,6 +1,6 @@
 import { type JSX } from 'react';
-import { cn } from '../../../utils/cn';
-import { Badge, Divider } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Badge, Divider } from '../../../shared/ui';
 import styles from './StatusBadge.module.css';
 import type { StatusBadgeProps } from './StatusBadge.props';
 import MortarboardIcon from './mortarboard.svg?react';

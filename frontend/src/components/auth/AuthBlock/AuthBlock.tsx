@@ -1,7 +1,7 @@
 import { type JSX } from 'react';
 import { Link } from 'react-router';
-import { cn } from '../../../utils/cn';
-import { Button, Loader } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Button, Loader } from '../../../shared/ui';
 import styles from './AuthBlock.module.css';
 import type { AuthBlockProps } from './AuthBlock.props';
 

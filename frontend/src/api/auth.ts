@@ -1,7 +1,8 @@
 import { API } from '../helpers/api.helpers';
+import { apiClient, setAccessToken } from '../shared/api';
 import type { AuthMode, AuthResponseDTO, SendCodePayload, UserDto, VerifyCodePayload } from '../types/auth';
 import type { User } from '../types/user';
-import { apiClient, setAccessToken } from './apiClient';
+
 
 // 1. Функция логина и регистрации
 export const sendAuthCode = async (data: SendCodePayload, mode: AuthMode): Promise<{ success: boolean }> => {

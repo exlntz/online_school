@@ -4,10 +4,9 @@ import { useEffect, useState, type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { sendAuthCode, verifyAuthCode } from '../../../../api/auth';
-import { Button, Input } from '../../../../components/ui';
 import { parseApiError } from '../../../../helpers/error.helpers';
-import { cn } from '../../../../utils/cn';
-import { codeSchema, type CodeFormInputs } from '../../../../utils/validations';
+import { cn, codeSchema, type CodeFormInputs } from '../../../../shared/lib';
+import { Button, Input } from '../../../../shared/ui';
 import styles from './CodeStep.module.css';
 import type { CodeStepProps } from './CodeStep.props';
 

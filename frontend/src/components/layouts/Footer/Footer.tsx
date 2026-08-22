@@ -1,8 +1,8 @@
 import type { JSX } from "react";
 import { Link } from 'react-router';
-import { cn } from "../../../utils/cn";
+import { cn } from "../../../shared/lib";
+import { Button, Container, Divider } from "../../../shared/ui";
 import { Logo } from "../../navigation";
-import { Button, Container, Divider } from "../../ui";
 import styles from './Footer.module.css';
 import type { FooterProps } from "./Footer.props";
 import InstagramIcon from './icons/instagram.svg?react';

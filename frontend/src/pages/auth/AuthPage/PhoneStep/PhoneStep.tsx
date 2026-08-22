@@ -5,11 +5,10 @@ import { type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 import { sendAuthCode } from '../../../../api/auth';
-import { Button, Input, Radio } from '../../../../components/ui';
 import { parseApiError } from '../../../../helpers/error.helpers';
+import { cn, loginSchema, registerSchema } from '../../../../shared/lib';
+import { Button, Input, Radio } from '../../../../shared/ui';
 import type { AuthValues } from '../../../../types/auth';
-import { cn } from '../../../../utils/cn';
-import { loginSchema, registerSchema } from '../../../../utils/validations';
 import styles from './PhoneStep.module.css';
 import type { PhoneStepProps } from './PhoneStep.props';
 

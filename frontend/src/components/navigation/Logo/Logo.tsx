@@ -1,7 +1,7 @@
 import { type JSX } from 'react'
 import { Link } from 'react-router'
-import LogoIcon from '../../../assets/icons/logo.svg?react'
-import { cn } from '../../../utils/cn'
+import LogoIcon from '../../../shared/assets/icons/logo.svg?react'
+import { cn } from '../../../shared/lib'
 import styles from './Logo.module.css'
 import type { LogoProps } from './Logo.props'
 

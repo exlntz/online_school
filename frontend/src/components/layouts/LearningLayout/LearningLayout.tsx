@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Outlet } from "react-router";
-import { cn } from "../../../utils/cn";
+import { cn } from "../../../shared/lib";
 import { LearningHeader } from "../LearningHeader/LearningHeader";
 import { Sidebar } from "../Sidebar/Sidebar";
 import styles from "./LearningLayout.module.css";

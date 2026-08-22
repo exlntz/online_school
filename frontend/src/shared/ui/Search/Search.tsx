@@ -1,7 +1,7 @@
 import { SearchIcon } from 'lucide-react';
 import { useState, type ChangeEvent, type JSX, type SyntheticEvent } from 'react';
 import { Button, Input } from '..';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../lib/cn';
 import styles from './Search.module.css';
 import type { SearchProps } from './Search.props';
 

@@ -1,8 +1,8 @@
 import type { JSX } from "react";
 import { Navigate, Outlet, useLocation } from "react-router";
 import { useUser } from "../../../hooks/useUser";
-import { cn } from "../../../utils/cn";
-import { Loader } from "../../ui";
+import { cn } from "../../../shared/lib";
+import { Loader } from "../../../shared/ui";
 import styles from "./RequireAuth.module.css";
 import type { RequireAuthProps } from "./RequireAuth.props";
 

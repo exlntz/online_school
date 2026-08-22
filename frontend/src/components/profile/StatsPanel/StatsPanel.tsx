@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
-import { cn } from '../../../utils/cn';
-import { Card } from '../../ui';
+import { cn } from '../../../shared/lib';
+import { Card } from '../../../shared/ui';
 import { ProgressRing } from '../ProgressRing/ProgressRing';
 import { WeeklyActivity } from '../WeeklyActivity/WeeklyActivity';
 import { WidgetMetric } from '../WidgetMetric/WidgetMetric';

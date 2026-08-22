@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
 import styles from './ProgressRing.module.css';
 import type { ProgressRingProps } from './ProgressRing.props';
 

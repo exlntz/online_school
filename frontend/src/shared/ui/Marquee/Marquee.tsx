@@ -1,5 +1,5 @@
 import { type JSX } from 'react'
-import { cn } from '../../../utils/cn'
+import { cn } from '../../lib/cn'
 import styles from './Marquee.module.css'
 import type { MarqueeProps } from './Marquee.props'
 

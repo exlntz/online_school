@@ -1,7 +1,7 @@
 import { Quote, Star } from "lucide-react"
 import { type JSX } from "react"
-import { cn } from "../../../utils/cn"
-import { Divider } from "../../ui"
+import { cn } from "../../../shared/lib"
+import { Divider } from "../../../shared/ui"
 import styles from './TestimonialCard.module.css'
 import type { TestimonialCardProps } from "./TestimonialCard.props"
 

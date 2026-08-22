@@ -1,5 +1,5 @@
 import { type JSX } from 'react'
-import { cn } from '../../../utils/cn'
+import { cn } from '../../lib/cn'
 import styles from './Container.module.css'
 import type { ContainerProps } from './Container.props'
 

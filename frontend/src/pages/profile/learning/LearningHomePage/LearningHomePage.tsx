@@ -1,10 +1,10 @@
 import type { JSX } from 'react';
 import { PageHeader } from '../../../../components/common';
 import { NextLesson, StatsPanel, UpcomingLessons } from '../../../../components/profile';
-import { Container } from '../../../../components/ui';
 import { SUBJECTS } from '../../../../data/profile.data';
 import { MOCK_API_LESSON } from '../../../../data/temp.data';
 import { useUser } from '../../../../hooks/useUser';
+import { Container } from '../../../../shared/ui';
 import { useSubject } from '../../../../store/subject/hooks';
 import styles from './LearningHomePage.module.css';
 

@@ -2,9 +2,9 @@ import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 import { ECOSYSTEM_FEATURES, ECOSYSTEM_TICKER_ITEMS } from '../../../data/home.data';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
+import { Container, Marquee } from '../../../shared/ui';
 import { FeatureItem } from '../../common';
-import { Container, Marquee } from '../../ui';
 import styles from './Ecosystem.module.css';
 
 

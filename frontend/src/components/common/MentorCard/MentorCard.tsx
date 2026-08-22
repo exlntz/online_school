@@ -1,7 +1,7 @@
 import { type JSX } from 'react'
 import { Link } from 'react-router'
-import { cn } from '../../../utils/cn'
-import { Badge } from '../../ui'
+import { cn } from '../../../shared/lib'
+import { Badge } from '../../../shared/ui'
 import styles from './MentorCard.module.css'
 import type { MentorCardProps } from './MentorCard.props'
 

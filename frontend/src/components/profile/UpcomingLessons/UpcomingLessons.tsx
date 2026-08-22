@@ -2,7 +2,7 @@ import { CheckCircle2, Clock } from 'lucide-react';
 import type { JSX } from 'react';
 import { Link } from 'react-router';
 import { MOCK_UPCOMING_LESSONS } from '../../../data/temp.data';
-import { Card } from '../../ui';
+import { Card } from '../../../shared/ui';
 import styles from './UpcomingLessons.module.css';
 import type { UpcomingLessonsProps } from './UpcomingLessons.props';
 

@@ -1,7 +1,6 @@
 import type { JSX } from 'react';
 import { Outlet } from 'react-router';
-import { useScrollToTop } from '../../../hooks/useScrollToTop';
-import { cn } from '../../../utils/cn';
+import { cn, useScrollToTop } from '../../../shared/lib';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import styles from './MainLayout.module.css';

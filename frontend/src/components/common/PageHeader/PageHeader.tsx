@@ -1,8 +1,8 @@
 import type { JSX } from 'react';
 import { useLocation } from 'react-router';
 import { PROFILE_NAV_ITEMS, SUBJECTS } from '../../../data/profile.data';
+import { cn } from '../../../shared/lib';
 import { useSubject } from '../../../store/subject/hooks';
-import { cn } from '../../../utils/cn';
 import styles from './PageHeader.module.css';
 import type { PageHeaderProps } from './PageHeader.props';
 

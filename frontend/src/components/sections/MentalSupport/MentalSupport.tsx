@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
-import PsychoSupport from '../../../assets/images/psychologist_session_support.png';
-import { Container, Divider } from '../../ui';
+import PsychoSupport from '../../../shared/assets/images/psychologist_session_support.png';
+import { Container, Divider } from '../../../shared/ui';
 import styles from './MentalSupport.module.css';
 import CtaArrowIcon from './ctaArrow.svg?react';
 

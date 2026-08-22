@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { NavLink } from 'react-router';
 import { PROFILE_NAV_ITEMS } from '../../../data/profile.data';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
 import { SubjectSelector } from '../../common';
 import { Logo } from '../../navigation';
 import styles from './Sidebar.module.css';

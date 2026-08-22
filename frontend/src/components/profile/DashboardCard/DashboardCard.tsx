@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { type JSX } from 'react';
 import { Link } from 'react-router';
-import { cn } from '../../../utils/cn';
+import { cn } from '../../../shared/lib';
 import styles from './DashboardCard.module.css';
 import type { DashboardCardProps } from './DashboardCard.props';
 
