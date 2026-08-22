@@ -1,6 +1,6 @@
 import type { JSX } from 'react'
-import { PageHeader } from '../../../../components/common'
 import { Container } from '../../../../shared/ui'
+import { PageHeader } from '../../../../widgets/page-header'
 
 
 export const PracticePage = (): JSX.Element => {

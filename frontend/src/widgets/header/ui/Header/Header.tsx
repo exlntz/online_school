@@ -3,13 +3,13 @@ import { Menu, X } from 'lucide-react';
 import { useEffect, useState, type JSX } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { logoutUser } from '../../../../api/auth';
-import { Logo, MobileMenu } from '../../../../components/navigation';
 import { AuthBlock } from '../../../../features/auth';
 import { ThemeToggleBtn } from '../../../../features/theme-switcher';
 import { headerMenu } from '../../../../helpers/menu.helpers';
 import { useUser } from '../../../../hooks/useUser';
 import { cn } from '../../../../shared/lib';
-import { Container } from '../../../../shared/ui';
+import { Container, Logo } from '../../../../shared/ui';
+import { MobileMenu } from '../../../mobile-menu';
 import styles from './Header.module.css';
 import type { HeaderProps } from './Header.props';
 

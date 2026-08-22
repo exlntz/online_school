@@ -1,6 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router";
 import { RequireAuth } from "../../components/auth";
-import { LearningLayout, MainLayout, ProfileLayout } from "../../components/layouts";
 import {
     AuthPage, ErrorPage, GraduatesPage, HomePage,
     HomeworkPage,
@@ -11,6 +10,7 @@ import {
     TheoryPage,
     VariantsPage
 } from "../../pages";
+import { LearningLayout, MainLayout, ProfileLayout } from "../layouts";
 
 
 export const router = createBrowserRouter(

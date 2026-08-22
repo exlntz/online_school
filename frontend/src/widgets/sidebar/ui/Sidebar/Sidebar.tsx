@@ -5,7 +5,7 @@ import { SubjectSelector } from '../../../../entities/subject';
 import { cn } from '../../../../shared/lib';
 import styles from './Sidebar.module.css';
 import type { SidebarProps } from './Sidebar.props';
-import { Logo } from '../../../../components/navigation';
+import { Logo } from '../../../../shared/ui';
 
 
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {

@@ -1,8 +1,8 @@
 import type { JSX } from 'react';
-import { DashboardCard } from '../../../components/profile';
 import { PROFILE_DASHBOARD_CARDS } from '../../../data/profile.data';
 import { useUser } from '../../../hooks/useUser';
 import styles from './ProfilePage.module.css';
+import { DashboardCard } from '../../../shared/ui';
 
 
 export const ProfilePage = (): JSX.Element => {
