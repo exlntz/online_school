@@ -1,14 +1,14 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router';
+import { useUser } from '../../../../entities/user';
+import { NotificationBtn } from '../../../../features/notifications';
+import { ThemeToggleBtn } from '../../../../features/theme-switcher';
 import { cn } from '../../../../shared/lib';
 import { Button } from '../../../../shared/ui';
-import { NotificationBtn } from '../../../notifications';
-import { ThemeToggleBtn } from '../../../theme-switcher';
-import styles from './ProfileUserActions.module.css';
-import type { ProfileUserActionsProps } from './ProfileUserActions.props';
-import { useUser } from '../../../../entities/user';
+import styles from './UserActions.module.css';
+import type { UserActionsProps } from './UserActions.props';
 
-export const ProfileUserActions = ({ className, ...props }: ProfileUserActionsProps): JSX.Element => {
+export const UserActions = ({ className, ...props }: UserActionsProps): JSX.Element => {
     const { data: user } = useUser();
     const initials = user ? `${user.firstName.charAt(0)}`.toUpperCase() : '';
 

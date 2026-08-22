@@ -1,4 +1,4 @@
-import type { Role } from "../../../entities/user";
+import type { Role, UserDto } from "../../../entities/user";
 
 
 export type AuthMode = 'login' | 'register';
@@ -13,14 +13,6 @@ export type SendCodePayload = AuthValues;
 
 export type VerifyCodePayload = AuthValues & {
     code: string;
-}
-
-export type UserDto = {
-    id: number;
-    first_name: string;
-    last_name?: string;
-    phone_number: string;
-    role: Role;
 }
 
 export type AuthResponseDTO = {

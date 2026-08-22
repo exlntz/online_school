@@ -1,9 +1,9 @@
 import type { JSX } from 'react';
-import { ProfileUserActions } from '../../../../features/profile-actions';
 import { cn } from '../../../../shared/lib';
 import { Search } from '../../../../shared/ui';
 import styles from './LearningHeader.module.css';
 import type { LearningHeaderProps } from './LearningHeader.props';
+import { UserActions } from '../../../user-actions';
 
 
 export const LearningHeader = ({ className, ...props }: LearningHeaderProps): JSX.Element => {
@@ -17,7 +17,7 @@ export const LearningHeader = ({ className, ...props }: LearningHeaderProps): JS
                 />
             </div>
 
-            <ProfileUserActions className={styles.actions} />
+            <UserActions className={styles.actions} />
         </header>
     );
 };

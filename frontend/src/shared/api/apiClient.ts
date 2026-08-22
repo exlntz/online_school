@@ -44,12 +44,7 @@ apiClient.interceptors.response.use(
             } catch(refreshError) {
                 accessToken = null
                 
-                const currentPath = window.location.pathname;
-                const publicPaths = ['/', '/pricing']
-
-                if (!publicPaths.includes(currentPath) && currentPath !== '/login' && currentPath !== '/register') {
-                    window.location.href = '/login';
-                }
+                window.dispatchEvent(new CustomEvent('auth:unauthorized'));
 
                 return Promise.reject(refreshError)
             }

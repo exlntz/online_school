@@ -1,6 +1,5 @@
-import type { UserDto } from "../../../features/auth";
 import { API, apiClient } from "../../../shared/api";
-import type { User } from "../model/types";
+import type { User, UserDto } from "../model/types";
 
 
 // 1. Функция проверки пользователя
