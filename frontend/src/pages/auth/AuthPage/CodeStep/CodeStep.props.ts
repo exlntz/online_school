@@ -1,6 +1,6 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
-import type { AuthMode } from "../../../../types/auth";
-import type { Role } from "../../../../types/user";
+import type { Role } from "../../../../entities/user";
+import type { AuthMode } from "../../../../features/auth";
 
 
 export interface CodeStepProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

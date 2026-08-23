@@ -1,11 +1,11 @@
 import type { JSX } from 'react';
-import { PageHeader } from '../../../../components/common';
-import { NextLesson, StatsPanel, UpcomingLessons } from '../../../../components/profile';
-import { Container } from '../../../../components/ui';
-import { SUBJECTS } from '../../../../data/profile.data';
-import { MOCK_API_LESSON } from '../../../../data/temp.data';
-import { useUser } from '../../../../hooks/useUser';
-import { useSubject } from '../../../../store/subject/hooks';
+import { NextLesson, UpcomingLessons } from '../../../../entities/lesson';
+import { useSubject } from '../../../../entities/subject';
+import { useUser } from '../../../../entities/user';
+import { MOCK_API_LESSON, SUBJECTS } from '../../../../shared/constants';
+import { Container } from '../../../../shared/ui';
+import { PageHeader } from '../../../../widgets/page-header';
+import { StatsPanel } from '../../../../widgets/statistics-panel';
 import styles from './LearningHomePage.module.css';
 
 

@@ -1,8 +1,8 @@
 import { ArrowLeft } from 'lucide-react';
 import { useState, type JSX } from 'react';
 import { Link } from 'react-router';
-import { Container } from '../../../components/ui';
-import type { AuthValues } from '../../../types/auth';
+import type { AuthValues } from '../../../features/auth';
+import { Container } from '../../../shared/ui';
 import styles from './AuthPage.module.css';
 import type { AuthPageProps } from "./AuthPage.props";
 import { CodeStep } from './CodeStep/CodeStep';

@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
-import { DashboardCard } from '../../../components/profile';
-import { PROFILE_DASHBOARD_CARDS } from '../../../data/profile.data';
-import { useUser } from '../../../hooks/useUser';
+import { useUser } from '../../../entities/user';
+import { PROFILE_DASHBOARD_CARDS } from '../../../shared/constants';
+import { DashboardCard } from '../../../shared/ui';
 import styles from './ProfilePage.module.css';
 
 

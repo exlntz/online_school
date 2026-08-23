@@ -1,0 +1,24 @@
+import type { Role, UserDto } from "../../../entities/user";
+
+
+export type AuthMode = 'login' | 'register';
+
+export type AuthValues = {
+    firstName?: string;
+    phoneNumber: string;
+    role?: Role;
+}
+
+export type SendCodePayload = AuthValues;
+
+export type VerifyCodePayload = AuthValues & {
+    code: string;
+}
+
+export type AuthResponseDTO = {
+    message: string;
+    access_token: string;
+    token_type: string;
+    user: UserDto;
+}
+

@@ -1,10 +1,10 @@
 import { AlertOctagon } from 'lucide-react';
 import { type JSX } from 'react';
 import { isRouteErrorResponse, useRouteError } from 'react-router';
-import { Button, Card, Container } from '../../../components/ui';
-import { parseApiError } from '../../../helpers/error.helpers';
+import { Button, Card, Container } from '../../../shared/ui';
 import styles from './ErrorPage.module.css';
 import type { ErrorPageProps } from './ErrorPage.props';
+import { parseApiError } from '../../../shared/lib';
 
 
 export const ErrorPage = ( { className, ...props }: ErrorPageProps ): JSX.Element => {

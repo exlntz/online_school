@@ -4,12 +4,9 @@ import { AsYouType } from 'libphonenumber-js';
 import { type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
-import { sendAuthCode } from '../../../../api/auth';
-import { Button, Input, Radio } from '../../../../components/ui';
-import { parseApiError } from '../../../../helpers/error.helpers';
-import type { AuthValues } from '../../../../types/auth';
-import { cn } from '../../../../utils/cn';
-import { loginSchema, registerSchema } from '../../../../utils/validations';
+import { sendAuthCode, type AuthValues } from '../../../../features/auth';
+import { cn, loginSchema, parseApiError, registerSchema } from '../../../../shared/lib';
+import { Button, Input, Radio } from '../../../../shared/ui';
 import styles from './PhoneStep.module.css';
 import type { PhoneStepProps } from './PhoneStep.props';
 

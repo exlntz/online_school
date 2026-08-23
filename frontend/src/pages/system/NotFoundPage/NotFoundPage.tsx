@@ -1,6 +1,6 @@
 import { AlertCircle } from 'lucide-react';
 import type { JSX } from 'react';
-import { Card, Container } from '../../../components/ui';
+import { Card, Container } from '../../../shared/ui';
 import styles from './NotFoundPage.module.css';
 
 
