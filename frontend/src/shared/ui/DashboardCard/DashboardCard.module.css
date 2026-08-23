@@ -7,7 +7,6 @@
   overflow: hidden;
   border-radius: 1rem;
   border: 1px solid var(--border-color);
-  background-color: var(--card-bg);
   padding: 1.5rem;
   text-align: left;
   text-decoration: none;

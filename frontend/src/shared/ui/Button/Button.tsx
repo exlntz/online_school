@@ -8,6 +8,15 @@ import ArrowIcon from './arrow.svg?react';
 
 const defaultElement = 'button';
 
+const ARROW_SIZES = {
+    xs: 14,
+    s: 16,
+    m: 20,
+    l: 24,
+    xl: 28,
+    icon: 20,
+};
+
 export const Button = <E extends ElementType = typeof defaultElement>({ 
     as,
     className, 
@@ -35,6 +44,7 @@ export const Button = <E extends ElementType = typeof defaultElement>({
     };
 
     const isDisabled = disabled || isLoading;
+    const currentArrowSize = ARROW_SIZES[size];
 
     return (
         <Component
@@ -62,7 +72,10 @@ export const Button = <E extends ElementType = typeof defaultElement>({
                     [styles.right]: arrow === 'right',
                     [styles.rightUp]: arrow === 'right-up',
                 })}>
-                    <ArrowIcon />
+                    <ArrowIcon 
+                        width={currentArrowSize} 
+                        height={currentArrowSize} 
+                    />
                 </span>
             )}
         </Component>
