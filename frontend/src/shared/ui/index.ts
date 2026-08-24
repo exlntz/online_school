@@ -15,3 +15,4 @@ export * from './Search/Search';
 export * from './Sort/Sort';
 export * from './Sort/Sort.props';
 export * from './StatusBadge/StatusBadge';
+export * from './Tabs/Tabs';

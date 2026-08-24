@@ -1,0 +1,83 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.info {
+    flex: 1;
+}
+
+.title {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.topic {
+    margin: 0;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+}
+
+.metaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--text-secondary);
+}
+
+.metaOverdue {
+    color: var(--destructive, #ef4444);
+}
+
+.metaDone {
+    color: var(--primary);
+}
+
+.doneBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    align-self: flex-start;
+}
+
+@media (min-width: 640px) {
+    .doneBadge {
+        align-self: auto;
+    }
+}
+
+.btnOverdue {
+    border-color: color-mix(in srgb, var(--destructive, #ef4444) 40%, transparent);
+    color: var(--destructive, #ef4444);
+}

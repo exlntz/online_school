@@ -11,5 +11,4 @@ export interface NavItem {
     label: string;
     icon: FC<SVGProps<SVGSVGElement>>;
     description?: string;
-    badge?: number;
 }

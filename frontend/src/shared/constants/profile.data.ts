@@ -1,14 +1,14 @@
 import {
-    Atom,
-    BarChart3,
-    BookOpen,
-    Brain,
-    ClipboardList,
-    FolderOpen, Home, Layers, Repeat,
-    Settings,
-    Sigma,
-    Terminal,
-    Zap
+  Atom,
+  BarChart3,
+  BookOpen,
+  Brain,
+  ClipboardList,
+  FolderOpen, Home, Layers, Repeat,
+  Settings,
+  Sigma,
+  Terminal,
+  Zap
 } from 'lucide-react';
 import type { NavItem } from '../config';
 
@@ -61,7 +61,6 @@ export const PROFILE_NAV_ITEMS: NavItem[] = [
     label: 'Домашнее задание', 
     icon: ClipboardList, 
     description: 'Отслеживайте дедлайны и приступайте к заданиям в один клик.',
-    badge: 3 
   },
   { 
     id: 'task-bank', 
