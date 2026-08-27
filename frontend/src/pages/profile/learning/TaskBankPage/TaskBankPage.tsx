@@ -20,29 +20,27 @@ export const TaskBankPage = (): JSX.Element => {
         <Container variant='page'>
             <PageHeader />
 
-            <div className={styles.container}>
-                <Search
-                    onSearch={setSearchQuery}
-                    placeholder="Поиск по теме или номеру задания…"
-                    iconPosition="left"
-                />
+            <Search
+                onSearch={setSearchQuery}
+                placeholder="Поиск по теме или номеру задания…"
+                iconPosition="left"
+            />
 
-                <div className={styles.list}>
-                    {filteredBank.map((task) => (
-                        <TaskCard
-                            key={task.number}
-                            task={task as TaskModel}
-                            isOpen={openTask === task.number}
-                            onToggle={() => setOpenTask(openTask === task.number ? null : task.number)}
-                        />
-                    ))}
-                    
-                    {filteredBank.length === 0 && (
-                        <div className={cn("glass", styles.notFound)}>
-                            Ничего не найдено
-                        </div>
-                    )}
-                </div>
+            <div className={styles.list}>
+                {filteredBank.map((task) => (
+                    <TaskCard
+                        key={task.number}
+                        task={task as TaskModel}
+                        isOpen={openTask === task.number}
+                        onToggle={() => setOpenTask(openTask === task.number ? null : task.number)}
+                    />
+                ))}
+                
+                {filteredBank.length === 0 && (
+                    <div className={cn("glass", styles.notFound)}>
+                        Ничего не найдено
+                    </div>
+                )}
             </div>
         </Container>
     );

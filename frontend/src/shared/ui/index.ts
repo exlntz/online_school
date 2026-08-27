@@ -1,6 +1,7 @@
 export * from './Badge/Badge';
 export * from './Button/Button';
 export * from './Card/Card';
+export * from './Checkbox/Checkbox';
 export * from './Container/Container';
 export * from './DashboardCard/DashboardCard';
 export * from './Divider/Divider';

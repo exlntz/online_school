@@ -1,12 +1,13 @@
 import type { JSX } from 'react';
 import { cn } from '../../../../shared/lib';
+import { Card } from '../../../../shared/ui';
 import { PRACTICE_DIFFICULTY_TAGS } from '../../model/constants';
 import styles from './PracticeFilters.module.css';
 import type { PracticeFiltersProps } from './PracticeFilters.props';
 
 export const PracticeFilters = ({ availableTopics, selectedTopics, onToggleTopic, selectedDifficulty, onChangeDifficulty, className, ...props }: PracticeFiltersProps): JSX.Element => {
     return (
-        <div className={cn('glass', styles.filterCard, className)} {...props}>
+        <Card variant='glass' className={className} {...props}>
             <div>
                 <p className={styles.sectionTitle}>Темы</p>
                 <div className={styles.tagsGroup}>
@@ -48,6 +49,6 @@ export const PracticeFilters = ({ availableTopics, selectedTopics, onToggleTopic
                     })}
                 </div>
             </div>
-        </div>
+        </Card>
     );
 };

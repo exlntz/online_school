@@ -1,10 +1,6 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  transition: var(--transition);
+  gap: 16px; 
+  grid-row: auto;
 }
 
 .card:hover {
@@ -63,9 +59,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid var(--border-color);
-  padding-top: 1rem;
-  margin-top: auto;
 }
 
 .status {

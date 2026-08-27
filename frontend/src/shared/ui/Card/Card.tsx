@@ -16,9 +16,7 @@ export const Card = ({ footer, hoverable, variant='default', className, children
             )} 
             {...props}
         >
-            <div className={styles.content}>
-                {children}
-            </div>
+            {children}
 
             {footer && (
                 <div className={styles.footer}>

@@ -1,11 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { AsYouType } from 'libphonenumber-js';
 import { type JSX } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
 import { sendAuthCode, type AuthValues } from '../../../../features/auth';
-import { cn, loginSchema, parseApiError, registerSchema } from '../../../../shared/lib';
+import { cn, formatPhone, loginSchema, parseApiError, registerSchema } from '../../../../shared/lib';
 import { Button, Input, Radio } from '../../../../shared/ui';
 import styles from './PhoneStep.module.css';
 import type { PhoneStepProps } from './PhoneStep.props';
@@ -51,7 +50,7 @@ export const PhoneStep = ( { mode, onSuccess, className, ...props }: PhoneStepPr
                         <Input 
                             type="text"
                             placeholder="Ваше имя"
-                            className={styles.nameInput}
+                            className={styles.input}
                             {...register('firstName')} 
                             error={errors.firstName}
                         />
@@ -60,14 +59,14 @@ export const PhoneStep = ( { mode, onSuccess, className, ...props }: PhoneStepPr
                     <Input 
                         type="tel"
                         placeholder="Номер телефона"
-                        className={styles.telephoneInput} 
+                        className={styles.input} 
                         {...restPhoneRegister}
                         onChange={(e) => {
                             let val = e.target.value;
                             if (val && !val.startsWith('+')) {
                                 val = (val.startsWith('7') || val.startsWith('8')) ? '+7' + val.substring(1) : '+7' + val;
                             }
-                            e.target.value = new AsYouType('RU').input(val);
+                            e.target.value = formatPhone(val);
                             onPhoneChange(e);
                         }}
                         error={errors.phoneNumber}

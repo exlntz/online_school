@@ -1,7 +1,7 @@
 import { CheckCircle2, Clock, Trophy } from 'lucide-react';
 import type { JSX } from 'react';
 import { cn } from '../../../../shared/lib';
-import { Button } from '../../../../shared/ui';
+import { Button, Card, Divider } from '../../../../shared/ui';
 import styles from './VariantCard.module.css';
 import type { VariantCardProps } from './VariantCard.props';
 
@@ -10,7 +10,7 @@ export const VariantCard = ({ variant, className, ...props }: VariantCardProps):
     const isInProgress = variant.status === 'in-progress';
 
     return (
-        <div className={cn('glass', styles.card, className)} {...props}>
+        <Card variant="glass" className={cn(styles.card, className)} {...props}>
             <div className={styles.header}>
                 <div>
                     <h3 className={styles.title}>{variant.title}</h3>
@@ -27,6 +27,8 @@ export const VariantCard = ({ variant, className, ...props }: VariantCardProps):
                     </span>
                 )}
             </div>
+
+            <Divider />
 
             <div className={styles.footer}>
                 <span className={cn(styles.status, isDone && styles.statusDone)}>
@@ -45,6 +47,6 @@ export const VariantCard = ({ variant, className, ...props }: VariantCardProps):
                     {isDone ? 'Разбор' : isInProgress ? 'Продолжить' : 'Начать вариант'}
                 </Button>
             </div>
-        </div>
+        </Card>
     );
 };

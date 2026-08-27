@@ -186,3 +186,10 @@ export const MOCK_HOMEWORK: HomeworkModel[] = [
         status: 'overdue',
     },
 ];
+
+// SettingsPage component
+export const MOCK_TIERS = [
+    { id: 'basic', name: 'Базовый', price: '990 ₽/мес', features: '1 предмет · теория и ДЗ' },
+    { id: 'pro', name: 'Профи', price: '2 490 ₽/мес', features: '3 предмета · пробники и психолог' },
+    { id: 'premium', name: 'Премиум', price: '3 990 ₽/мес', features: 'Все предметы · личный наставник' },
+];

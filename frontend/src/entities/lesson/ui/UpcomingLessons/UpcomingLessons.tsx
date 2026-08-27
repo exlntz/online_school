@@ -18,33 +18,31 @@ export const UpcomingLessons = ({
 
     return (
         <Card variant="glass" className={className} {...props}>
-            <div className={styles.wrapper}>
-                <h3 className={styles.title}>{title}</h3>
-                
-                {isDone ? (
-                    <div className={styles.emptyState}>
-                        <CheckCircle2 size={32} opacity={0.5} />
-                        <span>Всё выполнено, ожидайте обновлений!</span>
-                    </div>            
-                ) : (
-                    <ul className={styles.list}>
-                        {lessons.map((lesson) => (
-                            <li key={lesson.id}>
-                                <Link to={`/learning/lesson/${lesson.id}`} className={styles.item}>
-                                    <CheckCircle2 className={styles.icon} />
-                                    
-                                    <span className={styles.itemTitle}>{lesson.title}</span>
+            <h3 className={styles.title}>{title}</h3>
+            
+            {isDone ? (
+                <div className={styles.emptyState}>
+                    <CheckCircle2 size={32} opacity={0.5} />
+                    <span>Всё выполнено, ожидайте обновлений!</span>
+                </div>            
+            ) : (
+                <ul className={styles.list}>
+                    {lessons.map((lesson) => (
+                        <li key={lesson.id}>
+                            <Link to={`/learning/lesson/${lesson.id}`} className={styles.item}>
+                                <CheckCircle2 className={styles.icon} />
+                                
+                                <span className={styles.itemTitle}>{lesson.title}</span>
 
-                                    <span className={styles.itemTime}>
-                                        <Clock size={14} />
-                                        {lesson.duration} мин
-                                    </span>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
+                                <span className={styles.itemTime}>
+                                    <Clock size={14} />
+                                    {lesson.duration} мин
+                                </span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </Card>
     );
 };
