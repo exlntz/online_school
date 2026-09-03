@@ -1,7 +1,7 @@
 import { CheckCircle2, Clock, Trophy } from 'lucide-react';
 import type { JSX } from 'react';
 import { cn } from '../../../../shared/lib';
-import { Button, Card, Divider } from '../../../../shared/ui';
+import { Badge, Button, Card, Divider } from '../../../../shared/ui';
 import styles from './VariantCard.module.css';
 import type { VariantCardProps } from './VariantCard.props';
 
@@ -17,14 +17,14 @@ export const VariantCard = ({ variant, className, ...props }: VariantCardProps):
                     <p className={styles.meta}>{variant.meta}</p>
                 </div>
                 {variant.rated ? (
-                    <span className={styles.badgeRated}>
+                    <Badge variant="primary" size="s" className={styles.badge}>
                         <Trophy size={14} />
                         На рейтинг
-                    </span>
+                    </Badge>
                 ) : (
-                    <span className={styles.badgeNormal}>
+                    <Badge variant="outline" size="s" className={styles.badge}>
                         Обычный
-                    </span>
+                    </Badge>
                 )}
             </div>
 

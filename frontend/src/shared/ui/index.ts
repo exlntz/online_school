@@ -1,3 +1,4 @@
+export * from './Avatar/Avatar';
 export * from './Badge/Badge';
 export * from './Button/Button';
 export * from './Card/Card';
@@ -10,8 +11,10 @@ export * from './Input/Input';
 export * from './Loader/Loader';
 export * from './Logo/Logo';
 export * from './Marquee/Marquee';
+export * from './ModalWindow/ModalWindow';
 export * from './ProgressRing/ProgressRing';
 export * from './Radio/Radio';
+export * from './Rating/Rating';
 export * from './Search/Search';
 export * from './Sort/Sort';
 export * from './Sort/Sort.props';

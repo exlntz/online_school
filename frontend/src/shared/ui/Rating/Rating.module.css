@@ -1,0 +1,16 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  color: var(--text-secondary);
+  fill: transparent;
+  transition: color 0.2s ease, fill 0.2s ease;
+}
+
+.filled {
+  color: var(--primary);
+  fill: var(--primary);
+}

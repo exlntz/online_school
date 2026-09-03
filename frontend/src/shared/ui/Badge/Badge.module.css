@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   font-family: var(--font-mono);
   text-transform: uppercase;
   white-space: nowrap;
@@ -24,6 +25,12 @@
   padding: 0 12px;
   height: 24px;
   border-radius: 6px;
+}
+
+.l {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 12px;
 }
 
 /* variants */
@@ -51,4 +58,13 @@
   color: var(--bg-primary); 
   border: 1px solid color-mix(in srgb, var(--bg-primary) 25%, transparent);
   backdrop-filter: blur(4px);
+}
+
+.soft {
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  font-family: var(--font-sans);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 600;
 }

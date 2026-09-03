@@ -1,14 +1,16 @@
-import type { JSX } from 'react'
-import styles from './StatisticsPage.module.css'
+import { type JSX } from 'react';
+import { Container } from '../../../shared/ui';
+import { ProfileSummary } from '../../../widgets/statistics-dashboard';
+import styles from './StatisticsPage.module.css';
 
 
 export const StatisticsPage = (): JSX.Element => {
-    return (
-        <>
-            <div className={styles.container}>
-                <h1>Страница "статистика" в разработке</h1>
-            </div>
-        </>
-    )
-}
 
+    return (
+        <Container className={styles.container}>
+            <ProfileSummary />
+
+        
+        </Container>
+    );
+};

@@ -1,5 +1,9 @@
-import { Flame, Target, Trophy } from "lucide-react";
+import { Award, BookOpenCheck, CheckCircle2, Clock, Compass, Flame, Medal, Sigma, Target, Trophy } from "lucide-react";
 import type { HomeworkModel } from "../../entities/homework";
+import type { PsychologistModel, PsychologistNoteModel } from "../../entities/psychologist/model/types";
+import PsychologistElena from '../assets/images/psychologist-elena.webp';
+import PsychologistMikhail from '../assets/images/psychologist-mikhail.webp';
+import PsychologistOlga from '../assets/images/psychologist-olga.webp';
 
 
 // WeeklyActivity component
@@ -192,4 +196,83 @@ export const MOCK_TIERS = [
     { id: 'basic', name: 'Базовый', price: '990 ₽/мес', features: '1 предмет · теория и ДЗ' },
     { id: 'pro', name: 'Профи', price: '2 490 ₽/мес', features: '3 предмета · пробники и психолог' },
     { id: 'premium', name: 'Премиум', price: '3 990 ₽/мес', features: 'Все предметы · личный наставник' },
+];
+
+// PsychologistPage component
+export const MOCK_CURRENT_PSYCHOLOGIST: PsychologistModel = {
+  id: 'elena',
+  name: 'Елена Соколова',
+  photo: PsychologistElena,
+  rating: 4.9,
+  reviews: 128,
+  bio: 'Клинический психолог, специализация — подростковая мотивация и работа с тревогой перед экзаменами.',
+  tags: ['Мотивация', 'Тревожность', 'ЕГЭ'],
+};
+
+export const MOCK_PSYCHOLOGIST_NOTES: PsychologistNoteModel[] = [
+  {
+    id: 1,
+    date: '18 августа',
+    text: 'Анна, отличная работа на этой неделе! Помни: 15 минут отдыха после каждого часа занятий — это не потеря времени, а инвестиция в концентрацию.',
+  },
+  {
+    id: 2,
+    date: '14 августа',
+    text: 'Перед пробником сделай дыхательное упражнение 4-7-8. Волнение — это нормально, оно помогает собраться. Ты подготовлена лучше, чем думаешь.',
+  },
+  {
+    id: 3,
+    date: '9 августа',
+    text: 'Давай на следующей встрече обсудим твой режим сна. Ранний подъём даётся тяжело, попробуем сдвинуть план занятий на вечер.',
+  },
+];
+
+export const MOCK_AVAILABLE_PSYCHOLOGISTS: PsychologistModel[] = [
+  {
+    id: 'mikhail',
+    name: 'Михаил Верещагин',
+    photo: PsychologistMikhail,
+    rating: 4.8,
+    reviews: 94,
+    bio: 'Работаю с прокрастинацией и выгоранием. Помогу выстроить систему, в которой учиться легко и без давления.',
+    tags: ['Прокрастинация', 'Выгорание'],
+  },
+  {
+    id: 'olga',
+    name: 'Ольга Нестерова',
+    photo: PsychologistOlga,
+    rating: 5.0,
+    reviews: 156,
+    bio: 'Специалист по самооценке и уверенности. Вместе научимся спокойно относиться к ошибкам и расти на них.',
+    tags: ['Самооценка', 'Уверенность'],
+  },
+];
+
+// StatisticsPage component
+export const MOCK_STAT_METRICS = [
+    { icon: Clock, label: 'Часов на платформе', value: '142', delta: '+8 за неделю' },
+    { icon: BookOpenCheck, label: 'Просмотрено лекций', value: '87', delta: '+5 за неделю' },
+    { icon: CheckCircle2, label: 'Решено задач', value: '1 248', delta: '+96 за неделю' },
+    { icon: Flame, label: 'Серия дней', value: '12', delta: 'Личный рекорд' },
+];
+
+export const MOCK_SUBJECT_TASKS = [
+    { subject: 'Математика', solved: 642, total: 800 },
+    { subject: 'Физика', solved: 318, total: 500 },
+    { subject: 'Информатика', solved: 288, total: 400 },
+];
+
+export const MOCK_EXAMS = [
+    { subject: 'Математика', score: 82, max: 100 },
+    { subject: 'Физика', score: 71, max: 100 },
+    { subject: 'Информатика', score: 90, max: 100 },
+];
+
+export const MOCK_ACHIEVEMENTS: AchievementModel[] = [
+    { icon: Sigma, title: 'Гуру параметров', description: '10 верных задач с параметрами', unlocked: true },
+    { icon: Flame, title: 'Огонь недели', description: 'Серия из 7 дней подряд', unlocked: true },
+    { icon: Target, title: 'Снайпер', description: '50 задач без ошибок', unlocked: true },
+    { icon: Award, title: 'Марафонец', description: '100 часов на платформе', unlocked: true },
+    { icon: Compass, title: 'Первопроходец', description: 'Пройден вводный модуль', unlocked: true },
+    { icon: Medal, title: 'Стобалльник', description: 'Пробник на 100 баллов', unlocked: false },
 ];

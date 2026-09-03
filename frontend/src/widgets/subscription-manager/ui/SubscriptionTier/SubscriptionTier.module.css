@@ -11,18 +11,17 @@
   gap: 8px;
 }
 
+.titleIcon {
+  color: var(--primary);
+}
+
 .title {
   font-size: 16px;
   font-weight: 700;
 }
 
 .statusBadge {
-  border-radius: 8px;
-  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary);
+  border-radius: 16px;
 }
 
 .grid {

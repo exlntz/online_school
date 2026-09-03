@@ -1,0 +1,38 @@
+.card {
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  border-radius: 16px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+}

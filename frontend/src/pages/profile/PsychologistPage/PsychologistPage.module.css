@@ -1,6 +1,14 @@
 .container {
     display: flex;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    justify-content: center;
+    flex-direction: column;
+    gap: 1.25rem; 
+}
+
+.modalList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

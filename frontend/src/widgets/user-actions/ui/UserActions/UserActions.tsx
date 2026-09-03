@@ -4,13 +4,12 @@ import { useUser } from '../../../../entities/user';
 import { NotificationBtn } from '../../../../features/notifications';
 import { ThemeToggleBtn } from '../../../../features/theme-switcher';
 import { cn } from '../../../../shared/lib';
-import { Button } from '../../../../shared/ui';
+import { Avatar, Button } from '../../../../shared/ui';
 import styles from './UserActions.module.css';
 import type { UserActionsProps } from './UserActions.props';
 
 export const UserActions = ({ className, ...props }: UserActionsProps): JSX.Element => {
     const { data: user } = useUser();
-    const initials = user ? `${user.firstName.charAt(0)}`.toUpperCase() : '';
 
     return (
         <div className={cn(styles.actionsGroup, className)} {...props}>
@@ -25,7 +24,13 @@ export const UserActions = ({ className, ...props }: UserActionsProps): JSX.Elem
                 radius={20}
                 aria-label="Профиль пользователя"
             >
-                <span className={styles.avatar}>{initials}</span>
+                <Avatar 
+                    firstName={user?.firstName} 
+                    lastName={user?.lastName} 
+                    size={36} 
+                    className={styles.avatar}
+                />
+
                 <span className={styles.userInfo}>
                     <span className={styles.userName}>{user?.firstName || 'User01'}</span>
                     <span className={styles.userRole}>{user?.role}</span>

@@ -16,7 +16,12 @@ export const AuthBlock = ( { user, isLoading, onLogout, isMobile, className, ...
                     <Link to="/profile" className={styles.userName}>
                         {user.firstName}
                     </Link>
-                    <Button variant="danger" size="s" onClick={onLogout}>
+                    <Button 
+                        variant="danger" 
+                        size="s" 
+                        onClick={onLogout} 
+                        radius={18}
+                    >
                         Выйти
                     </Button>
                 </div>

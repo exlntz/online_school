@@ -2,7 +2,7 @@ import { Crown } from 'lucide-react';
 import { useState, type JSX } from 'react';
 import { MOCK_TIERS } from '../../../../shared/constants';
 import { cn } from '../../../../shared/lib';
-import { Button, Card } from '../../../../shared/ui';
+import { Badge, Button, Card } from '../../../../shared/ui';
 import { TierCard } from '../TierCard/TierCard';
 import styles from './SubscriptionTier.module.css';
 import type { SubscriptionTierProps } from './SubscriptionTier.props';
@@ -15,10 +15,13 @@ export const SubscriptionTier = ({ className, ...props }: SubscriptionTierProps)
         <Card variant="glass" className={cn(className)} {...props}>
             <div className={styles.header}>
                 <div className={styles.titleWrap}>
-                    <Crown size={20} style={{ color: 'var(--primary)' }} />
+                    <Crown size={20} className={styles.titleIcon} />
                     <h2 className={styles.title}>Уровень подписки</h2>
                 </div>
-                <span className={styles.statusBadge}>Активна до 12 сентября</span>
+                
+                <Badge variant="soft" size="l" className={styles.statusBadge}>
+                    Активна до 12 сентября
+                </Badge>
             </div>
 
             <div className={styles.grid}>
