@@ -268,7 +268,7 @@ export const MOCK_EXAMS = [
     { subject: 'Информатика', score: 90, max: 100 },
 ];
 
-export const MOCK_ACHIEVEMENTS: AchievementModel[] = [
+export const MOCK_ACHIEVEMENTS = [
     { icon: Sigma, title: 'Гуру параметров', description: '10 верных задач с параметрами', unlocked: true },
     { icon: Flame, title: 'Огонь недели', description: 'Серия из 7 дней подряд', unlocked: true },
     { icon: Target, title: 'Снайпер', description: '50 задач без ошибок', unlocked: true },
